@@ -9,15 +9,26 @@ import org.apache.poi.xssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
 
 public class InputFiles {
-	private File inputFolder = new File("C:\\RG input");
-	private File[] listOfFiles = this.inputFolder.listFiles();
+	private File[] listOfFiles = new File("C:\\RG input").listFiles();
 	private File crFileUmts, crFileLte, crFileGsm, commFile, siteInfo, backupCommFile, engineerFile, upFile,
 			crOfTransmissionForLte;
 	private String crStr = "CommissioningReport_", scfStr = "SCF", commStr = "Commissioning_",
 			siteInfoStr = "SiteInformation_", backupCommStr = "BackupCommissioning_", upStr = "UP ",
-			engineerStr = "Engineer", siteCodeStr = "xxxyy", siteCode3gStr, siteCode4gStr, azimuthStr = "Azimut",
-			mechanicalTiltStr = "Mehan", electricalTiltStr = "Elektr", antHighStr = "Visina",
-			antenaTypeStr = "Antenski", s1Str = "1", s2Str = "2", s3Str = "3", s4Str = "4";
+			engineerStr = "Engineer", siteCodeStr = "xxxyy", siteCode2gStr = "xxxyy", siteCode3gStr = "xxxyy",
+			siteCode4gStr = "xxxyy", azimuthStr = "Azimut", mechanicalTiltStr = "Mehan", electricalTiltStr = "Elektr",
+			antHighStr = "Visina", antenaTypeStr = "Antenski", s1Str = "1", s2Str = "2", s3Str = "3", s4Str = "4";
+
+	public void setListOfFiles(String folderPath) {
+		this.listOfFiles = new File(folderPath).listFiles();
+	}
+
+	public String getSiteCodeStr() {
+		return siteCodeStr;
+	}
+
+	public String getSiteCode2gStr() {
+		return siteCode2gStr;
+	}
 
 	public String getSiteCode3gStr() {
 		return this.siteCode3gStr;
@@ -25,6 +36,10 @@ public class InputFiles {
 
 	public String getSiteCode4gStr() {
 		return this.siteCode4gStr;
+	}
+
+	public File getCrFileGsm() {
+		return crFileGsm;
 	}
 
 	public File getUmtsCrFile() {
@@ -72,16 +87,16 @@ public class InputFiles {
 		}
 	}
 
-	void setSiteCode(FrontWindow fw, char siteCodeType) {
+	void setSiteCode(char siteCodeType) {
 		if (siteCodeStr.charAt(2) == 'U') {
 			this.siteCode3gStr = siteCodeStr;
 		} else if (siteCodeStr.charAt(2) == 'L') {
 			this.siteCode4gStr = siteCodeStr;
 			this.siteCode3gStr = siteCode4gStr.substring(0, 2) + 'U' + siteCode4gStr.substring(3);
+			this.siteCode2gStr = siteCode4gStr.substring(0, 2) + siteCode4gStr.substring(3);
 		} else {
 			noCommissioningReport();
 		}
-		sortOutInputFilesToAppropriateVariables();
 	}
 
 	public void noCommissioningReport() {
@@ -91,14 +106,14 @@ public class InputFiles {
 
 	public void sortOutInputFilesToAppropriateVariables() {
 		for (File inputFile : this.listOfFiles) {
+			if (inputFile.toString().contains(this.scfStr)) {
+				this.crFileGsm = inputFile;
+			}
 			if (inputFile.toString().contains(this.crStr) && inputFile.toString().contains(siteCode3gStr)) {
 				this.crFileUmts = inputFile;
 			}
 			if (inputFile.toString().contains(this.crStr) && inputFile.toString().contains(siteCode4gStr)) {
 				this.crFileLte = inputFile;
-			}
-			if (inputFile.toString().contains(this.scfStr)) {
-				this.crFileGsm = inputFile;
 			}
 			if (inputFile.toString().contains(this.commStr)) {
 				this.commFile = inputFile;

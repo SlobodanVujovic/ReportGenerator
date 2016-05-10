@@ -12,7 +12,7 @@ public class Notifications extends JFrame {
 
 	public void fileNotFound(String fileName) {
 		fileName = fileName.substring(fileName.indexOf("\\", 3) + 1);
-		JOptionPane.showMessageDialog(Notifications.this, "No \"" + fileName + "\" file in input folder.", "Error",
+		JOptionPane.showMessageDialog(null, "No \"" + fileName + "\" file in input folder.", "Error",
 				JOptionPane.ERROR_MESSAGE); // JOptionPane is used when we want
 											// some kind of warning, error or
 											// notification message to show, it
@@ -27,18 +27,16 @@ public class Notifications extends JFrame {
 	public void stringNotFound(File file, String str) {
 		String fileStr = file.toString();
 		fileStr = fileStr.substring(fileStr.indexOf("\\", 3) + 1);
-		JOptionPane.showMessageDialog(Notifications.this, "No \"" + str + "\" in file: " + fileStr, "Error",
+		JOptionPane.showMessageDialog(null, "No \"" + str + "\" in file: " + fileStr, "Error",
 				JOptionPane.ERROR_MESSAGE);
 	}
 
 	public void emptyEngNameError() {
-		JOptionPane.showMessageDialog(Notifications.this, "Please provide Engineer name", "Error",
-				JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Please provide Engineer name", "Error", JOptionPane.ERROR_MESSAGE);
 	}
 
 	public void noCommRepInFolder() {
-		JOptionPane.showMessageDialog(Notifications.this, "Please put all files in input folder", "Error",
-				JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Please put all files in input folder", "Error", JOptionPane.ERROR_MESSAGE);
 	}
 
 	public void windowMandatoryMethods() {
@@ -47,4 +45,5 @@ public class Notifications extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setTitle("Report Generator");
 	}
+
 }

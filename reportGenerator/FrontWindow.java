@@ -957,7 +957,8 @@ public class FrontWindow extends JFrame {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				if (iFilesUmts.getSiteCode3gStr() == null) {
 					iFilesUmts.findSiteCodeFromCommissioningReport('U');
-					iFilesUmts.setSiteCode(FrontWindow.this, 'U');
+					iFilesUmts.setSiteCode('U');
+					iFilesUmts.sortOutInputFilesToAppropriateVariables();
 				}
 				if (iFilesUmts.getSiteCode3gStr() != null) {
 					FrontWindow.this.westPanel.setEnabled(true);
@@ -1071,7 +1072,8 @@ public class FrontWindow extends JFrame {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				if (iFilesLte.getSiteCode4gStr() == null) {
 					iFilesLte.findSiteCodeFromCommissioningReport('L');
-					iFilesLte.setSiteCode(FrontWindow.this, 'L');
+					iFilesLte.setSiteCode('L');
+					iFilesLte.sortOutInputFilesToAppropriateVariables();
 				}
 				if (iFilesLte.getSiteCode4gStr() != null) {
 					FrontWindow.this.eastPanel.setEnabled(true);
