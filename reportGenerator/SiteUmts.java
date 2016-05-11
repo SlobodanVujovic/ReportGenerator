@@ -48,7 +48,7 @@ public class SiteUmts implements Site {
 
 	@Override
 	public void setSiteName(InputFiles inputFiles) {
-		this.siteName = inputFiles.readParameterFromCommissioningReport("Description:");
+		this.siteName = inputFiles.readParameterFromCommissioningReport(inputFiles.getUmtsCrFile(), "Description:");
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class SiteUmts implements Site {
 	@Override
 	public void setDate(InputFiles inputFiles) {
 		String rowDate, dd, MM, yy;
-		rowDate = inputFiles.readParameterFromCommissioningReport("Date:");
+		rowDate = inputFiles.readParameterFromCommissioningReport(inputFiles.getUmtsCrFile(), "Date:");
 		if (rowDate.charAt(2) == '.') {
 			this.date = rowDate;
 		} else {
@@ -101,7 +101,7 @@ public class SiteUmts implements Site {
 
 	// Find MHA type for all sectors, depending how many sectors there are.
 	public void setMhaType(InputFiles inputFiles) {
-		this.mhaTypeS1 = inputFiles.readParameterFromCommissioningReport("MHA type:");
+		this.mhaTypeS1 = inputFiles.readParameterFromCommissioningReport(inputFiles.getUmtsCrFile(), "MHA type:");
 		if (this.mhaTypeS1 != null) {
 			if (2 <= this.numOfSectors) {
 				this.mhaTypeS2 = this.mhaTypeS1;
@@ -580,7 +580,7 @@ public class SiteUmts implements Site {
 	}
 
 	public void setSysModule1Type(InputFiles inputFiles) {
-		this.sysModule1Type = inputFiles.readSystemModuleInfoFromCommissionReport();
+		this.sysModule1Type = inputFiles.readSystemModuleInfoFromCommissionReport(inputFiles.getUmtsCrFile());
 	}
 
 	@Override
@@ -598,7 +598,7 @@ public class SiteUmts implements Site {
 	}
 
 	public void setTransModuleType(InputFiles inputFiles) {
-		this.transModuleType = inputFiles.readTransportModuleInfoFromCommissionReport();
+		this.transModuleType = inputFiles.readTransportModuleInfoFrom3gCommissionReport();
 	}
 
 	public void setE1LinesNo(InputFiles inputFiles) {
@@ -652,7 +652,7 @@ public class SiteUmts implements Site {
 	// First collect all RF modules from commissioning report and then divide
 	// them per sectors.
 	public void setRfModulesType(InputFiles inputFiles) {
-		this.rfModulesType = inputFiles.readCommReportForRfModuleType("Module locations", inputFiles.getUmtsCrFile(),
+		this.rfModulesType = inputFiles.readCommReportForRfModuleType(inputFiles.getUmtsCrFile(), "Module locations",
 				"F");
 		this.rfModule1Type = this.rfModulesType[0];
 		this.rfModule2Type = this.rfModulesType[1];
@@ -810,7 +810,8 @@ public class SiteUmts implements Site {
 	}
 
 	public void setSwVersion(InputFiles inputFiles) {
-		this.swVersion = inputFiles.readParameterFromCommissioningReport("SW package version:");
+		this.swVersion = inputFiles.readParameterFromCommissioningReport(inputFiles.getUmtsCrFile(),
+				"SW package version:");
 	}
 
 	@Override
@@ -823,7 +824,7 @@ public class SiteUmts implements Site {
 		this.trsIp = inputFiles.readCommReportForIpAdr(inputFiles.getUmtsCrFile(), "IP addresses", "TRS:");
 		this.trsIp = this.trsIp.substring(0, this.trsIp.indexOf("/") - 1);
 		this.rncIp = inputFiles.readCommReportForIpAdr(inputFiles.getUmtsCrFile(), "IP addresses", "RNC:");
-		if (this.trsIp != null) {
+		if (this.trsIp != "Dummy_Data") {
 			int helper = Integer.parseInt(getTrsIp().substring(getTrsIp().lastIndexOf('.') + 1));
 			helper += 1;
 			this.nodebIp = getTrsIp().substring(0, getTrsIp().lastIndexOf('.') + 1) + helper;

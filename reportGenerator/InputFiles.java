@@ -10,67 +10,69 @@ import org.apache.poi.ss.usermodel.*;
 
 public class InputFiles {
 	private File[] listOfFiles = new File("C:\\RG input").listFiles();
-	private File crFileUmts, crFileLte, crFileGsm, commFile, siteInfo, backupCommFile, engineerFile, upFile,
-			crOfTransmissionForLte;
+	private File crFileGsm = new File("C:\\RG output\\dummy_file.txt"),
+			crFileUmts = new File("C:\\RG output\\dummy_file.txt"),
+			crFileLte = new File("C:\\RG output\\dummy_file.txt"), commFile, siteInfo, backupCommFile, engineerFile,
+			upFile, crOfTransmissionForLte;
 	private String crStr = "CommissioningReport_", scfStr = "SCF", commStr = "Commissioning_",
 			siteInfoStr = "SiteInformation_", backupCommStr = "BackupCommissioning_", upStr = "UP ",
 			engineerStr = "Engineer", siteCodeStr = "xxxyy", siteCode2gStr = "xxxyy", siteCode3gStr = "xxxyy",
 			siteCode4gStr = "xxxyy", azimuthStr = "Azimut", mechanicalTiltStr = "Mehan", electricalTiltStr = "Elektr",
 			antHighStr = "Visina", antenaTypeStr = "Antenski", s1Str = "1", s2Str = "2", s3Str = "3", s4Str = "4";
 
-	public void setListOfFiles(String folderPath) {
+	void setListOfFiles(String folderPath) {
 		this.listOfFiles = new File(folderPath).listFiles();
 	}
 
-	public String getSiteCodeStr() {
+	String getSiteCodeStr() {
 		return siteCodeStr;
 	}
 
-	public String getSiteCode2gStr() {
+	String getSiteCode2gStr() {
 		return siteCode2gStr;
 	}
 
-	public String getSiteCode3gStr() {
+	String getSiteCode3gStr() {
 		return this.siteCode3gStr;
 	}
 
-	public String getSiteCode4gStr() {
+	String getSiteCode4gStr() {
 		return this.siteCode4gStr;
 	}
 
-	public File getCrFileGsm() {
+	File getCrFileGsm() {
 		return crFileGsm;
 	}
 
-	public File getUmtsCrFile() {
+	File getUmtsCrFile() {
 		return this.crFileUmts;
 	}
 
-	public File getLteCrFile() {
+	File getLteCrFile() {
 		return this.crFileLte;
 	}
 
-	public File getCommFile() {
+	File getCommFile() {
 		return this.commFile;
 	}
 
-	public File getSiteInfo() {
+	File getSiteInfo() {
 		return this.siteInfo;
 	}
 
-	public File getBackupCommFile() {
+	File getBackupCommFile() {
 		return this.backupCommFile;
 	}
 
-	public File getUpFile() {
+	File getUpFile() {
 		return this.upFile;
 	}
 
-	public File getEngineerFile() {
+	File getEngineerFile() {
 		return this.engineerFile;
 	}
 
-	public File getCrOfTransmissionForLte() {
+	File getCrOfTransmissionForLte() {
 		return this.crOfTransmissionForLte;
 	}
 
@@ -99,12 +101,12 @@ public class InputFiles {
 		}
 	}
 
-	public void noCommissioningReport() {
+	void noCommissioningReport() {
 		Notifications notifications = new Notifications();
 		notifications.noCommRepInFolder();
 	}
 
-	public void sortOutInputFilesToAppropriateVariables() {
+	void sortOutInputFilesToAppropriateVariables() {
 		for (File inputFile : this.listOfFiles) {
 			if (inputFile.toString().contains(this.scfStr)) {
 				this.crFileGsm = inputFile;
@@ -133,8 +135,7 @@ public class InputFiles {
 		}
 	}
 
-	// Ne cita dobro broj linija za LTE.
-	String readTransportModuleInfoFromCommissionReport() {
+	String readTransportModuleInfoFrom3gCommissionReport() {
 		String result = "Dummy_Data";
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(crFileUmts));
@@ -142,6 +143,7 @@ public class InputFiles {
 			while ((line = br.readLine()) != null) {
 				if (line.indexOf("FTI") != -1) {
 					result = line.substring(line.indexOf('F'), line.indexOf('F') + 4);
+					break;
 				}
 			}
 			br.close();
@@ -152,10 +154,17 @@ public class InputFiles {
 		return result;
 	}
 
-	String readSystemModuleInfoFromCommissionReport() {
+	void isResultValid(String result, String parameter) {
+		if (result.equals("Dummy_Data") & !parameter.equals("MHA type:")) {
+			Notifications notifications = new Notifications();
+			notifications.stringNotFound(crFileUmts, parameter);
+		}
+	}
+
+	String readSystemModuleInfoFromCommissionReport(File crFile) {
 		String result = "Dummy_Data";
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(crFileUmts));
+			BufferedReader br = new BufferedReader(new FileReader(crFile));
 			String line;
 			while ((line = br.readLine()) != null) {
 				if (line.indexOf("Module locations") != -1) {
@@ -176,10 +185,10 @@ public class InputFiles {
 		return result;
 	}
 
-	public String readRetInfoFromCommissioningReport(File commissioningReport) {
+	String readRetInfoFromCommissioningReport(File crFile) {
 		String result = "Dummy_Data";
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(commissioningReport));
+			BufferedReader br = new BufferedReader(new FileReader(crFile));
 			String line;
 			while ((line = br.readLine()) != null) {
 				if (line.indexOf("RET settings") != -1) {
@@ -200,10 +209,10 @@ public class InputFiles {
 		return result;
 	}
 
-	String readParameterFromCommissioningReport(String parameter) {
+	String readParameterFromCommissioningReport(File crFile, String parameter) {
 		String result = "Dummy_Data";
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(crFileUmts));
+			BufferedReader br = new BufferedReader(new FileReader(crFile));
 			String line;
 			while ((line = br.readLine()) != null) {
 				if (line.indexOf(parameter) != -1) {
@@ -219,34 +228,27 @@ public class InputFiles {
 		return result;
 	}
 
-	private void isResultValid(String result, String parameter) {
-		if (result.equals("Dummy_Data") & !parameter.equals("MHA type:")) {
-			Notifications notifications = new Notifications();
-			notifications.stringNotFound(crFileUmts, parameter);
-		}
-	}
-
-	public int readCommReportForNoOfTranssmisionLines(File file, String str1, String str2) {
+	int readCommReportForNoOfTranssmisionLines(File crFile, String firstLine, String secondLine) {
 		int result = 0;
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(file));
+			BufferedReader br = new BufferedReader(new FileReader(crFile));
 			String line;
 			while ((line = br.readLine()) != null) {
-				if (line.indexOf(str1) != -1) {
+				if (line.indexOf(firstLine) != -1) {
 					String innerLine;
 					for (int i = 0; i < 29; i++) {
 						innerLine = br.readLine();
-						if (innerLine.indexOf(str2) != -1 & str2.equals("IF")) {
+						if (innerLine.indexOf(secondLine) != -1 && secondLine.equals("IF")
+								&& innerLine.contains("Yes")) {
+							innerLine = innerLine.substring(innerLine.indexOf("Yes") + 3);
 							if (innerLine.contains("Yes")) {
-								innerLine = innerLine.substring(innerLine.indexOf("Yes") + 3);
-								if (innerLine.contains("Yes")) {
-									result++;
-								}
+								result++;
 							}
 						}
-						if (innerLine.indexOf(str2) != -1
-								& (str2.equals("EIF 1") | str2.equals("EIF 2") | str2.equals("FTIF 1")
-										| str2.equals("FTIF 2") | str2.equals("FTIF 3") | str2.equals("FTIF 4"))) {
+						if (innerLine.indexOf(secondLine) != -1
+								&& (secondLine.equals("EIF 1") | secondLine.equals("EIF 2") | secondLine.equals("EIF 3")
+										| secondLine.equals("FTIF 1") | secondLine.equals("FTIF 2")
+										| secondLine.equals("FTIF 3") | secondLine.equals("FTIF 4"))) {
 							if (innerLine.contains("Yes")) {
 								result++;
 							}
@@ -262,21 +264,22 @@ public class InputFiles {
 		return result;
 	}
 
-	public String[] readCommReportForRfModuleType(String str1, File file, String str2) {
+	String[] readCommReportForRfModuleType(File crFile, String firstLine, String secondLine) {
 		String[] result = new String[5];
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(file));
+			BufferedReader br = new BufferedReader(new FileReader(crFile));
 			String line;
 			while ((line = br.readLine()) != null) {
-				if (line.indexOf(str1) != -1) {
+				if (line.indexOf(firstLine) != -1) {
 					String innerLine;
 					while ((innerLine = br.readLine()) != null) {
-						if (innerLine.indexOf(str2) != -1) {
+						if (innerLine.indexOf(secondLine) != -1) {
 							String deepLine;
 							for (int i = 0; i < 5; i++) {
 								deepLine = br.readLine();
-								if (deepLine.contains(str2)) {
-									result[i] = deepLine.substring(deepLine.indexOf(str2), deepLine.indexOf(str2) + 4);
+								if (deepLine.contains(secondLine)) {
+									result[i] = deepLine.substring(deepLine.indexOf(secondLine),
+											deepLine.indexOf(secondLine) + 4);
 								}
 							}
 							break;
@@ -292,18 +295,18 @@ public class InputFiles {
 		return result;
 	}
 
-	public String readCommReportForIpAdr(File file, String str1, String str2) {
-		String result = null;
+	String readCommReportForIpAdr(File crFile, String firstLine, String secondLine) {
+		String result = "Dummy_Data";
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(file));
+			BufferedReader br = new BufferedReader(new FileReader(crFile));
 			String line;
 			String lastCharInString;
-			lastCharInString = str2.substring((str2.length() - 1));
+			lastCharInString = secondLine.substring((secondLine.length() - 1));
 			while ((line = br.readLine()) != null) {
-				if (line.indexOf(str1) != -1) {
+				if (line.indexOf(firstLine) != -1) {
 					String innerLine;
 					while ((innerLine = br.readLine()) != null) {
-						if (innerLine.indexOf(str2) != -1) {
+						if (innerLine.indexOf(secondLine) != -1) {
 							result = innerLine.substring(innerLine.indexOf(lastCharInString) + 1).trim();
 							break;
 						}
@@ -318,17 +321,17 @@ public class InputFiles {
 		return result;
 	}
 
-	public void readCommReportForCellIds(File file, String str1, String str2, Site site) {
+	public void readCommReportForCellIds(File crFile, String firstLine, String secondLine, Site siteType) {
 		String[] result = new String[9];
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(file));
+			BufferedReader br = new BufferedReader(new FileReader(crFile));
 			String line = br.readLine(), tempStr;
 			int i = 0, x = 0, y = 0, z = 0, k = 0;
-			while (line != null && !line.contains(str1)) {
+			while (line != null && !line.contains(firstLine)) {
 				line = br.readLine();
-				if (line != null && line.contains(str2)) {
+				if (line != null && line.contains(secondLine)) {
 					String innerLine;
-					while ((innerLine = br.readLine()) != null && !innerLine.contains(str1)) {
+					while ((innerLine = br.readLine()) != null && !innerLine.contains(firstLine)) {
 						if (innerLine.contains("Local cell ")) {
 							result[i] = innerLine.substring(innerLine.indexOf('e') + 3).trim();
 							if (result[i].length() == 4) { // When we find cell
@@ -347,22 +350,22 @@ public class InputFiles {
 														// sector is that cell.
 								if (tempStr.charAt(tempStr.length() - 1) == '1'
 										| tempStr.charAt(tempStr.length() - 1) == '5') {
-									site.setCellId1(x, tempStr);
+									siteType.setCellId1(x, tempStr);
 									++x;
 								}
 								if (tempStr.charAt(tempStr.length() - 1) == '2'
 										| tempStr.charAt(tempStr.length() - 1) == '6') {
-									site.setCellId2(y, tempStr);
+									siteType.setCellId2(y, tempStr);
 									++y;
 								}
 								if (tempStr.charAt(tempStr.length() - 1) == '3'
 										| tempStr.charAt(tempStr.length() - 1) == '7') {
-									site.setCellId3(z, tempStr);
+									siteType.setCellId3(z, tempStr);
 									++z;
 								}
 								if (tempStr.charAt(tempStr.length() - 1) == '4'
 										| tempStr.charAt(tempStr.length() - 1) == '8') {
-									site.setCellId4(k, tempStr);
+									siteType.setCellId4(k, tempStr);
 									++k;
 								}
 							} else if (result[i].length() == 5) { // If cell ID
@@ -382,22 +385,22 @@ public class InputFiles {
 									tempStr = result[i];
 									if (tempStr.charAt(tempStr.length() - 1) == '1'
 											| tempStr.charAt(tempStr.length() - 1) == '5') {
-										site.setCellId1(x, tempStr);
+										siteType.setCellId1(x, tempStr);
 										++x;
 									}
 									if (tempStr.charAt(tempStr.length() - 1) == '2'
 											| tempStr.charAt(tempStr.length() - 1) == '6') {
-										site.setCellId2(y, tempStr);
+										siteType.setCellId2(y, tempStr);
 										++y;
 									}
 									if (tempStr.charAt(tempStr.length() - 1) == '3'
 											| tempStr.charAt(tempStr.length() - 1) == '7') {
-										site.setCellId3(z, tempStr);
+										siteType.setCellId3(z, tempStr);
 										++z;
 									}
 									if (tempStr.charAt(tempStr.length() - 1) == '4'
 											| tempStr.charAt(tempStr.length() - 1) == '8') {
-										site.setCellId4(k, tempStr);
+										siteType.setCellId4(k, tempStr);
 										++k;
 									}
 								} else { // In other cases (cell ID have 5
@@ -406,19 +409,19 @@ public class InputFiles {
 											// which sector is that cell ID.
 									tempStr = result[i];
 									if (tempStr.charAt(0) == '1') {
-										site.setCellId1(x, tempStr);
+										siteType.setCellId1(x, tempStr);
 										++x;
 									}
 									if (tempStr.charAt(0) == '2') {
-										site.setCellId2(y, tempStr);
+										siteType.setCellId2(y, tempStr);
 										++y;
 									}
 									if (tempStr.charAt(0) == '3') {
-										site.setCellId3(z, tempStr);
+										siteType.setCellId3(z, tempStr);
 										++z;
 									}
 									if (tempStr.charAt(0) == '4') {
-										site.setCellId4(k, tempStr);
+										siteType.setCellId4(k, tempStr);
 										++k;
 									}
 								}

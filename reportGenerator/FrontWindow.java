@@ -955,7 +955,7 @@ public class FrontWindow extends JFrame {
 		public void itemStateChanged(ItemEvent e) {
 			InputFiles iFilesUmts = FrontWindow.this.iFiles;
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				if (iFilesUmts.getSiteCode3gStr() == null) {
+				if (iFilesUmts.getSiteCode3gStr().equals("xxxyy")) {
 					iFilesUmts.findSiteCodeFromCommissioningReport('U');
 					iFilesUmts.setSiteCode('U');
 					iFilesUmts.sortOutInputFilesToAppropriateVariables();
@@ -1070,7 +1070,7 @@ public class FrontWindow extends JFrame {
 		public void itemStateChanged(ItemEvent e) {
 			InputFiles iFilesLte = FrontWindow.this.iFiles;
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				if (iFilesLte.getSiteCode4gStr() == null) {
+				if (iFilesLte.getSiteCode4gStr().equals("xxxyy")) {
 					iFilesLte.findSiteCodeFromCommissioningReport('L');
 					iFilesLte.setSiteCode('L');
 					iFilesLte.sortOutInputFilesToAppropriateVariables();

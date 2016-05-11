@@ -49,7 +49,7 @@ public class SiteLte implements Site {
 
 	@Override
 	public void setSiteName(InputFiles inputFiles) {
-		this.siteName = inputFiles.readParameterFromCommissioningReport("Description:");
+		this.siteName = inputFiles.readParameterFromCommissioningReport(inputFiles.getLteCrFile(), "Description:");
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class SiteLte implements Site {
 	@Override
 	public void setDate(InputFiles inputFiles) {
 		String rowDate, dd, MM, yy;
-		rowDate = inputFiles.readParameterFromCommissioningReport("Date:");
+		rowDate = inputFiles.readParameterFromCommissioningReport(inputFiles.getLteCrFile(), "Date:");
 		if (rowDate.charAt(2) == '.') {
 			this.date = rowDate;
 		} else {
@@ -102,7 +102,7 @@ public class SiteLte implements Site {
 
 	// Find MHA type for all sectors, depending how many sectors there are.
 	public void setMhaType(InputFiles inputFiles) {
-		this.mhaTypeS1 = inputFiles.readParameterFromCommissioningReport("MHA type:");
+		this.mhaTypeS1 = inputFiles.readParameterFromCommissioningReport(inputFiles.getLteCrFile(), "MHA type:");
 		if (this.mhaTypeS1 != null) {
 			if (2 <= this.numOfSectors) {
 				this.mhaTypeS2 = this.mhaTypeS1;
@@ -597,7 +597,7 @@ public class SiteLte implements Site {
 	}
 
 	public void setSysModule1Type(InputFiles inputFiles) {
-		this.sysModule1Type = inputFiles.readSystemModuleInfoFromCommissionReport();
+		this.sysModule1Type = inputFiles.readSystemModuleInfoFromCommissionReport(inputFiles.getLteCrFile());
 	}
 
 	@Override
@@ -645,7 +645,7 @@ public class SiteLte implements Site {
 	// First collect all RF modules from commissioning report and then divide
 	// them per sectors.
 	public void setRfModulesType(InputFiles inputFiles) {
-		this.rfModulesType = inputFiles.readCommReportForRfModuleType("Module locations", inputFiles.getUmtsCrFile(),
+		this.rfModulesType = inputFiles.readCommReportForRfModuleType(inputFiles.getLteCrFile(), "Module locations",
 				"F");
 		this.rfModule1Type = this.rfModulesType[0];
 		this.rfModule2Type = this.rfModulesType[1];
@@ -803,7 +803,8 @@ public class SiteLte implements Site {
 	}
 
 	public void setSwVersion(InputFiles inputFiles) {
-		this.swVersion = inputFiles.readParameterFromCommissioningReport("SW package version:");
+		this.swVersion = inputFiles.readParameterFromCommissioningReport(inputFiles.getLteCrFile(),
+				"SW package version:");
 	}
 
 	@Override
@@ -877,7 +878,7 @@ public class SiteLte implements Site {
 
 	public void setOverTransModuleOver3g(InputFiles inputFiles) {
 		if (inputFiles.getCrOfTransmissionForLte() != null) {
-			this.overTransModule = inputFiles.readTransportModuleInfoFromCommissionReport();
+			this.overTransModule = inputFiles.readTransportModuleInfoFrom3gCommissionReport();
 		}
 	}
 
@@ -908,11 +909,13 @@ public class SiteLte implements Site {
 		if (inputFiles.getCrOfTransmissionForLte() != null) {
 			int x1 = inputFiles.readCommReportForNoOfTranssmisionLines(inputFiles.getCrOfTransmissionForLte(),
 					"Physical layer configuration", "EIF 2");
-			int x2 = inputFiles.readCommReportForNoOfTranssmisionLines(inputFiles.getCrOfTransmissionForLte(),
-					"Physical layer configuration", "FTIF 3");
+			int x2 = inputFiles.readCommReportForNoOfTranssmisionLines(inputFiles.getUmtsCrFile(),
+					"Physical layer configuration", "EIF 3");
 			int x3 = inputFiles.readCommReportForNoOfTranssmisionLines(inputFiles.getCrOfTransmissionForLte(),
+					"Physical layer configuration", "FTIF 3");
+			int x4 = inputFiles.readCommReportForNoOfTranssmisionLines(inputFiles.getCrOfTransmissionForLte(),
 					"Physical layer configuration", "FTIF 4");
-			this.overGbEthElectLinesNo = x1 + x2 + x3;
+			this.overGbEthElectLinesNo = x1 + x2 + x3 + x4;
 		}
 	}
 
