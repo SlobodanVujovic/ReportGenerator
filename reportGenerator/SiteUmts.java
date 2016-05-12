@@ -20,16 +20,17 @@ public class SiteUmts implements Site {
 			crFile, commFile, siteInfo;
 	private int e1LinesNo, gbEthElectLinesNo, gbEthOptLinesNo, numOfSectors;
 	private AffectedSite gsm9Changed, gsm18Changed, umts21Changed, lte18Changed;
-	private String[] rfModulesType, cellIdS1 = new String[3], cellIdS2 = new String[3], cellIdS3 = new String[3],
-			cellIdS4 = new String[3], extAl1Str, extAl2Str, extAl3Str, extAl4Str, extAl5Str, extAl6Str, extAl7Str,
+	private String[][] cellIdGroup = new String[4][3];
+	private int[][] uarfcnGroup = new int[4][3];
+	private String[] rfModulesType, cellIdS1 = cellIdGroup[0], cellIdS2 = cellIdGroup[1], cellIdS3 = cellIdGroup[2],
+			cellIdS4 = cellIdGroup[3], extAl1Str, extAl2Str, extAl3Str, extAl4Str, extAl5Str, extAl6Str, extAl7Str,
 			extAl8Str, extAl9Str, extAl10Str;
 	// Meaning of elements of extAlx array:
 	// extAlx = extAlxStr[0]; extAlxName = extAlxStr[1]; extAlxPol =
 	// extAlxStr[2];
 	// extAlxSev = extAlxStr[3];
-	private int[] uarfcnS1 = new int[3], uarfcnS2 = new int[3], uarfcnS3 = new int[3], uarfcnS4 = new int[3];
-	private String[][] cellIdGroup = { this.cellIdS1, this.cellIdS2, this.cellIdS3, this.cellIdS4 };
-	private int[][] uarfcnGroup = { this.uarfcnS1, this.uarfcnS2, this.uarfcnS3, this.uarfcnS4 };
+	private int[] uarfcnS1 = uarfcnGroup[0], uarfcnS2 = uarfcnGroup[1], uarfcnS3 = uarfcnGroup[2],
+			uarfcnS4 = uarfcnGroup[3];
 
 	@Override
 	public String getSiteCode() {
@@ -855,29 +856,8 @@ public class SiteUmts implements Site {
 
 	// Find all cell IDs from commissioning report file.
 	public void setCellId(InputFiles inputFiles) {
-		inputFiles.readCommReportForCellIds(inputFiles.getUmtsCrFile(), "Local cell settings", "Local cell resources",
-				this);
-	}
-
-	// Put cell ID in sector which they belong.
-	@Override
-	public void setCellId1(int i, String str) {
-		this.cellIdS1[i] = str;
-	}
-
-	@Override
-	public void setCellId2(int i, String str) {
-		this.cellIdS2[i] = str;
-	}
-
-	@Override
-	public void setCellId3(int i, String str) {
-		this.cellIdS3[i] = str;
-	}
-
-	@Override
-	public void setCellId4(int i, String str) {
-		this.cellIdS4[i] = str;
+		inputFiles.read3gCommReportForCellIds("Local cell resources", "Local cell settings");
+		cellIdGroup = inputFiles.set3gCellIds(inputFiles.getResultCellIds());
 	}
 
 	@Override
@@ -902,29 +882,8 @@ public class SiteUmts implements Site {
 
 	// Find all UARFCNs.
 	public void setUarfcns(InputFiles inputFiles) {
-		inputFiles.readCommReportForUarfcn(inputFiles.getUmtsCrFile(), "Baseband (BB) allocation", "Local cell group:",
-				this);
-	}
-
-	// Put UARFCN to sector which they belong.
-	@Override
-	public void setUarfcnS1(int pos, int value) {
-		this.uarfcnS1[pos] = value;
-	}
-
-	@Override
-	public void setUarfcnS2(int pos, int value) {
-		this.uarfcnS2[pos] = value;
-	}
-
-	@Override
-	public void setUarfcnS3(int pos, int value) {
-		this.uarfcnS3[pos] = value;
-	}
-
-	@Override
-	public void setUarfcnS4(int pos, int value) {
-		this.uarfcnS4[pos] = value;
+		uarfcnGroup = inputFiles.read3gCommReportForUarfcn("Local cell group:", "Baseband (BB) allocation",
+				cellIdGroup);
 	}
 
 	@Override
@@ -950,16 +909,16 @@ public class SiteUmts implements Site {
 	// Find which external alarms are used, what is their name, polarity and
 	// priority.
 	public void setExtAl(InputFiles inputFiles) {
-		this.extAl1Str = inputFiles.readCommReportForExtAl(inputFiles.getUmtsCrFile(), "External fault lines", "1");
-		this.extAl2Str = inputFiles.readCommReportForExtAl(inputFiles.getUmtsCrFile(), "External fault lines", "2");
-		this.extAl3Str = inputFiles.readCommReportForExtAl(inputFiles.getUmtsCrFile(), "External fault lines", "3");
-		this.extAl4Str = inputFiles.readCommReportForExtAl(inputFiles.getUmtsCrFile(), "External fault lines", "4");
-		this.extAl5Str = inputFiles.readCommReportForExtAl(inputFiles.getUmtsCrFile(), "External fault lines", "5");
-		this.extAl6Str = inputFiles.readCommReportForExtAl(inputFiles.getUmtsCrFile(), "External fault lines", "6");
-		this.extAl7Str = inputFiles.readCommReportForExtAl(inputFiles.getUmtsCrFile(), "External fault lines", "7");
-		this.extAl8Str = inputFiles.readCommReportForExtAl(inputFiles.getUmtsCrFile(), "External fault lines", "8");
-		this.extAl9Str = inputFiles.readCommReportForExtAl(inputFiles.getUmtsCrFile(), "External fault lines", "9");
-		this.extAl10Str = inputFiles.readCommReportForExtAl(inputFiles.getUmtsCrFile(), "External fault lines", "10");
+		this.extAl1Str = inputFiles.read3gCommReportForExtAl("External fault lines", "1");
+		this.extAl2Str = inputFiles.read3gCommReportForExtAl("External fault lines", "2");
+		this.extAl3Str = inputFiles.read3gCommReportForExtAl("External fault lines", "3");
+		this.extAl4Str = inputFiles.read3gCommReportForExtAl("External fault lines", "4");
+		this.extAl5Str = inputFiles.read3gCommReportForExtAl("External fault lines", "5");
+		this.extAl6Str = inputFiles.read3gCommReportForExtAl("External fault lines", "6");
+		this.extAl7Str = inputFiles.read3gCommReportForExtAl("External fault lines", "7");
+		this.extAl8Str = inputFiles.read3gCommReportForExtAl("External fault lines", "8");
+		this.extAl9Str = inputFiles.read3gCommReportForExtAl("External fault lines", "9");
+		this.extAl10Str = inputFiles.read3gCommReportForExtAl("External fault lines", "10");
 	}
 
 	// Separate different parameters of alarm to appropriate variable.

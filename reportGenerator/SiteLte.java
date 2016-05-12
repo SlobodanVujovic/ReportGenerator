@@ -1213,54 +1213,6 @@ public class SiteLte implements Site {
 	}
 
 	@Override
-	public void setCellId1(int i, String str) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setCellId2(int i, String str) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setCellId3(int i, String str) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setCellId4(int i, String str) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setUarfcnS1(int pos, int value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setUarfcnS2(int pos, int value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setUarfcnS3(int pos, int value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setUarfcnS4(int pos, int value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public String[][] getCellIdGroup() {
 		// TODO Auto-generated method stub
 		return null;

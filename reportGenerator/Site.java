@@ -180,22 +180,6 @@ public interface Site {
 
 	public String[] getCellIdS4();
 
-	public void setCellId1(int i, String str);
-
-	public void setCellId2(int i, String str);
-
-	public void setCellId3(int i, String str);
-
-	public void setCellId4(int i, String str);
-
-	public void setUarfcnS1(int pos, int value);
-
-	public void setUarfcnS2(int pos, int value);
-
-	public void setUarfcnS3(int pos, int value);
-
-	public void setUarfcnS4(int pos, int value);
-
 	public String[][] getCellIdGroup();
 
 	public int[][] getUarfcnGroup();
