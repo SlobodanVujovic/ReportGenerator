@@ -1,7 +1,5 @@
 package reportGenerator;
 
-import java.io.File;
-
 public class InputFilesWithNotificationResponse extends InputFiles {
 
 	@Override

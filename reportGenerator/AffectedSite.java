@@ -6,14 +6,10 @@ package reportGenerator;
 
 public class AffectedSite {
 	private String siteCode, antenaTypeS1Str, antenaTypeS2Str, antenaTypeS3Str, antenaTypeS4Str;
-	private String[] antennaTypeStr = new String[4];
-	private int[] azimuth = new int[4], mechanicalTilt = new int[4], electricalTilt = new int[4],
-			antenaTypeInt = new int[4];
 	private int azimuthS1, azimuthS2, azimuthS3, azimuthS4, mechanicalTiltS1, mechanicalTiltS2, mechanicalTiltS3,
 			mechanicalTiltS4, electricalTiltS1, electricalTiltS2, electricalTiltS3, electricalTiltS4, antenaTypeS1,
 			antenaTypeS2, antenaTypeS3, antenaTypeS4, numOfSectors;
 	private float antHighS1, antHighS2, antHighS3, antHighS4;
-	private float[] antHigh = new float[4];
 
 	public String getSiteCode() {
 		return this.siteCode;
@@ -223,16 +219,16 @@ public class AffectedSite {
 	 * According to antenna determine number of sectors of BTS.
 	 */
 	public void setNumOfSectors() {
-		if (getAntenaTypeS1() != 0) {
+		if (getAntenaTypeS1() != 0 | (getAntenaTypeS1Str() != null && getAntenaTypeS1Str().length() != 0)) {
 			this.numOfSectors = 1;
 		}
-		if (getAntenaTypeS2() != 0) {
+		if (getAntenaTypeS2() != 0 | (getAntenaTypeS2Str() != null && getAntenaTypeS2Str().length() != 0)) {
 			this.numOfSectors = 2;
 		}
-		if (getAntenaTypeS3() != 0) {
+		if (getAntenaTypeS3() != 0 | (getAntenaTypeS3Str() != null && getAntenaTypeS3Str().length() != 0)) {
 			this.numOfSectors = 3;
 		}
-		if (getAntenaTypeS4() != 0) {
+		if (getAntenaTypeS4() != 0 | (getAntenaTypeS4Str() != null && getAntenaTypeS4Str().length() != 0)) {
 			this.numOfSectors = 4;
 		}
 	}

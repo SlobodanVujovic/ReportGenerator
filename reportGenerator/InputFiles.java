@@ -1,12 +1,10 @@
 /*
- * This is class for reading input files for all necessary information.
+6 * This is class for reading input files for all necessary information.
  */
 
 package reportGenerator;
 
 import java.io.*;
-import java.util.Arrays;
-
 import org.apache.poi.xssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
 
@@ -78,7 +76,7 @@ public class InputFiles {
 		return this.crOfTransmissionForLte;
 	}
 
-	public String[] getResultCellIds() {
+	String[] getResultCellIds() {
 		return resultCellIds;
 	}
 
@@ -505,7 +503,7 @@ public class InputFiles {
 	}
 
 	// Here we search UP file and read data if find specific site code in it.
-	public AffectedSite readUpForSiteChanged(String techType, String siteCode) {
+	AffectedSite readUpForSiteChanged(String techType, String siteCode) {
 		AffectedSite affectedSite = new AffectedSite();
 		String azimuthStr = "Azimut", mechanicalTiltStr = "Mehan", electricalTiltStr = "Elektr", antHighStr = "Visina",
 				antenaTypeStr = "Antenski", s1Str = "1", s2Str = "2", s3Str = "3", s4Str = "4";
@@ -707,7 +705,7 @@ public class InputFiles {
 							}
 							if (antenaTypeS1ColNo != 0) {
 								tempCell = row.getCell(antenaTypeS1ColNo);
-								if (tempCell.toString() != "" && tempCell.getCellType() == 0) {
+								if (tempCell.toString() != "" && tempCell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
 									affectedSite.setAntenaTypeS1((int) tempCell.getNumericCellValue());
 								} else {
 									affectedSite.setAntenaTypeS1Str(tempCell.getStringCellValue());
@@ -715,7 +713,7 @@ public class InputFiles {
 							}
 							if (antenaTypeS2ColNo != 0) {
 								tempCell = row.getCell(antenaTypeS2ColNo);
-								if (tempCell.toString() != "" && tempCell.getCellType() == 0) {
+								if (tempCell.toString() != "" && tempCell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
 									affectedSite.setAntenaTypeS2((int) tempCell.getNumericCellValue());
 								} else {
 									affectedSite.setAntenaTypeS2Str(tempCell.getStringCellValue());
@@ -723,7 +721,7 @@ public class InputFiles {
 							}
 							if (antenaTypeS3ColNo != 0) {
 								tempCell = row.getCell(antenaTypeS3ColNo);
-								if (tempCell.toString() != "" && tempCell.getCellType() == 0) {
+								if (tempCell.toString() != "" && tempCell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
 									affectedSite.setAntenaTypeS3((int) tempCell.getNumericCellValue());
 								} else {
 									affectedSite.setAntenaTypeS3Str(tempCell.getStringCellValue());
@@ -731,7 +729,7 @@ public class InputFiles {
 							}
 							if (antenaTypeS4ColNo != 0) {
 								tempCell = row.getCell(antenaTypeS4ColNo);
-								if (tempCell.toString() != "" && tempCell.getCellType() == 0) {
+								if (tempCell.toString() != "" && tempCell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
 									affectedSite.setAntenaTypeS4((int) tempCell.getNumericCellValue());
 								} else {
 									affectedSite.setAntenaTypeS4Str(tempCell.getStringCellValue());
@@ -750,7 +748,7 @@ public class InputFiles {
 	}
 
 	// Search for commissioning report if transmission for LTE goes over UMTS.
-	public void setCrOfTransmissionForLteOver3g(String transOver) {
+	void setCrOfTransmissionForLteOver3g(String transOver) {
 		for (File readFile : this.listOfFiles) {
 			if (readFile.toString().contains(this.crStr) & readFile.toString().contains(transOver)) {
 				this.crOfTransmissionForLte = readFile;
@@ -759,7 +757,7 @@ public class InputFiles {
 	}
 
 	// Search for SCF file if transmission for LTE goes over GSM.
-	public void setCrOfTransmissionForLteOver2g() {
+	void setCrOfTransmissionForLteOver2g() {
 		for (File readFile : this.listOfFiles) {
 			if (readFile.toString().contains("SCF")) {
 				this.crOfTransmissionForLte = readFile;
