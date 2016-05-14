@@ -5,6 +5,11 @@
 package reportGenerator;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import org.apache.poi.xssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
 
@@ -505,239 +510,171 @@ public class InputFiles {
 	// Here we search UP file and read data if find specific site code in it.
 	AffectedSite readUpForSiteChanged(String techType, String siteCode) {
 		AffectedSite affectedSite = new AffectedSite();
-		String azimuthStr = "Azimut", mechanicalTiltStr = "Mehan", electricalTiltStr = "Elektr", antHighStr = "Visina",
-				antenaTypeStr = "Antenski", s1Str = "1", s2Str = "2", s3Str = "3", s4Str = "4";
-		int antenaTypeS1ColNo = 0, antenaTypeS2ColNo = 0, antenaTypeS3ColNo = 0, antenaTypeS4ColNo = 0,
-				azimuthS1ColNo = 0, azimuthS2ColNo = 0, azimuthS3ColNo = 0, azimuthS4ColNo = 0,
-				mechanicalTiltS1ColNo = 0, mechanicalTiltS2ColNo = 0, mechanicalTiltS3ColNo = 0,
-				mechanicalTiltS4ColNo = 0, electricalTiltS1ColNo = 0, electricalTiltS2ColNo = 0,
-				electricalTiltS3ColNo = 0, electricalTiltS4ColNo = 0, antHighS1ColNo = 0, antHighS2ColNo = 0,
-				antHighS3ColNo = 0, antHighS4ColNo = 0;
+		String siteCodeStr = "Kod";
+		int siteCodeColNo = 100;
+		String[] header = new String[] { "Azimut", "Elektr", "Mehan", "Visina", "Antenski" };
+		String[] sector = new String[] { "1", "2", "3", "4" };
+		int[] columnNumbers = new int[20];
+		List<KeyForAffectedSite> listOfKeys = new ArrayList<>();
+		for (int i = 0; i < header.length; i++) {
+			for (int j = 0; j < sector.length; j++) {
+				listOfKeys.add(new KeyForAffectedSite(header[i], sector[j], columnNumbers[(i + 1) * (j + 1) - 1]));
+			}
+		}
 		Cell tempCell;
+		DataFormatter dataFormatter = new DataFormatter();
 		String searchSite = siteCode.substring(0, 2) + techType + siteCode.substring(3);
 		try (XSSFWorkbook reportWorkbook = new XSSFWorkbook(new FileInputStream(upFile))) {
 			XSSFSheet reportSheet01 = reportWorkbook.getSheetAt(0);
-			ROW_LOOP: for (Row row : reportSheet01) {
+			for (int i = 0; i < 3; i++) {
+				Row row = reportSheet01.getRow(i);
 				for (Cell cell : row) {
 					if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
 						// 1. search for cells with specific strings in itself. If we find
 						// that cell then take column number of that cell.
-						if (cell.getStringCellValue().trim().contains(azimuthStr)
-								&& cell.getStringCellValue().trim().contains(s1Str)) {
-							azimuthS1ColNo = cell.getColumnIndex();
+						if (cell.getStringCellValue().trim().contains(siteCodeStr)) {
+							siteCodeColNo = cell.getColumnIndex();
 						}
-						if (cell.getStringCellValue().trim().contains(azimuthStr)
-								&& cell.getStringCellValue().trim().contains(s2Str)) {
-							azimuthS2ColNo = cell.getColumnIndex();
+						for (Iterator<KeyForAffectedSite> iterator = listOfKeys.iterator(); iterator.hasNext();) {
+							KeyForAffectedSite affectedSiteKey = iterator.next();
+							if (cell.getStringCellValue().trim().contains(affectedSiteKey.firstPartOfHeader)
+									&& cell.getStringCellValue().trim().contains(affectedSiteKey.secondPartOfHeader)) {
+								affectedSiteKey.columnNumber = cell.getColumnIndex();
+							}
 						}
-						if (cell.getStringCellValue().trim().contains(azimuthStr)
-								&& cell.getStringCellValue().trim().contains(s3Str)) {
-							azimuthS3ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(azimuthStr)
-								&& cell.getStringCellValue().trim().contains(s4Str)) {
-							azimuthS4ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(electricalTiltStr)
-								&& cell.getStringCellValue().trim().contains(s1Str)) {
-							electricalTiltS1ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(electricalTiltStr)
-								&& cell.getStringCellValue().trim().contains(s2Str)) {
-							electricalTiltS2ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(electricalTiltStr)
-								&& cell.getStringCellValue().trim().contains(s3Str)) {
-							electricalTiltS3ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(electricalTiltStr)
-								&& cell.getStringCellValue().trim().contains(s4Str)) {
-							electricalTiltS4ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(mechanicalTiltStr)
-								&& cell.getStringCellValue().trim().contains(s1Str)) {
-							mechanicalTiltS1ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(mechanicalTiltStr)
-								&& cell.getStringCellValue().trim().contains(s2Str)) {
-							mechanicalTiltS2ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(mechanicalTiltStr)
-								&& cell.getStringCellValue().trim().contains(s3Str)) {
-							mechanicalTiltS3ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(mechanicalTiltStr)
-								&& cell.getStringCellValue().trim().contains(s4Str)) {
-							mechanicalTiltS4ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(antHighStr)
-								&& cell.getStringCellValue().trim().contains(s1Str)) {
-							antHighS1ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(antHighStr)
-								&& cell.getStringCellValue().trim().contains(s2Str)) {
-							antHighS2ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(antHighStr)
-								&& cell.getStringCellValue().trim().contains(s3Str)) {
-							antHighS3ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(antHighStr)
-								&& cell.getStringCellValue().trim().contains(s4Str)) {
-							antHighS4ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(antenaTypeStr)
-								&& cell.getStringCellValue().trim().contains(s1Str)) {
-							antenaTypeS1ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(antenaTypeStr)
-								&& cell.getStringCellValue().trim().contains(s2Str)) {
-							antenaTypeS2ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(antenaTypeStr)
-								&& cell.getStringCellValue().trim().contains(s3Str)) {
-							antenaTypeS3ColNo = cell.getColumnIndex();
-						}
-						if (cell.getStringCellValue().trim().contains(antenaTypeStr)
-								&& cell.getStringCellValue().trim().contains(s4Str)) {
-							antenaTypeS4ColNo = cell.getColumnIndex();
-						}
-						// When we find row that contains code of site, then from that row,
-						// from column numbers that we determine previously, we read cell
-						// content and write it to affected site.
-						if (cell.getStringCellValue().trim().equals(searchSite)) {
-							affectedSite.setSiteCode(searchSite);
-							if (azimuthS1ColNo != 0) {
-								tempCell = row.getCell(azimuthS1ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setAzimuthS1((int) tempCell.getNumericCellValue());
+					}
+				}
+				if (listOfKeys.get(0).columnNumber != 0) {
+					break;
+				}
+			}
+			Map<KeyForAffectedSite, String> affectedSiteMap = new HashMap<>();
+			for (Iterator<KeyForAffectedSite> iterator = listOfKeys.iterator(); iterator.hasNext();) {
+				KeyForAffectedSite affectedSiteKey = iterator.next();
+				affectedSiteMap.put(affectedSiteKey, "");
+			}
+			for (Row row : reportSheet01) {
+				Cell cell = row.getCell(siteCodeColNo);
+				if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
+					// When we find row that contains code of site, then from that row,
+					// from column numbers that we determine previously, we read cell
+					// content and write it to affected site.
+					if (cell.getStringCellValue().trim().equals(searchSite)) {
+						affectedSite.siteCode = searchSite;
+						for (Map.Entry<KeyForAffectedSite, String> entry : affectedSiteMap.entrySet()) {
+							KeyForAffectedSite keyForAffectedSite = entry.getKey();
+							if (keyForAffectedSite.firstPartOfHeader.equals("Azimut")
+									| keyForAffectedSite.firstPartOfHeader.equals("Elektr")
+									| keyForAffectedSite.firstPartOfHeader.equals("Mehan")) {
+								if (keyForAffectedSite.columnNumber != 0) {
+									tempCell = row.getCell(keyForAffectedSite.columnNumber);
+									if (tempCell.toString() != "") {
+										String tempString = tempCell.toString();
+										entry.setValue(tempString.substring(0, tempString.indexOf(".")));
+									}
 								}
 							}
-							if (azimuthS2ColNo != 0) {
-								tempCell = row.getCell(azimuthS2ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setAzimuthS2((int) tempCell.getNumericCellValue());
+							if (keyForAffectedSite.firstPartOfHeader.equals("Visina")) {
+								if (keyForAffectedSite.columnNumber != 0) {
+									tempCell = row.getCell(keyForAffectedSite.columnNumber);
+									if (tempCell.toString() != "") {
+										entry.setValue(tempCell.toString());
+									}
 								}
 							}
-							if (azimuthS3ColNo != 0) {
-								tempCell = row.getCell(azimuthS3ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setAzimuthS3((int) tempCell.getNumericCellValue());
+							if (keyForAffectedSite.firstPartOfHeader.equals("Antenski")) {
+								if (keyForAffectedSite.columnNumber != 0) {
+									tempCell = row.getCell(keyForAffectedSite.columnNumber);
+									if (tempCell.toString() != "") {
+										String tempString = dataFormatter.formatCellValue(tempCell);
+										entry.setValue(tempString);
+									}
 								}
 							}
-							if (azimuthS4ColNo != 0) {
-								tempCell = row.getCell(azimuthS4ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setAzimuthS4((int) tempCell.getNumericCellValue());
-								}
-							}
-							if (electricalTiltS1ColNo != 0) {
-								tempCell = row.getCell(electricalTiltS1ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setElectricalTiltS1((int) tempCell.getNumericCellValue());
-								}
-							}
-							if (electricalTiltS2ColNo != 0) {
-								tempCell = row.getCell(electricalTiltS2ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setElectricalTiltS2((int) tempCell.getNumericCellValue());
-								}
-							}
-							if (electricalTiltS3ColNo != 0) {
-								tempCell = row.getCell(electricalTiltS3ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setElectricalTiltS3((int) tempCell.getNumericCellValue());
-								}
-							}
-							if (electricalTiltS4ColNo != 0) {
-								tempCell = row.getCell(electricalTiltS4ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setElectricalTiltS4((int) tempCell.getNumericCellValue());
-								}
-							}
-							if (mechanicalTiltS1ColNo != 0) {
-								tempCell = row.getCell(mechanicalTiltS1ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setMechanicalTiltS1((int) tempCell.getNumericCellValue());
-								}
-							}
-							if (mechanicalTiltS2ColNo != 0) {
-								tempCell = row.getCell(mechanicalTiltS2ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setMechanicalTiltS2((int) tempCell.getNumericCellValue());
-								}
-							}
-							if (mechanicalTiltS3ColNo != 0) {
-								tempCell = row.getCell(mechanicalTiltS3ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setMechanicalTiltS3((int) tempCell.getNumericCellValue());
-								}
-							}
-							if (mechanicalTiltS4ColNo != 0) {
-								tempCell = row.getCell(mechanicalTiltS4ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setMechanicalTiltS4((int) tempCell.getNumericCellValue());
-								}
-							}
-							if (antHighS1ColNo != 0) {
-								tempCell = row.getCell(antHighS1ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setAntHighS1(Float.parseFloat(tempCell.toString()));
-								}
-							}
-							if (antHighS2ColNo != 0) {
-								tempCell = row.getCell(antHighS2ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setAntHighS2(Float.parseFloat(tempCell.toString()));
-								}
-							}
-							if (antHighS3ColNo != 0) {
-								tempCell = row.getCell(antHighS3ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setAntHighS3(Float.parseFloat(tempCell.toString()));
-								}
-							}
-							if (antHighS4ColNo != 0) {
-								tempCell = row.getCell(antHighS4ColNo);
-								if (tempCell.toString() != "") {
-									affectedSite.setAntHighS4(Float.parseFloat(tempCell.toString()));
-								}
-							}
-							if (antenaTypeS1ColNo != 0) {
-								tempCell = row.getCell(antenaTypeS1ColNo);
-								if (tempCell.toString() != "" && tempCell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-									affectedSite.setAntenaTypeS1((int) tempCell.getNumericCellValue());
-								} else {
-									affectedSite.setAntenaTypeS1Str(tempCell.getStringCellValue());
-								}
-							}
-							if (antenaTypeS2ColNo != 0) {
-								tempCell = row.getCell(antenaTypeS2ColNo);
-								if (tempCell.toString() != "" && tempCell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-									affectedSite.setAntenaTypeS2((int) tempCell.getNumericCellValue());
-								} else {
-									affectedSite.setAntenaTypeS2Str(tempCell.getStringCellValue());
-								}
-							}
-							if (antenaTypeS3ColNo != 0) {
-								tempCell = row.getCell(antenaTypeS3ColNo);
-								if (tempCell.toString() != "" && tempCell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-									affectedSite.setAntenaTypeS3((int) tempCell.getNumericCellValue());
-								} else {
-									affectedSite.setAntenaTypeS3Str(tempCell.getStringCellValue());
-								}
-							}
-							if (antenaTypeS4ColNo != 0) {
-								tempCell = row.getCell(antenaTypeS4ColNo);
-								if (tempCell.toString() != "" && tempCell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-									affectedSite.setAntenaTypeS4((int) tempCell.getNumericCellValue());
-								} else {
-									affectedSite.setAntenaTypeS4Str(tempCell.getStringCellValue());
-								}
-							}
-							affectedSite.setNumOfSectors();
-							break ROW_LOOP;
 						}
+					}
+				}
+			}
+			for (Map.Entry<KeyForAffectedSite, String> entry : affectedSiteMap.entrySet()) {
+				KeyForAffectedSite keyForAffectedSite = entry.getKey();
+				if (keyForAffectedSite.firstPartOfHeader.equals("Azimut")) {
+					switch (keyForAffectedSite.secondPartOfHeader) {
+					case "1":
+						affectedSite.azimuthS1 = entry.getValue();
+						break;
+					case "2":
+						affectedSite.azimuthS2 = entry.getValue();
+						break;
+					case "3":
+						affectedSite.azimuthS3 = entry.getValue();
+						break;
+					case "4":
+						affectedSite.azimuthS4 = entry.getValue();
+						break;
+					}
+				}
+				if (keyForAffectedSite.firstPartOfHeader.equals("Elektr")) {
+					switch (keyForAffectedSite.secondPartOfHeader) {
+					case "1":
+						affectedSite.electricalTiltS1 = entry.getValue();
+						break;
+					case "2":
+						affectedSite.electricalTiltS2 = entry.getValue();
+						break;
+					case "3":
+						affectedSite.electricalTiltS3 = entry.getValue();
+						break;
+					case "4":
+						affectedSite.electricalTiltS4 = entry.getValue();
+						break;
+					}
+				}
+				if (keyForAffectedSite.firstPartOfHeader.equals("Mehan")) {
+					switch (keyForAffectedSite.secondPartOfHeader) {
+					case "1":
+						affectedSite.mechanicalTiltS1 = entry.getValue();
+						break;
+					case "2":
+						affectedSite.mechanicalTiltS2 = entry.getValue();
+						break;
+					case "3":
+						affectedSite.mechanicalTiltS3 = entry.getValue();
+						break;
+					case "4":
+						affectedSite.mechanicalTiltS4 = entry.getValue();
+						break;
+					}
+				}
+				if (keyForAffectedSite.firstPartOfHeader.equals("Visina")) {
+					switch (keyForAffectedSite.secondPartOfHeader) {
+					case "1":
+						affectedSite.antHighS1 = entry.getValue();
+						break;
+					case "2":
+						affectedSite.antHighS2 = entry.getValue();
+						break;
+					case "3":
+						affectedSite.antHighS3 = entry.getValue();
+						break;
+					case "4":
+						affectedSite.antHighS4 = entry.getValue();
+						break;
+					}
+				}
+				if (keyForAffectedSite.firstPartOfHeader.equals("Antenski")) {
+					switch (keyForAffectedSite.secondPartOfHeader) {
+					case "1":
+						affectedSite.antenaTypeS1 = entry.getValue();
+						break;
+					case "2":
+						affectedSite.antenaTypeS2 = entry.getValue();
+						break;
+					case "3":
+						affectedSite.antenaTypeS3 = entry.getValue();
+						break;
+					case "4":
+						affectedSite.antenaTypeS4 = entry.getValue();
+						break;
 					}
 				}
 			}

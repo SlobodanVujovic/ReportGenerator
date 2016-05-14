@@ -846,7 +846,18 @@ public class SiteLte implements Site {
 
 	@Override
 	public void setNumOfSectors(AffectedSite aSite) {
-		this.numOfSectors = aSite.getNumOfSectors();
+		if (aSite.antenaTypeS1 != null && aSite.antenaTypeS1.length() != 0) {
+			this.numOfSectors = 1;
+		}
+		if (aSite.antenaTypeS2 != null && aSite.antenaTypeS2.length() != 0) {
+			this.numOfSectors = 2;
+		}
+		if (aSite.antenaTypeS3 != null && aSite.antenaTypeS3.length() != 0) {
+			this.numOfSectors = 3;
+		}
+		if (aSite.antenaTypeS4 != null && aSite.antenaTypeS4.length() != 0) {
+			this.numOfSectors = 4;
+		}
 	}
 
 	@Override

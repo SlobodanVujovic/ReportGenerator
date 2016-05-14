@@ -12,15 +12,11 @@ public class Notifications extends JFrame {
 
 	public void fileNotFound(String fileName) {
 		fileName = fileName.substring(fileName.indexOf("\\", 3) + 1);
+		// JOptionPane is used when we want some kind of warning, error or notification message to show, it
+		// already have defined all parameters of window (JFrame) we just need to insert message to be
+		// showed and type of icon to be displayed.
 		JOptionPane.showMessageDialog(null, "No \"" + fileName + "\" file in input folder.", "Error",
-				JOptionPane.ERROR_MESSAGE); // JOptionPane is used when we want
-											// some kind of warning, error or
-											// notification message to show, it
-											// already have defined all
-											// parameters of window (JFrame) we
-											// just need to insert message to be
-											// showed and type of icon to be
-											// displayed.
+				JOptionPane.ERROR_MESSAGE);
 		System.exit(0);
 	}
 

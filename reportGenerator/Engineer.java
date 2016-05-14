@@ -20,57 +20,24 @@ public class Engineer extends JFrame {
 		return this.engineerName;
 	}
 
-	/*
-	 * Set engineer name if "Engineer.txt" file does't exist, if does than
-	 * nothing happen.
-	 */
-	public void setEngineerName(String str) {
-		try {
-			this.engineerName = this.engineerName == null ? str : this.engineerName; // Set
-																						// engineer
-																						// name
-																						// only
-																						// if
-																						// it
-																						// is
-																						// null,
-																						// else
-																						// leave
-																						// it
-																						// be.
-			File engFile = new File("C:\\RG input\\Engineer.txt"); //$NON-NLS-1$
-			FileWriter engFileWriter = new FileWriter(engFile);
-			BufferedWriter engBufferWriter = new BufferedWriter(engFileWriter);
-			engBufferWriter.write(engineerName);
-			engBufferWriter.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/*
-	 * Create window for collecting engineer name.
-	 */
-	public void createSubmitWindow() {
+	public void createSubmitEngineerNameWindow() {
 		try {
 			File engFile = new File("C:\\RG input\\Engineer.txt");
-			if (!engFile.exists()) { // If "Engineer.txt" doesn't exist then
-										// create one.
+			if (!engFile.exists()) {
 				engFile.createNewFile();
 			}
 			FileReader engFileReader = new FileReader(engFile);
 			BufferedReader engBufferReader = new BufferedReader(engFileReader);
-			String line = engBufferReader.readLine(); // If file does exist and
-			if (line == null) { // there is something in it then there is no
-								// need to ask for engineer name again, just
-								// pass to FrontWindow.
+			// If file does exist and there is something in it then there is no need to ask for engineer
+			// name again, just pass to FrontWindow.
+			String line = engBufferReader.readLine();
+			if (line == null) {
 				JPanel engineerPanel = new JPanel();
 				engineerNameTextField = new JTextField(10);
 				engineerNameLabel = new JLabel("Enter your name:");
 				submitEngNameButton = new JButton("Submit");
 				ListenForSubmitEngButton lForSubmitEngButton = new ListenForSubmitEngButton();
 				submitEngNameButton.addActionListener(lForSubmitEngButton);
-				// Engineer name.
 				engineerPanel.add(engineerNameLabel);
 				engineerPanel.add(engineerNameTextField);
 				engineerPanel.add(submitEngNameButton);
@@ -90,30 +57,42 @@ public class Engineer extends JFrame {
 		}
 	}
 
-	public void submitWindowMandatoryMethods() {
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
-		this.setLocationRelativeTo(null);
-		this.setTitle("Report Generator");
-	}
-
 	public class ListenForSubmitEngButton implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == submitEngNameButton) {
 				String engNameInput = engineerNameTextField.getText();
-				if (engNameInput.equals("")) { // If we leave blank and press
-												// "Submit" it will generate
-												// error.
+				// If we leave blank and press "Submit" it will generate error.
+				if (engNameInput.equals("")) {
 					Notifications emptyEngName = new Notifications();
 					emptyEngName.emptyEngNameError();
 				} else {
-					setEngineerName(engineerNameTextField.getText());
+					setEngineerNameIfFileMissing(engNameInput);
 					FrontWindow fw = new FrontWindow();
 					fw.createWindow();
 					dispose();
 				}
 			}
 		}
+	}
+
+	public void setEngineerNameIfFileMissing(String str) {
+		try {
+			this.engineerName = this.engineerName == null ? str : this.engineerName;
+			File engFile = new File("C:\\RG input\\Engineer.txt");
+			FileWriter engFileWriter = new FileWriter(engFile);
+			BufferedWriter engBufferWriter = new BufferedWriter(engFileWriter);
+			engBufferWriter.write(engineerName);
+			engBufferWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void submitWindowMandatoryMethods() {
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+		this.setLocationRelativeTo(null);
+		this.setTitle("Report Generator");
 	}
 }

@@ -20,6 +20,6 @@ public class ReportGenerator {
 											// window to provide name pop up, if
 											// file exist, FrontWindow is
 											// created.
-		engineer.createSubmitWindow();
+		engineer.createSubmitEngineerNameWindow();
 	}
 }

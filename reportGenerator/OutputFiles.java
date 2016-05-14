@@ -84,473 +84,341 @@ public class OutputFiles {
 			row = sheet1.getRow(8);
 			cell = row.getCell(3);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getGsm9Changed().getAntenaTypeS1() != 0) { // Antenna type
-																// can be int or
-																// string so
-																// that is
-																// reason why we
-																// have 2
-																// options how
-																// to populate
-																// cell.
-				cell.setCellValue(site.getGsm9Changed().getAntenaTypeS1());
-			} else if (site.getGsm9Changed().getAntenaTypeS1Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS1Str().length() != 0) { // If
-																					// antenna
-																					// type
-																					// is
-																					// string
-																					// then
-																					// we
-																					// need
-																					// to
-																					// check
-																					// is
-																					// it
-																					// different
-																					// from
-																					// null
-																					// and
-																					// also
-																					// if
-																					// its
-																					// length
-																					// is
-																					// different
-																					// from
-																					// 0
-																					// (not
-																					// an
-																					// empty
-																					// string).
-				cell.setCellValue(site.getGsm9Changed().getAntenaTypeS1Str());
+			// If antenna type is string then we need to check is it different from null and also if its length
+			// is different from 0 (not an empty string).
+			if (site.getGsm9Changed().antenaTypeS1 != null && site.getGsm9Changed().antenaTypeS1.length() != 0) {
+				cell.setCellValue(site.getGsm9Changed().antenaTypeS1);
 			}
 			cell = row.getCell(4);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getGsm9Changed().getAntenaTypeS2() != 0) {
-				cell.setCellValue(site.getGsm9Changed().getAntenaTypeS2());
-			} else if (site.getGsm9Changed().getAntenaTypeS2Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS2Str().length() != 0) {
-				cell.setCellValue(site.getGsm9Changed().getAntenaTypeS2Str());
+			if (site.getGsm9Changed().antenaTypeS2 != null && site.getGsm9Changed().antenaTypeS2.length() != 0) {
+				cell.setCellValue(site.getGsm9Changed().antenaTypeS2);
 			}
 			cell = row.getCell(5);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getGsm9Changed().getAntenaTypeS3() != 0) {
-				cell.setCellValue(site.getGsm9Changed().getAntenaTypeS3());
-			} else if (site.getGsm9Changed().getAntenaTypeS3Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS3Str().length() != 0) {
-				cell.setCellValue(site.getGsm9Changed().getAntenaTypeS3Str());
+			if (site.getGsm9Changed().antenaTypeS3 != null && site.getGsm9Changed().antenaTypeS3.length() != 0) {
+				cell.setCellValue(site.getGsm9Changed().antenaTypeS3);
 			}
 			cell = row.getCell(6);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getGsm9Changed().getAntenaTypeS4() != 0) {
-				cell.setCellValue(site.getGsm9Changed().getAntenaTypeS4());
-			} else if (site.getGsm9Changed().getAntenaTypeS4Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS4Str().length() != 0) {
-				cell.setCellValue(site.getGsm9Changed().getAntenaTypeS4Str());
+			if (site.getGsm9Changed().antenaTypeS4 != null && site.getGsm9Changed().antenaTypeS4.length() != 0) {
+				cell.setCellValue(site.getGsm9Changed().antenaTypeS4);
 			}
 			row = sheet1.getRow(9);
-			if (site.getGsm9Changed().getAntenaTypeS1() != 0 | (site.getGsm9Changed().getAntenaTypeS1Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS1Str().length() != 0)) { // Only
-																					// if
-																					// we
-																					// have
-																					// antenna
-																					// type
-																					// in
-																					// that
-																					// sector
-																					// then
-																					// we
-																					// populate
-																					// other
-																					// information
-																					// for
-																					// that
-																					// sector.
+			// Only if we have antenna type in that sector then we populate other information for that sector.
+			if (site.getGsm9Changed().antenaTypeS1 != null && site.getGsm9Changed().antenaTypeS1.length() != 0) {
 				cell = row.getCell(3);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getAzimuthS1());
+				cell.setCellValue(site.getGsm9Changed().azimuthS1);
 			}
-			if (site.getGsm9Changed().getAntenaTypeS2() != 0 | (site.getGsm9Changed().getAntenaTypeS2Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS2Str().length() != 0)) {
+			if (site.getGsm9Changed().antenaTypeS2 != null && site.getGsm9Changed().antenaTypeS2.length() != 0) {
 				cell = row.getCell(4);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getAzimuthS2());
+				cell.setCellValue(site.getGsm9Changed().azimuthS2);
 			}
-			if (site.getGsm9Changed().getAntenaTypeS3() != 0 | (site.getGsm9Changed().getAntenaTypeS3Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS3Str().length() != 0)) {
+			if (site.getGsm9Changed().antenaTypeS3 != null && site.getGsm9Changed().antenaTypeS3.length() != 0) {
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getAzimuthS3());
+				cell.setCellValue(site.getGsm9Changed().azimuthS3);
 			}
-			if (site.getGsm9Changed().getAntenaTypeS4() != 0 | (site.getGsm9Changed().getAntenaTypeS4Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS4Str().length() != 0)) {
+			if (site.getGsm9Changed().antenaTypeS4 != null && site.getGsm9Changed().antenaTypeS4.length() != 0) {
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getAzimuthS4());
+				cell.setCellValue(site.getGsm9Changed().azimuthS4);
 			}
 			row = sheet1.getRow(11);
-			if (site.getGsm9Changed().getAntenaTypeS1() != 0 | (site.getGsm9Changed().getAntenaTypeS1Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS1Str().length() != 0)) {
+			if (site.getGsm9Changed().antenaTypeS1 != null && site.getGsm9Changed().antenaTypeS1.length() != 0) {
 				cell = row.getCell(3);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getMechanicalTiltS1());
+				cell.setCellValue(site.getGsm9Changed().mechanicalTiltS1);
 			}
-			if (site.getGsm9Changed().getAntenaTypeS2() != 0 | (site.getGsm9Changed().getAntenaTypeS2Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS2Str().length() != 0)) {
+			if (site.getGsm9Changed().antenaTypeS2 != null && site.getGsm9Changed().antenaTypeS2.length() != 0) {
 				cell = row.getCell(4);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getMechanicalTiltS2());
+				cell.setCellValue(site.getGsm9Changed().mechanicalTiltS2);
 			}
-			if (site.getGsm9Changed().getAntenaTypeS3() != 0 | (site.getGsm9Changed().getAntenaTypeS3Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS3Str().length() != 0)) {
+			if (site.getGsm9Changed().antenaTypeS3 != null && site.getGsm9Changed().antenaTypeS3.length() != 0) {
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getMechanicalTiltS3());
+				cell.setCellValue(site.getGsm9Changed().mechanicalTiltS3);
 			}
-			if (site.getGsm9Changed().getAntenaTypeS4() != 0 | (site.getGsm9Changed().getAntenaTypeS4Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS4Str().length() != 0)) {
+			if (site.getGsm9Changed().antenaTypeS4 != null && site.getGsm9Changed().antenaTypeS4.length() != 0) {
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getMechanicalTiltS4());
+				cell.setCellValue(site.getGsm9Changed().mechanicalTiltS4);
 			}
 			row = sheet1.getRow(12);
-			if (site.getGsm9Changed().getAntenaTypeS1() != 0 | (site.getGsm9Changed().getAntenaTypeS1Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS1Str().length() != 0)) {
+			if (site.getGsm9Changed().antenaTypeS1 != null && site.getGsm9Changed().antenaTypeS1.length() != 0) {
 				cell = row.getCell(3);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getElectricalTiltS1());
+				cell.setCellValue(site.getGsm9Changed().electricalTiltS1);
 			}
-			if (site.getGsm9Changed().getAntenaTypeS2() != 0 | (site.getGsm9Changed().getAntenaTypeS2Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS2Str().length() != 0)) {
+			if (site.getGsm9Changed().antenaTypeS2 != null && site.getGsm9Changed().antenaTypeS2.length() != 0) {
 				cell = row.getCell(4);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getElectricalTiltS2());
+				cell.setCellValue(site.getGsm9Changed().electricalTiltS2);
 			}
-			if (site.getGsm9Changed().getAntenaTypeS3() != 0 | (site.getGsm9Changed().getAntenaTypeS3Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS3Str().length() != 0)) {
+			if (site.getGsm9Changed().antenaTypeS3 != null && site.getGsm9Changed().antenaTypeS3.length() != 0) {
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getElectricalTiltS3());
+				cell.setCellValue(site.getGsm9Changed().electricalTiltS3);
 			}
-			if (site.getGsm9Changed().getAntenaTypeS4() != 0 | (site.getGsm9Changed().getAntenaTypeS4Str() != null
-					&& site.getGsm9Changed().getAntenaTypeS4Str().length() != 0)) {
+			if (site.getGsm9Changed().antenaTypeS4 != null && site.getGsm9Changed().antenaTypeS4.length() != 0) {
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getElectricalTiltS4());
+				cell.setCellValue(site.getGsm9Changed().electricalTiltS4);
 			}
 			row = sheet1.getRow(17);
 			cell = row.getCell(3);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getGsm18Changed().getAntenaTypeS1() != 0) {
-				cell.setCellValue(site.getGsm18Changed().getAntenaTypeS1());
-			} else {
-				cell.setCellValue(site.getGsm18Changed().getAntenaTypeS1Str());
+			if (site.getGsm18Changed().antenaTypeS1 != null) {
+				cell.setCellValue(site.getGsm18Changed().antenaTypeS1);
 			}
 			cell = row.getCell(4);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getGsm18Changed().getAntenaTypeS2() != 0) {
-				cell.setCellValue(site.getGsm18Changed().getAntenaTypeS2());
-			} else {
-				cell.setCellValue(site.getGsm18Changed().getAntenaTypeS2Str());
+			if (site.getGsm18Changed().antenaTypeS2 != null) {
+				cell.setCellValue(site.getGsm18Changed().antenaTypeS2);
 			}
 			cell = row.getCell(5);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getGsm18Changed().getAntenaTypeS3() != 0) {
-				cell.setCellValue(site.getGsm18Changed().getAntenaTypeS3());
-			} else {
-				cell.setCellValue(site.getGsm18Changed().getAntenaTypeS3Str());
+			if (site.getGsm18Changed().antenaTypeS3 != null) {
+				cell.setCellValue(site.getGsm18Changed().antenaTypeS3);
 			}
 			cell = row.getCell(6);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getGsm18Changed().getAntenaTypeS4() != 0) {
-				cell.setCellValue(site.getGsm18Changed().getAntenaTypeS4());
-			} else {
-				cell.setCellValue(site.getGsm18Changed().getAntenaTypeS4Str());
+			if (site.getGsm18Changed().antenaTypeS4 != null) {
+				cell.setCellValue(site.getGsm18Changed().antenaTypeS4);
 			}
 			row = sheet1.getRow(18);
-			if (site.getGsm18Changed().getAntenaTypeS1() != 0 | (site.getGsm18Changed().getAntenaTypeS1Str() != null
-					&& site.getGsm18Changed().getAntenaTypeS1Str().length() != 0)) {
+			if (site.getGsm18Changed().antenaTypeS1 != null && site.getGsm18Changed().antenaTypeS1.length() != 0) {
 				cell = row.getCell(3);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm18Changed().getAzimuthS1());
+				cell.setCellValue(site.getGsm18Changed().azimuthS1);
 			}
-			if (site.getGsm18Changed().getAntenaTypeS2() != 0 | (site.getGsm18Changed().getAntenaTypeS2Str() != null
-					&& site.getGsm18Changed().getAntenaTypeS2Str().length() != 0)) {
+			if (site.getGsm18Changed().antenaTypeS2 != null && site.getGsm18Changed().antenaTypeS2.length() != 0) {
 				cell = row.getCell(4);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm18Changed().getAzimuthS2());
+				cell.setCellValue(site.getGsm18Changed().azimuthS2);
 			}
-			if (site.getGsm18Changed().getAntenaTypeS3() != 0 | (site.getGsm18Changed().getAntenaTypeS3Str() != null
-					&& site.getGsm18Changed().getAntenaTypeS3Str().length() != 0)) {
+			if (site.getGsm18Changed().antenaTypeS3 != null && site.getGsm18Changed().antenaTypeS3.length() != 0) {
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm9Changed().getAzimuthS3());
+				cell.setCellValue(site.getGsm9Changed().azimuthS3);
 			}
-			if (site.getGsm18Changed().getAntenaTypeS4() != 0 | (site.getGsm18Changed().getAntenaTypeS4Str() != null
-					&& site.getGsm18Changed().getAntenaTypeS4Str().length() != 0)) {
+			if (site.getGsm18Changed().antenaTypeS4 != null && site.getGsm18Changed().antenaTypeS4.length() != 0) {
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm18Changed().getAzimuthS4());
+				cell.setCellValue(site.getGsm18Changed().azimuthS4);
 			}
 			row = sheet1.getRow(20);
-			if (site.getGsm18Changed().getAntenaTypeS1() != 0 | (site.getGsm18Changed().getAntenaTypeS1Str() != null
-					&& site.getGsm18Changed().getAntenaTypeS1Str().length() != 0)) {
+			if (site.getGsm18Changed().antenaTypeS1 != null && site.getGsm18Changed().antenaTypeS1.length() != 0) {
 				cell = row.getCell(3);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm18Changed().getMechanicalTiltS1());
+				cell.setCellValue(site.getGsm18Changed().mechanicalTiltS1);
 			}
-			if (site.getGsm18Changed().getAntenaTypeS2() != 0 | (site.getGsm18Changed().getAntenaTypeS2Str() != null
-					&& site.getGsm18Changed().getAntenaTypeS2Str().length() != 0)) {
+			if (site.getGsm18Changed().antenaTypeS2 != null && site.getGsm18Changed().antenaTypeS2.length() != 0) {
 				cell = row.getCell(4);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm18Changed().getMechanicalTiltS2());
+				cell.setCellValue(site.getGsm18Changed().mechanicalTiltS2);
 			}
-			if (site.getGsm18Changed().getAntenaTypeS3() != 0 | (site.getGsm18Changed().getAntenaTypeS3Str() != null
-					&& site.getGsm18Changed().getAntenaTypeS3Str().length() != 0)) {
+			if (site.getGsm18Changed().antenaTypeS3 != null && site.getGsm18Changed().antenaTypeS3.length() != 0) {
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm18Changed().getMechanicalTiltS3());
+				cell.setCellValue(site.getGsm18Changed().mechanicalTiltS3);
 			}
-			if (site.getGsm18Changed().getAntenaTypeS4() != 0 | (site.getGsm18Changed().getAntenaTypeS4Str() != null
-					&& site.getGsm18Changed().getAntenaTypeS4Str().length() != 0)) {
+			if (site.getGsm18Changed().antenaTypeS4 != null && site.getGsm18Changed().antenaTypeS4.length() != 0) {
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm18Changed().getMechanicalTiltS4());
+				cell.setCellValue(site.getGsm18Changed().mechanicalTiltS4);
 			}
 			row = sheet1.getRow(21);
-			if (site.getGsm18Changed().getAntenaTypeS1() != 0 | (site.getGsm18Changed().getAntenaTypeS1Str() != null
-					&& site.getGsm18Changed().getAntenaTypeS1Str().length() != 0)) {
+			if (site.getGsm18Changed().antenaTypeS1 != null && site.getGsm18Changed().antenaTypeS1.length() != 0) {
 				cell = row.getCell(3);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm18Changed().getElectricalTiltS1());
+				cell.setCellValue(site.getGsm18Changed().electricalTiltS1);
 			}
-			if (site.getGsm18Changed().getAntenaTypeS2() != 0 | (site.getGsm18Changed().getAntenaTypeS2Str() != null
-					&& site.getGsm18Changed().getAntenaTypeS2Str().length() != 0)) {
+			if (site.getGsm18Changed().antenaTypeS2 != null && site.getGsm18Changed().antenaTypeS2.length() != 0) {
 				cell = row.getCell(4);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm18Changed().getElectricalTiltS2());
+				cell.setCellValue(site.getGsm18Changed().electricalTiltS2);
 			}
-			if (site.getGsm18Changed().getAntenaTypeS3() != 0 | (site.getGsm18Changed().getAntenaTypeS3Str() != null
-					&& site.getGsm18Changed().getAntenaTypeS3Str().length() != 0)) {
+			if (site.getGsm18Changed().antenaTypeS3 != null && site.getGsm18Changed().antenaTypeS3.length() != 0) {
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm18Changed().getElectricalTiltS3());
+				cell.setCellValue(site.getGsm18Changed().electricalTiltS3);
 			}
-			if (site.getGsm18Changed().getAntenaTypeS4() != 0 | (site.getGsm18Changed().getAntenaTypeS4Str() != null
-					&& site.getGsm18Changed().getAntenaTypeS4Str().length() != 0)) {
+			if (site.getGsm18Changed().antenaTypeS4 != null && site.getGsm18Changed().antenaTypeS4.length() != 0) {
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getGsm18Changed().getElectricalTiltS4());
+				cell.setCellValue(site.getGsm18Changed().electricalTiltS4);
 			}
 			row = sheet1.getRow(26);
 			cell = row.getCell(3);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getUmts21Changed().getAntenaTypeS1() != 0) {
-				cell.setCellValue(site.getUmts21Changed().getAntenaTypeS1());
-			} else {
-				cell.setCellValue(site.getUmts21Changed().getAntenaTypeS1Str());
+			if (site.getUmts21Changed().antenaTypeS1 != null) {
+				cell.setCellValue(site.getUmts21Changed().antenaTypeS1);
 			}
 			cell = row.getCell(4);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getUmts21Changed().getAntenaTypeS2() != 0) {
-				cell.setCellValue(site.getUmts21Changed().getAntenaTypeS2());
-			} else {
-				cell.setCellValue(site.getUmts21Changed().getAntenaTypeS2Str());
+			if (site.getUmts21Changed().antenaTypeS2 != null) {
+				cell.setCellValue(site.getUmts21Changed().antenaTypeS2);
 			}
 			cell = row.getCell(5);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getUmts21Changed().getAntenaTypeS3() != 0) {
-				cell.setCellValue(site.getUmts21Changed().getAntenaTypeS3());
-			} else {
-				cell.setCellValue(site.getUmts21Changed().getAntenaTypeS3Str());
+			if (site.getUmts21Changed().antenaTypeS3 != null) {
+				cell.setCellValue(site.getUmts21Changed().antenaTypeS3);
 			}
 			cell = row.getCell(6);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getUmts21Changed().getAntenaTypeS4() != 0) {
-				cell.setCellValue(site.getUmts21Changed().getAntenaTypeS4());
-			} else {
-				cell.setCellValue(site.getUmts21Changed().getAntenaTypeS4Str());
+			if (site.getUmts21Changed().antenaTypeS4 != null) {
+				cell.setCellValue(site.getUmts21Changed().antenaTypeS4);
 			}
 			row = sheet1.getRow(27);
-			if (site.getUmts21Changed().getAntenaTypeS1() != 0 | (site.getUmts21Changed().getAntenaTypeS1Str() != null
-					&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+			if (site.getUmts21Changed().antenaTypeS1 != null && site.getUmts21Changed().antenaTypeS1.length() != 0) {
 				cell = row.getCell(3);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getUmts21Changed().getAzimuthS1());
+				cell.setCellValue(site.getUmts21Changed().azimuthS1);
 			}
-			if (site.getUmts21Changed().getAntenaTypeS2() != 0 | (site.getUmts21Changed().getAntenaTypeS2Str() != null
-					&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+			if (site.getUmts21Changed().antenaTypeS2 != null && site.getUmts21Changed().antenaTypeS2.length() != 0) {
 				cell = row.getCell(4);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getUmts21Changed().getAzimuthS2());
+				cell.setCellValue(site.getUmts21Changed().azimuthS2);
 			}
-			if (site.getUmts21Changed().getAntenaTypeS3() != 0 | (site.getUmts21Changed().getAntenaTypeS3Str() != null
-					&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+			if (site.getUmts21Changed().antenaTypeS3 != null && site.getUmts21Changed().antenaTypeS3.length() != 0) {
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getUmts21Changed().getAzimuthS3());
+				cell.setCellValue(site.getUmts21Changed().azimuthS3);
 			}
-			if (site.getUmts21Changed().getAntenaTypeS4() != 0 | (site.getUmts21Changed().getAntenaTypeS4Str() != null
-					&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+			if (site.getUmts21Changed().antenaTypeS4 != null && site.getUmts21Changed().antenaTypeS4.length() != 0) {
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getUmts21Changed().getAzimuthS4());
+				cell.setCellValue(site.getUmts21Changed().azimuthS4);
 			}
 			row = sheet1.getRow(29);
-			if (site.getUmts21Changed().getAntenaTypeS1() != 0 | (site.getUmts21Changed().getAntenaTypeS1Str() != null
-					&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+			if (site.getUmts21Changed().antenaTypeS1 != null && site.getUmts21Changed().antenaTypeS1.length() != 0) {
 				cell = row.getCell(3);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getUmts21Changed().getMechanicalTiltS1());
+				cell.setCellValue(site.getUmts21Changed().mechanicalTiltS1);
 			}
-			if (site.getUmts21Changed().getAntenaTypeS2() != 0 | (site.getUmts21Changed().getAntenaTypeS2Str() != null
-					&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+			if (site.getUmts21Changed().antenaTypeS2 != null && site.getUmts21Changed().antenaTypeS2.length() != 0) {
 				cell = row.getCell(4);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getUmts21Changed().getMechanicalTiltS2());
+				cell.setCellValue(site.getUmts21Changed().mechanicalTiltS2);
 			}
-			if (site.getUmts21Changed().getAntenaTypeS3() != 0 | (site.getUmts21Changed().getAntenaTypeS3Str() != null
-					&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+			if (site.getUmts21Changed().antenaTypeS3 != null && site.getUmts21Changed().antenaTypeS3.length() != 0) {
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getUmts21Changed().getMechanicalTiltS3());
+				cell.setCellValue(site.getUmts21Changed().mechanicalTiltS3);
 			}
-			if (site.getUmts21Changed().getAntenaTypeS4() != 0 | (site.getUmts21Changed().getAntenaTypeS4Str() != null
-					&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+			if (site.getUmts21Changed().antenaTypeS4 != null && site.getUmts21Changed().antenaTypeS4.length() != 0) {
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getUmts21Changed().getMechanicalTiltS4());
+				cell.setCellValue(site.getUmts21Changed().mechanicalTiltS4);
 			}
 			row = sheet1.getRow(30);
-			if (site.getUmts21Changed().getAntenaTypeS1() != 0 | (site.getUmts21Changed().getAntenaTypeS1Str() != null
-					&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+			if (site.getUmts21Changed().antenaTypeS1 != null && site.getUmts21Changed().antenaTypeS1.length() != 0) {
 				cell = row.getCell(3);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getUmts21Changed().getElectricalTiltS1());
+				cell.setCellValue(site.getUmts21Changed().electricalTiltS1);
 			}
-			if (site.getUmts21Changed().getAntenaTypeS2() != 0 | (site.getUmts21Changed().getAntenaTypeS2Str() != null
-					&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+			if (site.getUmts21Changed().antenaTypeS2 != null && site.getUmts21Changed().antenaTypeS2.length() != 0) {
 				cell = row.getCell(4);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getUmts21Changed().getElectricalTiltS2());
+				cell.setCellValue(site.getUmts21Changed().electricalTiltS2);
 			}
-			if (site.getUmts21Changed().getAntenaTypeS3() != 0 | (site.getUmts21Changed().getAntenaTypeS3Str() != null
-					&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+			if (site.getUmts21Changed().antenaTypeS3 != null && site.getUmts21Changed().antenaTypeS3.length() != 0) {
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getUmts21Changed().getElectricalTiltS3());
+				cell.setCellValue(site.getUmts21Changed().electricalTiltS3);
 			}
-			if (site.getUmts21Changed().getAntenaTypeS4() != 0 | (site.getUmts21Changed().getAntenaTypeS4Str() != null
-					&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+			if (site.getUmts21Changed().antenaTypeS4 != null && site.getUmts21Changed().antenaTypeS4.length() != 0) {
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getUmts21Changed().getElectricalTiltS4());
+				cell.setCellValue(site.getUmts21Changed().electricalTiltS4);
 			}
 			row = sheet1.getRow(36);
 			cell = row.getCell(3);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getLte18Changed().getAntenaTypeS1() != 0) {
-				cell.setCellValue(site.getLte18Changed().getAntenaTypeS1());
-			} else {
-				cell.setCellValue(site.getLte18Changed().getAntenaTypeS1Str());
+			if (site.getLte18Changed().antenaTypeS1 != null) {
+				cell.setCellValue(site.getLte18Changed().antenaTypeS1);
 			}
 			cell = row.getCell(4);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getLte18Changed().getAntenaTypeS2() != 0) {
-				cell.setCellValue(site.getLte18Changed().getAntenaTypeS2());
-			} else {
-				cell.setCellValue(site.getLte18Changed().getAntenaTypeS2Str());
+			if (site.getLte18Changed().antenaTypeS2 != null) {
+				cell.setCellValue(site.getLte18Changed().antenaTypeS2);
 			}
 			cell = row.getCell(5);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getLte18Changed().getAntenaTypeS3() != 0) {
-				cell.setCellValue(site.getLte18Changed().getAntenaTypeS3());
-			} else {
-				cell.setCellValue(site.getLte18Changed().getAntenaTypeS3Str());
+			if (site.getLte18Changed().antenaTypeS3 != null) {
+				cell.setCellValue(site.getLte18Changed().antenaTypeS3);
 			}
 			cell = row.getCell(6);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
-			if (site.getLte18Changed().getAntenaTypeS4() != 0) {
-				cell.setCellValue(site.getLte18Changed().getAntenaTypeS4());
-			} else {
-				cell.setCellValue(site.getLte18Changed().getAntenaTypeS4Str());
+			if (site.getLte18Changed().antenaTypeS4 != null) {
+				cell.setCellValue(site.getLte18Changed().antenaTypeS4);
 			}
 			row = sheet1.getRow(37);
-			if (site.getLte18Changed().getAntenaTypeS1() != 0 | (site.getLte18Changed().getAntenaTypeS1Str() != null
-					&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+			if (site.getLte18Changed().antenaTypeS1 != null && site.getLte18Changed().antenaTypeS1.length() != 0) {
 				cell = row.getCell(3);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getLte18Changed().getAzimuthS1());
+				cell.setCellValue(site.getLte18Changed().azimuthS1);
 			}
-			if (site.getLte18Changed().getAntenaTypeS2() != 0 | (site.getLte18Changed().getAntenaTypeS2Str() != null
-					&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+			if (site.getLte18Changed().antenaTypeS2 != null && site.getLte18Changed().antenaTypeS2.length() != 0) {
 				cell = row.getCell(4);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getLte18Changed().getAzimuthS2());
+				cell.setCellValue(site.getLte18Changed().azimuthS2);
 			}
-			if (site.getLte18Changed().getAntenaTypeS3() != 0 | (site.getLte18Changed().getAntenaTypeS3Str() != null
-					&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+			if (site.getLte18Changed().antenaTypeS3 != null && site.getLte18Changed().antenaTypeS3.length() != 0) {
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getLte18Changed().getAzimuthS3());
+				cell.setCellValue(site.getLte18Changed().azimuthS3);
 			}
-			if (site.getLte18Changed().getAntenaTypeS4() != 0 | (site.getLte18Changed().getAntenaTypeS4Str() != null
-					&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+			if (site.getLte18Changed().antenaTypeS4 != null && site.getLte18Changed().antenaTypeS4.length() != 0) {
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getLte18Changed().getAzimuthS4());
+				cell.setCellValue(site.getLte18Changed().azimuthS4);
 			}
 			row = sheet1.getRow(39);
-			if (site.getLte18Changed().getAntenaTypeS1() != 0 | (site.getLte18Changed().getAntenaTypeS1Str() != null
-					&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+			if (site.getLte18Changed().antenaTypeS1 != null && site.getLte18Changed().antenaTypeS1.length() != 0) {
 				cell = row.getCell(3);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getLte18Changed().getMechanicalTiltS1());
+				cell.setCellValue(site.getLte18Changed().mechanicalTiltS1);
 			}
-			if (site.getLte18Changed().getAntenaTypeS2() != 0 | (site.getLte18Changed().getAntenaTypeS2Str() != null
-					&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+			if (site.getLte18Changed().antenaTypeS2 != null && site.getLte18Changed().antenaTypeS2.length() != 0) {
 				cell = row.getCell(4);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getLte18Changed().getMechanicalTiltS2());
+				cell.setCellValue(site.getLte18Changed().mechanicalTiltS2);
 			}
-			if (site.getLte18Changed().getAntenaTypeS3() != 0 | (site.getLte18Changed().getAntenaTypeS3Str() != null
-					&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+			if (site.getLte18Changed().antenaTypeS3 != null && site.getLte18Changed().antenaTypeS3.length() != 0) {
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getLte18Changed().getMechanicalTiltS3());
+				cell.setCellValue(site.getLte18Changed().mechanicalTiltS3);
 			}
-			if (site.getLte18Changed().getAntenaTypeS4() != 0 | (site.getLte18Changed().getAntenaTypeS4Str() != null
-					&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+			if (site.getLte18Changed().antenaTypeS4 != null && site.getLte18Changed().antenaTypeS4.length() != 0) {
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getLte18Changed().getMechanicalTiltS4());
+				cell.setCellValue(site.getLte18Changed().mechanicalTiltS4);
 			}
 			row = sheet1.getRow(40);
-			if (site.getLte18Changed().getAntenaTypeS1() != 0 | (site.getLte18Changed().getAntenaTypeS1Str() != null
-					&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+			if (site.getLte18Changed().antenaTypeS1 != null && site.getLte18Changed().antenaTypeS1.length() != 0) {
 				cell = row.getCell(3);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getLte18Changed().getElectricalTiltS1());
+				cell.setCellValue(site.getLte18Changed().electricalTiltS1);
 			}
-			if (site.getLte18Changed().getAntenaTypeS2() != 0 | (site.getLte18Changed().getAntenaTypeS2Str() != null
-					&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+			if (site.getLte18Changed().antenaTypeS2 != null && site.getLte18Changed().antenaTypeS2.length() != 0) {
 				cell = row.getCell(4);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getLte18Changed().getElectricalTiltS2());
+				cell.setCellValue(site.getLte18Changed().electricalTiltS2);
 			}
-			if (site.getLte18Changed().getAntenaTypeS3() != 0 | (site.getLte18Changed().getAntenaTypeS3Str() != null
-					&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+			if (site.getLte18Changed().antenaTypeS3 != null && site.getLte18Changed().antenaTypeS3.length() != 0) {
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getLte18Changed().getElectricalTiltS3());
+				cell.setCellValue(site.getLte18Changed().electricalTiltS3);
 			}
-			if (site.getLte18Changed().getAntenaTypeS4() != 0 | (site.getLte18Changed().getAntenaTypeS4Str() != null
-					&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+			if (site.getLte18Changed().antenaTypeS4 != null && site.getLte18Changed().antenaTypeS4.length() != 0) {
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				cell.setCellValue(site.getLte18Changed().getElectricalTiltS4());
+				cell.setCellValue(site.getLte18Changed().electricalTiltS4);
 			}
 			if (fw.getUmts().isSelected()) { // Now, when we populate
 												// report with data from
@@ -561,38 +429,33 @@ public class OutputFiles {
 												// technology that we do
 												// not have in UP file.
 				row = sheet1.getRow(32);
-				if (site.getUmts21Changed().getAntenaTypeS1() != 0
-						| (site.getUmts21Changed().getAntenaTypeS1Str() != null
-								&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+				if (site.getUmts21Changed().antenaTypeS1 != null
+						&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
 					cell = row.getCell(3);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getRtaaTypeS1());
 				}
-				if (site.getUmts21Changed().getAntenaTypeS2() != 0
-						| (site.getUmts21Changed().getAntenaTypeS2Str() != null
-								&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+				if (site.getUmts21Changed().antenaTypeS2 != null
+						&& site.getUmts21Changed().antenaTypeS2.length() != 0) {
 					cell = row.getCell(4);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getRtaaTypeS2());
 				}
-				if (site.getUmts21Changed().getAntenaTypeS3() != 0
-						| (site.getUmts21Changed().getAntenaTypeS3Str() != null
-								&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+				if (site.getUmts21Changed().antenaTypeS3 != null
+						&& site.getUmts21Changed().antenaTypeS3.length() != 0) {
 					cell = row.getCell(5);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getRtaaTypeS3());
 				}
-				if (site.getUmts21Changed().getAntenaTypeS4() != 0
-						| (site.getUmts21Changed().getAntenaTypeS4Str() != null
-								&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+				if (site.getUmts21Changed().antenaTypeS4 != null
+						&& site.getUmts21Changed().antenaTypeS4.length() != 0) {
 					cell = row.getCell(6);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getRtaaTypeS4());
 				}
 				row = sheet1.getRow(68);
-				if (site.getUmts21Changed().getAntenaTypeS1() != 0
-						| (site.getUmts21Changed().getAntenaTypeS1Str() != null
-								&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+				if (site.getUmts21Changed().antenaTypeS1 != null
+						&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
 					cell = row.getCell(3);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getFeederSizeS1()); // FeederSizeSx
@@ -604,23 +467,20 @@ public class OutputFiles {
 																// it's size) or
 																// fiber cable.
 				}
-				if (site.getUmts21Changed().getAntenaTypeS2() != 0
-						| (site.getUmts21Changed().getAntenaTypeS2Str() != null
-								&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+				if (site.getUmts21Changed().antenaTypeS2 != null
+						&& site.getUmts21Changed().antenaTypeS2.length() != 0) {
 					cell = row.getCell(4);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getFeederSizeS2());
 				}
-				if (site.getUmts21Changed().getAntenaTypeS3() != 0
-						| (site.getUmts21Changed().getAntenaTypeS3Str() != null
-								&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+				if (site.getUmts21Changed().antenaTypeS3 != null
+						&& site.getUmts21Changed().antenaTypeS3.length() != 0) {
 					cell = row.getCell(5);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getFeederSizeS3());
 				}
-				if (site.getUmts21Changed().getAntenaTypeS4() != 0
-						| (site.getUmts21Changed().getAntenaTypeS4Str() != null
-								&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+				if (site.getUmts21Changed().antenaTypeS4 != null
+						&& site.getUmts21Changed().antenaTypeS4.length() != 0) {
 					cell = row.getCell(6);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getFeederSizeS4());
@@ -630,204 +490,176 @@ public class OutputFiles {
 																	// specific
 																	// information.
 					row = sheet1.getRow(31);
-					if (site.getUmts21Changed().getAntenaTypeS1() != 0
-							| (site.getUmts21Changed().getAntenaTypeS1Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS1 != null
+							&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getMhaTypeS1());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS2() != 0
-							| (site.getUmts21Changed().getAntenaTypeS2Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS2 != null
+							&& site.getUmts21Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getMhaTypeS2());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS3() != 0
-							| (site.getUmts21Changed().getAntenaTypeS3Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS3 != null
+							&& site.getUmts21Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getMhaTypeS3());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS4() != 0
-							| (site.getUmts21Changed().getAntenaTypeS4Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS4 != null
+							&& site.getUmts21Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getMhaTypeS4());
 					}
 					row = sheet1.getRow(69);
-					if (site.getUmts21Changed().getAntenaTypeS1() != 0
-							| (site.getUmts21Changed().getAntenaTypeS1Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS1 != null
+							&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFeederLengthS1());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS2() != 0
-							| (site.getUmts21Changed().getAntenaTypeS2Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS2 != null
+							&& site.getUmts21Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFeederLengthS2());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS3() != 0
-							| (site.getUmts21Changed().getAntenaTypeS3Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS3 != null
+							&& site.getUmts21Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFeederLengthS3());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS4() != 0
-							| (site.getUmts21Changed().getAntenaTypeS4Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS4 != null
+							&& site.getUmts21Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFeederLengthS4());
 					}
 					row = sheet1.getRow(70);
-					if (site.getUmts21Changed().getAntenaTypeS1() != 0
-							| (site.getUmts21Changed().getAntenaTypeS1Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS1 != null
+							&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getEarthKitNoS1());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS2() != 0
-							| (site.getUmts21Changed().getAntenaTypeS2Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS2 != null
+							&& site.getUmts21Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getEarthKitNoS2());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS3() != 0
-							| (site.getUmts21Changed().getAntenaTypeS3Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS3 != null
+							&& site.getUmts21Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getEarthKitNoS3());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS4() != 0
-							| (site.getUmts21Changed().getAntenaTypeS4Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS4 != null
+							&& site.getUmts21Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getEarthKitNoS4());
 					}
 					row = sheet1.getRow(71);
-					if (site.getUmts21Changed().getAntenaTypeS1() != 0
-							| (site.getUmts21Changed().getAntenaTypeS1Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS1 != null
+							&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAtBtsLenS1());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS2() != 0
-							| (site.getUmts21Changed().getAntenaTypeS2Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS2 != null
+							&& site.getUmts21Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAtBtsLenS2());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS3() != 0
-							| (site.getUmts21Changed().getAntenaTypeS3Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS3 != null
+							&& site.getUmts21Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAtBtsLenS3());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS4() != 0
-							| (site.getUmts21Changed().getAntenaTypeS4Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS4 != null
+							&& site.getUmts21Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAtBtsLenS4());
 					}
 					row = sheet1.getRow(72);
-					if (site.getUmts21Changed().getAntenaTypeS1() != 0
-							| (site.getUmts21Changed().getAntenaTypeS1Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS1 != null
+							&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperBeforeMhaLenS1());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS2() != 0
-							| (site.getUmts21Changed().getAntenaTypeS2Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS2 != null
+							&& site.getUmts21Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperBeforeMhaLenS2());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS3() != 0
-							| (site.getUmts21Changed().getAntenaTypeS3Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS3 != null
+							&& site.getUmts21Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperBeforeMhaLenS3());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS4() != 0
-							| (site.getUmts21Changed().getAntenaTypeS4Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS4 != null
+							&& site.getUmts21Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperBeforeMhaLenS4());
 					}
 					row = sheet1.getRow(73);
-					if (site.getUmts21Changed().getAntenaTypeS1() != 0
-							| (site.getUmts21Changed().getAntenaTypeS1Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS1 != null
+							&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAfterMhaLenS1());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS2() != 0
-							| (site.getUmts21Changed().getAntenaTypeS2Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS2 != null
+							&& site.getUmts21Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAfterMhaLenS2());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS3() != 0
-							| (site.getUmts21Changed().getAntenaTypeS3Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS3 != null
+							&& site.getUmts21Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAfterMhaLenS3());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS4() != 0
-							| (site.getUmts21Changed().getAntenaTypeS4Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS4 != null
+							&& site.getUmts21Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAfterMhaLenS4());
 					}
 					row = sheet1.getRow(74);
-					if (site.getUmts21Changed().getAntenaTypeS1() != 0
-							| (site.getUmts21Changed().getAntenaTypeS1Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS1 != null
+							&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperPerSectorS1());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS2() != 0
-							| (site.getUmts21Changed().getAntenaTypeS2Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS2 != null
+							&& site.getUmts21Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperPerSectorS2());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS3() != 0
-							| (site.getUmts21Changed().getAntenaTypeS3Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS3 != null
+							&& site.getUmts21Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperPerSectorS3());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS4() != 0
-							| (site.getUmts21Changed().getAntenaTypeS4Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS4 != null
+							&& site.getUmts21Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperPerSectorS4());
@@ -839,59 +671,51 @@ public class OutputFiles {
 																		// specific
 																		// information.
 					row = sheet1.getRow(69);
-					if (site.getUmts21Changed().getAntenaTypeS1() != 0
-							| (site.getUmts21Changed().getAntenaTypeS1Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS1 != null
+							&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFiberLengthS1());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS2() != 0
-							| (site.getUmts21Changed().getAntenaTypeS2Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS2 != null
+							&& site.getUmts21Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFiberLengthS2());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS3() != 0
-							| (site.getUmts21Changed().getAntenaTypeS3Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS3 != null
+							&& site.getUmts21Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFiberLengthS3());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS4() != 0
-							| (site.getUmts21Changed().getAntenaTypeS4Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS4 != null
+							&& site.getUmts21Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFiberLengthS4());
 					}
 					row = sheet1.getRow(73);
-					if (site.getUmts21Changed().getAntenaTypeS1() != 0
-							| (site.getUmts21Changed().getAntenaTypeS1Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS1 != null
+							&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getDistributeJumperLengthS1());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS2() != 0
-							| (site.getUmts21Changed().getAntenaTypeS2Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS2 != null
+							&& site.getUmts21Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getDistributeJumperLengthS2());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS3() != 0
-							| (site.getUmts21Changed().getAntenaTypeS3Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS3 != null
+							&& site.getUmts21Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getDistributeJumperLengthS3());
 					}
-					if (site.getUmts21Changed().getAntenaTypeS4() != 0
-							| (site.getUmts21Changed().getAntenaTypeS4Str() != null
-									&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getUmts21Changed().antenaTypeS4 != null
+							&& site.getUmts21Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getDistributeJumperLengthS3());
@@ -901,51 +725,43 @@ public class OutputFiles {
 			if (fw.getLte().isSelected()) { // Same note as for line
 											// 553.
 				row = sheet1.getRow(42);
-				if (site.getLte18Changed().getAntenaTypeS1() != 0 | (site.getLte18Changed().getAntenaTypeS1Str() != null
-						&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+				if (site.getLte18Changed().antenaTypeS1 != null && site.getLte18Changed().antenaTypeS1.length() != 0) {
 					cell = row.getCell(3);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getRtaaTypeS1());
 				}
-				if (site.getLte18Changed().getAntenaTypeS2() != 0 | (site.getLte18Changed().getAntenaTypeS2Str() != null
-						&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+				if (site.getLte18Changed().antenaTypeS2 != null && site.getLte18Changed().antenaTypeS2.length() != 0) {
 					cell = row.getCell(4);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getRtaaTypeS2());
 				}
-				if (site.getLte18Changed().getAntenaTypeS3() != 0 | (site.getLte18Changed().getAntenaTypeS3Str() != null
-						&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+				if (site.getLte18Changed().antenaTypeS3 != null && site.getLte18Changed().antenaTypeS3.length() != 0) {
 					cell = row.getCell(5);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getRtaaTypeS3());
 				}
-				if (site.getLte18Changed().getAntenaTypeS4() != 0 | (site.getLte18Changed().getAntenaTypeS4Str() != null
-						&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+				if (site.getLte18Changed().antenaTypeS4 != null && site.getLte18Changed().antenaTypeS4.length() != 0) {
 					cell = row.getCell(6);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getRtaaTypeS4());
 				}
 				row = sheet1.getRow(78);
-				if (site.getLte18Changed().getAntenaTypeS1() != 0 | (site.getLte18Changed().getAntenaTypeS1Str() != null
-						&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+				if (site.getLte18Changed().antenaTypeS1 != null && site.getLte18Changed().antenaTypeS1.length() != 0) {
 					cell = row.getCell(3);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getFeederSizeS1());
 				}
-				if (site.getLte18Changed().getAntenaTypeS2() != 0 | (site.getLte18Changed().getAntenaTypeS2Str() != null
-						&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+				if (site.getLte18Changed().antenaTypeS2 != null && site.getLte18Changed().antenaTypeS2.length() != 0) {
 					cell = row.getCell(4);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getFeederSizeS2());
 				}
-				if (site.getLte18Changed().getAntenaTypeS3() != 0 | (site.getLte18Changed().getAntenaTypeS3Str() != null
-						&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+				if (site.getLte18Changed().antenaTypeS3 != null && site.getLte18Changed().antenaTypeS3.length() != 0) {
 					cell = row.getCell(5);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getFeederSizeS3());
 				}
-				if (site.getLte18Changed().getAntenaTypeS4() != 0 | (site.getLte18Changed().getAntenaTypeS4Str() != null
-						&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+				if (site.getLte18Changed().antenaTypeS4 != null && site.getLte18Changed().antenaTypeS4.length() != 0) {
 					cell = row.getCell(6);
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 					cell.setCellValue(site.getFeederSizeS4());
@@ -955,204 +771,176 @@ public class OutputFiles {
 																	// specific
 																	// information.
 					row = sheet1.getRow(41);
-					if (site.getLte18Changed().getAntenaTypeS1() != 0
-							| (site.getLte18Changed().getAntenaTypeS1Str() != null
-									&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS1 != null
+							&& site.getLte18Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getMhaTypeS1());
 					}
-					if (site.getLte18Changed().getAntenaTypeS2() != 0
-							| (site.getLte18Changed().getAntenaTypeS2Str() != null
-									&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS2 != null
+							&& site.getLte18Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getMhaTypeS2());
 					}
-					if (site.getLte18Changed().getAntenaTypeS3() != 0
-							| (site.getLte18Changed().getAntenaTypeS3Str() != null
-									&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS3 != null
+							&& site.getLte18Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getMhaTypeS3());
 					}
-					if (site.getLte18Changed().getAntenaTypeS4() != 0
-							| (site.getLte18Changed().getAntenaTypeS4Str() != null
-									&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS4 != null
+							&& site.getLte18Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getMhaTypeS4());
 					}
 					row = sheet1.getRow(79);
-					if (site.getLte18Changed().getAntenaTypeS1() != 0
-							| (site.getLte18Changed().getAntenaTypeS1Str() != null
-									&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS1 != null
+							&& site.getLte18Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFeederLengthS1());
 					}
-					if (site.getLte18Changed().getAntenaTypeS2() != 0
-							| (site.getLte18Changed().getAntenaTypeS2Str() != null
-									&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS2 != null
+							&& site.getLte18Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFeederLengthS2());
 					}
-					if (site.getLte18Changed().getAntenaTypeS3() != 0
-							| (site.getLte18Changed().getAntenaTypeS3Str() != null
-									&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS3 != null
+							&& site.getLte18Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFeederLengthS3());
 					}
-					if (site.getLte18Changed().getAntenaTypeS4() != 0
-							| (site.getLte18Changed().getAntenaTypeS4Str() != null
-									&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS4 != null
+							&& site.getLte18Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFeederLengthS4());
 					}
 					row = sheet1.getRow(80);
-					if (site.getLte18Changed().getAntenaTypeS1() != 0
-							| (site.getLte18Changed().getAntenaTypeS1Str() != null
-									&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS1 != null
+							&& site.getLte18Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getEarthKitNoS1());
 					}
-					if (site.getLte18Changed().getAntenaTypeS2() != 0
-							| (site.getLte18Changed().getAntenaTypeS2Str() != null
-									&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS2 != null
+							&& site.getLte18Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getEarthKitNoS2());
 					}
-					if (site.getLte18Changed().getAntenaTypeS3() != 0
-							| (site.getLte18Changed().getAntenaTypeS3Str() != null
-									&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS3 != null
+							&& site.getLte18Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getEarthKitNoS3());
 					}
-					if (site.getLte18Changed().getAntenaTypeS4() != 0
-							| (site.getLte18Changed().getAntenaTypeS4Str() != null
-									&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS4 != null
+							&& site.getLte18Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getEarthKitNoS4());
 					}
 					row = sheet1.getRow(81);
-					if (site.getLte18Changed().getAntenaTypeS1() != 0
-							| (site.getLte18Changed().getAntenaTypeS1Str() != null
-									&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS1 != null
+							&& site.getLte18Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAtBtsLenS1());
 					}
-					if (site.getLte18Changed().getAntenaTypeS2() != 0
-							| (site.getLte18Changed().getAntenaTypeS2Str() != null
-									&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS2 != null
+							&& site.getLte18Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAtBtsLenS2());
 					}
-					if (site.getLte18Changed().getAntenaTypeS3() != 0
-							| (site.getLte18Changed().getAntenaTypeS3Str() != null
-									&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS3 != null
+							&& site.getLte18Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAtBtsLenS3());
 					}
-					if (site.getLte18Changed().getAntenaTypeS4() != 0
-							| (site.getLte18Changed().getAntenaTypeS4Str() != null
-									&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS4 != null
+							&& site.getLte18Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAtBtsLenS4());
 					}
 					row = sheet1.getRow(82);
-					if (site.getLte18Changed().getAntenaTypeS1() != 0
-							| (site.getLte18Changed().getAntenaTypeS1Str() != null
-									&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS1 != null
+							&& site.getLte18Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperBeforeMhaLenS1());
 					}
-					if (site.getLte18Changed().getAntenaTypeS2() != 0
-							| (site.getLte18Changed().getAntenaTypeS2Str() != null
-									&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS2 != null
+							&& site.getLte18Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperBeforeMhaLenS2());
 					}
-					if (site.getLte18Changed().getAntenaTypeS3() != 0
-							| (site.getLte18Changed().getAntenaTypeS3Str() != null
-									&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS3 != null
+							&& site.getLte18Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperBeforeMhaLenS3());
 					}
-					if (site.getLte18Changed().getAntenaTypeS4() != 0
-							| (site.getLte18Changed().getAntenaTypeS4Str() != null
-									&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS4 != null
+							&& site.getLte18Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperBeforeMhaLenS4());
 					}
 					row = sheet1.getRow(83);
-					if (site.getLte18Changed().getAntenaTypeS1() != 0
-							| (site.getLte18Changed().getAntenaTypeS1Str() != null
-									&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS1 != null
+							&& site.getLte18Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAfterMhaLenS1());
 					}
-					if (site.getLte18Changed().getAntenaTypeS2() != 0
-							| (site.getLte18Changed().getAntenaTypeS2Str() != null
-									&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS2 != null
+							&& site.getLte18Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAfterMhaLenS2());
 					}
-					if (site.getLte18Changed().getAntenaTypeS3() != 0
-							| (site.getLte18Changed().getAntenaTypeS3Str() != null
-									&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS3 != null
+							&& site.getLte18Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAfterMhaLenS3());
 					}
-					if (site.getLte18Changed().getAntenaTypeS4() != 0
-							| (site.getLte18Changed().getAntenaTypeS4Str() != null
-									&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS4 != null
+							&& site.getLte18Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperAfterMhaLenS4());
 					}
 					row = sheet1.getRow(84);
-					if (site.getLte18Changed().getAntenaTypeS1() != 0
-							| (site.getLte18Changed().getAntenaTypeS1Str() != null
-									&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS1 != null
+							&& site.getLte18Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperPerSectorS1());
 					}
-					if (site.getLte18Changed().getAntenaTypeS2() != 0
-							| (site.getLte18Changed().getAntenaTypeS2Str() != null
-									&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS2 != null
+							&& site.getLte18Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperPerSectorS2());
 					}
-					if (site.getLte18Changed().getAntenaTypeS3() != 0
-							| (site.getLte18Changed().getAntenaTypeS3Str() != null
-									&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS3 != null
+							&& site.getLte18Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperPerSectorS3());
 					}
-					if (site.getLte18Changed().getAntenaTypeS4() != 0
-							| (site.getLte18Changed().getAntenaTypeS4Str() != null
-									&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS4 != null
+							&& site.getLte18Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getJumperPerSectorS4());
@@ -1164,59 +952,51 @@ public class OutputFiles {
 																		// specific
 																		// information.
 					row = sheet1.getRow(79);
-					if (site.getLte18Changed().getAntenaTypeS1() != 0
-							| (site.getLte18Changed().getAntenaTypeS1Str() != null
-									&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS1 != null
+							&& site.getLte18Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFiberLengthS1());
 					}
-					if (site.getLte18Changed().getAntenaTypeS2() != 0
-							| (site.getLte18Changed().getAntenaTypeS2Str() != null
-									&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS2 != null
+							&& site.getLte18Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFiberLengthS2());
 					}
-					if (site.getLte18Changed().getAntenaTypeS3() != 0
-							| (site.getLte18Changed().getAntenaTypeS3Str() != null
-									&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS3 != null
+							&& site.getLte18Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFiberLengthS3());
 					}
-					if (site.getLte18Changed().getAntenaTypeS4() != 0
-							| (site.getLte18Changed().getAntenaTypeS4Str() != null
-									&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS4 != null
+							&& site.getLte18Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getFiberLengthS4());
 					}
 					row = sheet1.getRow(83);
-					if (site.getLte18Changed().getAntenaTypeS1() != 0
-							| (site.getLte18Changed().getAntenaTypeS1Str() != null
-									&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS1 != null
+							&& site.getLte18Changed().antenaTypeS1.length() != 0) {
 						cell = row.getCell(3);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getDistributeJumperLengthS1());
 					}
-					if (site.getLte18Changed().getAntenaTypeS2() != 0
-							| (site.getLte18Changed().getAntenaTypeS2Str() != null
-									&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS2 != null
+							&& site.getLte18Changed().antenaTypeS2.length() != 0) {
 						cell = row.getCell(4);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getDistributeJumperLengthS2());
 					}
-					if (site.getLte18Changed().getAntenaTypeS3() != 0
-							| (site.getLte18Changed().getAntenaTypeS3Str() != null
-									&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS3 != null
+							&& site.getLte18Changed().antenaTypeS3.length() != 0) {
 						cell = row.getCell(5);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getDistributeJumperLengthS3());
 					}
-					if (site.getLte18Changed().getAntenaTypeS4() != 0
-							| (site.getLte18Changed().getAntenaTypeS4Str() != null
-									&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
+					if (site.getLte18Changed().antenaTypeS4 != null
+							&& site.getLte18Changed().antenaTypeS4.length() != 0) {
 						cell = row.getCell(6);
 						cell.setCellType(Cell.CELL_TYPE_STRING);
 						cell.setCellValue(site.getDistributeJumperLengthS3());
@@ -1578,34 +1358,30 @@ public class OutputFiles {
 				row = sheet1.getRow(60);
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				if (site.getUmts21Changed().getAntenaTypeS1() != 0
-						| (site.getUmts21Changed().getAntenaTypeS1Str() != null
-								&& site.getUmts21Changed().getAntenaTypeS1Str().length() != 0)) {
-					cell.setCellValue(site.getUmts21Changed().getElectricalTiltS1());
+				if (site.getUmts21Changed().antenaTypeS1 != null
+						&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
+					cell.setCellValue(site.getUmts21Changed().electricalTiltS1);
 				}
 				row = sheet1.getRow(61);
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				if (site.getUmts21Changed().getAntenaTypeS2() != 0
-						| (site.getUmts21Changed().getAntenaTypeS2Str() != null
-								&& site.getUmts21Changed().getAntenaTypeS2Str().length() != 0)) {
-					cell.setCellValue(site.getUmts21Changed().getElectricalTiltS2());
+				if (site.getUmts21Changed().antenaTypeS2 != null
+						&& site.getUmts21Changed().antenaTypeS2.length() != 0) {
+					cell.setCellValue(site.getUmts21Changed().electricalTiltS2);
 				}
 				row = sheet1.getRow(62);
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				if (site.getUmts21Changed().getAntenaTypeS3() != 0
-						| (site.getUmts21Changed().getAntenaTypeS3Str() != null
-								&& site.getUmts21Changed().getAntenaTypeS3Str().length() != 0)) {
-					cell.setCellValue(site.getUmts21Changed().getElectricalTiltS3());
+				if (site.getUmts21Changed().antenaTypeS3 != null
+						&& site.getUmts21Changed().antenaTypeS3.length() != 0) {
+					cell.setCellValue(site.getUmts21Changed().electricalTiltS3);
 				}
 				row = sheet1.getRow(63);
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				if (site.getUmts21Changed().getAntenaTypeS4() != 0
-						| (site.getUmts21Changed().getAntenaTypeS4Str() != null
-								&& site.getUmts21Changed().getAntenaTypeS4Str().length() != 0)) {
-					cell.setCellValue(site.getUmts21Changed().getElectricalTiltS4());
+				if (site.getUmts21Changed().antenaTypeS4 != null
+						&& site.getUmts21Changed().antenaTypeS4.length() != 0) {
+					cell.setCellValue(site.getUmts21Changed().electricalTiltS4);
 				}
 				row = sheet1.getRow(60);
 				cell = row.getCell(6);
@@ -1847,30 +1623,26 @@ public class OutputFiles {
 				row = sheet1.getRow(66);
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				if (site.getLte18Changed().getAntenaTypeS1() != 0 | (site.getLte18Changed().getAntenaTypeS1Str() != null
-						&& site.getLte18Changed().getAntenaTypeS1Str().length() != 0)) {
-					cell.setCellValue(site.getLte18Changed().getElectricalTiltS1());
+				if (site.getLte18Changed().antenaTypeS1 != null && site.getLte18Changed().antenaTypeS1.length() != 0) {
+					cell.setCellValue(site.getLte18Changed().electricalTiltS1);
 				}
 				row = sheet1.getRow(67);
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				if (site.getLte18Changed().getAntenaTypeS2() != 0 | (site.getLte18Changed().getAntenaTypeS2Str() != null
-						&& site.getLte18Changed().getAntenaTypeS2Str().length() != 0)) {
-					cell.setCellValue(site.getLte18Changed().getElectricalTiltS2());
+				if (site.getLte18Changed().antenaTypeS2 != null && site.getLte18Changed().antenaTypeS2.length() != 0) {
+					cell.setCellValue(site.getLte18Changed().electricalTiltS2);
 				}
 				row = sheet1.getRow(68);
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				if (site.getLte18Changed().getAntenaTypeS3() != 0 | (site.getLte18Changed().getAntenaTypeS3Str() != null
-						&& site.getLte18Changed().getAntenaTypeS3Str().length() != 0)) {
-					cell.setCellValue(site.getLte18Changed().getElectricalTiltS3());
+				if (site.getLte18Changed().antenaTypeS3 != null && site.getLte18Changed().antenaTypeS3.length() != 0) {
+					cell.setCellValue(site.getLte18Changed().electricalTiltS3);
 				}
 				row = sheet1.getRow(69);
 				cell = row.getCell(5);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
-				if (site.getLte18Changed().getAntenaTypeS4() != 0 | (site.getLte18Changed().getAntenaTypeS4Str() != null
-						&& site.getLte18Changed().getAntenaTypeS4Str().length() != 0)) {
-					cell.setCellValue(site.getLte18Changed().getElectricalTiltS4());
+				if (site.getLte18Changed().antenaTypeS4 != null && site.getLte18Changed().antenaTypeS4.length() != 0) {
+					cell.setCellValue(site.getLte18Changed().electricalTiltS4);
 				}
 			}
 
