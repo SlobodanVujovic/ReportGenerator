@@ -173,8 +173,7 @@ public class SiteUmts implements Site {
 	}
 
 	// Find feeder type for all sectors, depending how many sectors there are.
-	public void setFeederSize(FrontWindow fw) {
-		String feederSize = fw.getFeederSize();
+	public void setFeederSize(String feederSize) {
 		if (feederSize.equals("FIBER")) {
 			if (this.numOfSectors >= 1) {
 				this.feederSizeS1 = feederSize;
@@ -251,19 +250,18 @@ public class SiteUmts implements Site {
 	}
 
 	// Find fiber length for all sectors, depending how many sectors there are.
-	public void setFiberLength(FrontWindow fw) {
-		String str = fw.getFiberLength();
+	public void setFiberLength(String fiberLength) {
 		if (this.numOfSectors >= 1) {
-			this.fiberLengthS1 = str;
+			this.fiberLengthS1 = fiberLength;
 		}
 		if (this.numOfSectors >= 2) {
-			this.fiberLengthS2 = str;
+			this.fiberLengthS2 = fiberLength;
 		}
 		if (this.numOfSectors >= 3) {
-			this.fiberLengthS3 = str;
+			this.fiberLengthS3 = fiberLength;
 		}
 		if (this.numOfSectors >= 4) {
-			this.fiberLengthS4 = str;
+			this.fiberLengthS4 = fiberLength;
 		}
 	}
 
@@ -287,8 +285,8 @@ public class SiteUmts implements Site {
 		return this.fiberLengthS4;
 	}
 
-	public void setDistributeJumperLengthS1(FrontWindow fw) {
-		this.distributeJumperLengthS1 = fw.getJumperLengthS1();
+	public void setDistributeJumperLengthS1(String distributeJumperLengthS1) {
+		this.distributeJumperLengthS1 = distributeJumperLengthS1;
 	}
 
 	@Override
@@ -296,8 +294,8 @@ public class SiteUmts implements Site {
 		return this.distributeJumperLengthS1;
 	}
 
-	public void setDistributeJumperLengthS2(FrontWindow fw) {
-		this.distributeJumperLengthS2 = fw.getJumperLengthS2();
+	public void setDistributeJumperLengthS2(String distributeJumperLengthS2) {
+		this.distributeJumperLengthS2 = distributeJumperLengthS2;
 	}
 
 	@Override
@@ -305,8 +303,8 @@ public class SiteUmts implements Site {
 		return this.distributeJumperLengthS2;
 	}
 
-	public void setDistributeJumperLengthS3(FrontWindow fw) {
-		this.distributeJumperLengthS3 = fw.getJumperLengthS3();
+	public void setDistributeJumperLengthS3(String distributeJumperLengthS3) {
+		this.distributeJumperLengthS3 = distributeJumperLengthS3;
 	}
 
 	@Override
@@ -314,8 +312,8 @@ public class SiteUmts implements Site {
 		return this.distributeJumperLengthS3;
 	}
 
-	public void setDistributeJumperLengthS4(FrontWindow fw) {
-		this.distributeJumperLengthS4 = fw.getJumperLengthS4();
+	public void setDistributeJumperLengthS4(String distributeJumperLengthS4) {
+		this.distributeJumperLengthS4 = distributeJumperLengthS4;
 	}
 
 	@Override
@@ -324,19 +322,18 @@ public class SiteUmts implements Site {
 	}
 
 	// Find feeder length for all sectors, depending how many sectors there are.
-	public void setFeederLength(FrontWindow fw) {
-		String str = fw.getFeederLength();
+	public void setFeederLength(String feederLength) {
 		if (this.numOfSectors >= 1) {
-			this.feederLengthS1 = str;
+			this.feederLengthS1 = feederLength;
 		}
 		if (this.numOfSectors >= 2) {
-			this.feederLengthS2 = str;
+			this.feederLengthS2 = feederLength;
 		}
 		if (this.numOfSectors >= 3) {
-			this.feederLengthS3 = str;
+			this.feederLengthS3 = feederLength;
 		}
 		if (this.numOfSectors >= 4) {
-			this.feederLengthS4 = str;
+			this.feederLengthS4 = feederLength;
 		}
 	}
 
@@ -362,19 +359,18 @@ public class SiteUmts implements Site {
 
 	// Find jumper at BTS length for all sectors, depending how many sectors
 	// there are.
-	public void setJumperAtBtsLen(FrontWindow fw) {
-		String str = fw.getJumperAtBtsLength();
+	public void setJumperAtBtsLen(String jumperAtBtsLen) {
 		if (this.numOfSectors >= 1) {
-			this.jumperAtBtsLenS1 = str;
+			this.jumperAtBtsLenS1 = jumperAtBtsLen;
 		}
 		if (this.numOfSectors >= 2) {
-			this.jumperAtBtsLenS2 = str;
+			this.jumperAtBtsLenS2 = jumperAtBtsLen;
 		}
 		if (this.numOfSectors >= 3) {
-			this.jumperAtBtsLenS3 = str;
+			this.jumperAtBtsLenS3 = jumperAtBtsLen;
 		}
 		if (this.numOfSectors >= 4) {
-			this.jumperAtBtsLenS4 = str;
+			this.jumperAtBtsLenS4 = jumperAtBtsLen;
 		}
 	}
 
@@ -400,19 +396,18 @@ public class SiteUmts implements Site {
 
 	// Find jumper before BTS length for all sectors, depending how many sectors
 	// there are.
-	public void setJumpersBeforeMhaLen(FrontWindow fw) {
-		String str = fw.getJumperBeforeMhaLength();
+	public void setJumpersBeforeMhaLen(String jumperBeforeMhaLength) {
 		if (this.numOfSectors >= 1) {
-			this.jumperBeforeMhaLenS1 = str;
+			this.jumperBeforeMhaLenS1 = jumperBeforeMhaLength;
 		}
 		if (this.numOfSectors >= 2) {
-			this.jumperBeforeMhaLenS2 = str;
+			this.jumperBeforeMhaLenS2 = jumperBeforeMhaLength;
 		}
 		if (this.numOfSectors >= 3) {
-			this.jumperBeforeMhaLenS3 = str;
+			this.jumperBeforeMhaLenS3 = jumperBeforeMhaLength;
 		}
 		if (this.numOfSectors >= 4) {
-			this.jumperBeforeMhaLenS4 = str;
+			this.jumperBeforeMhaLenS4 = jumperBeforeMhaLength;
 		}
 	}
 
@@ -438,19 +433,18 @@ public class SiteUmts implements Site {
 
 	// Find jumper after BTS length for all sectors, depending how many sectors
 	// there are.
-	public void setJumpersAfterMhaLen(FrontWindow fw) {
-		String str = fw.getJumperAfterMhaLength();
+	public void setJumpersAfterMhaLen(String jumperAfterMhaLen) {
 		if (this.numOfSectors >= 1) {
-			this.jumperAfterMhaLenS1 = str;
+			this.jumperAfterMhaLenS1 = jumperAfterMhaLen;
 		}
 		if (this.numOfSectors >= 2) {
-			this.jumperAfterMhaLenS2 = str;
+			this.jumperAfterMhaLenS2 = jumperAfterMhaLen;
 		}
 		if (this.numOfSectors >= 3) {
-			this.jumperAfterMhaLenS3 = str;
+			this.jumperAfterMhaLenS3 = jumperAfterMhaLen;
 		}
 		if (this.numOfSectors >= 4) {
-			this.jumperAfterMhaLenS4 = str;
+			this.jumperAfterMhaLenS4 = jumperAfterMhaLen;
 		}
 	}
 
@@ -475,19 +469,18 @@ public class SiteUmts implements Site {
 	}
 
 	// Find number of jumper per sector, depending how many sectors there are.
-	public void setJumperPerSectorNum(FrontWindow fw) {
-		String str = fw.getJumpersPerSector();
+	public void setJumperPerSectorNum(String jumpersPerSector) {
 		if (this.numOfSectors >= 1) {
-			this.jumperPerSectorS1 = str;
+			this.jumperPerSectorS1 = jumpersPerSector;
 		}
 		if (this.numOfSectors >= 2) {
-			this.jumperPerSectorS2 = str;
+			this.jumperPerSectorS2 = jumpersPerSector;
 		}
 		if (this.numOfSectors >= 3) {
-			this.jumperPerSectorS3 = str;
+			this.jumperPerSectorS3 = jumpersPerSector;
 		}
 		if (this.numOfSectors >= 4) {
-			this.jumperPerSectorS4 = str;
+			this.jumperPerSectorS4 = jumpersPerSector;
 		}
 	}
 
@@ -512,19 +505,18 @@ public class SiteUmts implements Site {
 	}
 
 	// Find number of grounds per sector, depending how many sectors there are.
-	public void setGroungNum(FrontWindow fw) {
-		String str = fw.getGroundsNo();
+	public void setGroungNum(String groundsNo) {
 		if (this.numOfSectors >= 1) {
-			this.earthKitNoS1 = str;
+			this.earthKitNoS1 = groundsNo;
 		}
 		if (this.numOfSectors >= 2) {
-			this.earthKitNoS2 = str;
+			this.earthKitNoS2 = groundsNo;
 		}
 		if (this.numOfSectors >= 3) {
-			this.earthKitNoS3 = str;
+			this.earthKitNoS3 = groundsNo;
 		}
 		if (this.numOfSectors >= 4) {
-			this.earthKitNoS4 = str;
+			this.earthKitNoS4 = groundsNo;
 		}
 	}
 
@@ -553,8 +545,8 @@ public class SiteUmts implements Site {
 		return this.instalationType;
 	}
 
-	public void setInstalationType(FrontWindow fw) {
-		this.instalationType = fw.getInstalationTypeStr();
+	public void setInstalationType(String instalationType) {
+		this.instalationType = instalationType;
 	}
 
 	@Override
@@ -562,12 +554,12 @@ public class SiteUmts implements Site {
 		return this.btsCabinetType;
 	}
 
-	public void setBtsCabinetType(FrontWindow fw) {
-		this.btsCabinetType = fw.getBtsCabinet();
+	public void setBtsCabinetType(String btsCabinet) {
+		this.btsCabinetType = btsCabinet;
 	}
 
-	public void setArchitectureType(FrontWindow fw) {
-		this.architectureType = fw.getArchitectureTypeStr();
+	public void setArchitectureType(String architectureType) {
+		this.architectureType = architectureType;
 	}
 
 	@Override
@@ -589,8 +581,8 @@ public class SiteUmts implements Site {
 		return this.sysModule1Loc;
 	}
 
-	public void setSysModule1Loc(FrontWindow fw) {
-		this.sysModule1Loc = fw.getAssembleType();
+	public void setSysModule1Loc(String assembleType) {
+		this.sysModule1Loc = assembleType;
 	}
 
 	@Override
@@ -679,11 +671,8 @@ public class SiteUmts implements Site {
 		return this.rfModule3Type;
 	}
 
-	public void setRfModuleLoc(FrontWindow fw) {
-		String rfModuleLoc = fw.getAssembleRFType();
-		this.rfModule1Loc = rfModuleLoc;
-		this.rfModule2Loc = rfModuleLoc;
-		this.rfModule3Loc = rfModuleLoc;
+	public void setRfModuleLoc(String assembleRFType) {
+		rfModule1Loc = rfModule2Loc = rfModule3Loc = assembleRFType;
 	}
 
 	@Override
@@ -701,8 +690,8 @@ public class SiteUmts implements Site {
 		return this.rfModule3Loc;
 	}
 
-	public void setPowSupplyType(FrontWindow fw) {
-		this.powSupplyType = fw.getPowSupplyType();
+	public void setPowSupplyType(String powSupplyType) {
+		this.powSupplyType = powSupplyType;
 	}
 
 	@Override

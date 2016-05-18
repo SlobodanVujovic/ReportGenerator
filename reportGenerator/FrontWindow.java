@@ -15,6 +15,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+// sve getEast() metode prebaciti na get() metode ali pre toga treba promeniti if petlje GUI-a da bi citali
+// samo jednu stranu GUI-a.
+// Sva East polja GUI-a prebaciti na obicna polja pre nego sto se nastavi sa sredjivanjem klase.
 public class FrontWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel mainPanel, bottomPanel, northPanel, centerPanel, westPanel, eastPanel, westNorthPanel,
@@ -45,16 +48,10 @@ public class FrontWindow extends JFrame {
 			btsCabinetComboEast;
 	private JButton genReportButton, resetButton;
 	private InputFiles iFiles;
-	private String feederSize, feederSizeEast, fiberLength, fiberLengthEast, feederLength, feederLengthEast,
-			jumperLengthS1, jumperLengthS1East, jumperLengthS2, jumperLengthS2East, jumperLengthS3, jumperLengthS3East,
-			jumperLengthS4, jumperLengthS4East, jumperAtBtsLength, jumperAtBtsLengthEast, jumperBeforeMhaLength,
-			jumperBeforeMhaLengthEast, jumperAfterMhaLength, jumperAfterMhaLengthEast, jumpersPerSector,
-			jumpersPerSectorEast, groundsNo, groundsNoEast, instalationTypeStr = "Outdoor",
-			instalationTypeStrEast = "Outdoor", btsCabinet = "Flatpack PRSB 16kW 48V",
-			btsCabinetEast = "Flatpack PRSB 16kW 48V", architectureTypeStr = "Distribute",
-			architectureTypeStrEast = "Distribute", assembleType = "Cabinet", assembleTypeEast = "Cabinet",
-			assembleRFType = "Cabinet", assembleRFTypeEast = "Cabinet", powSupplyType = "Eltek",
-			powSupplyTypeEast = "Eltek", transmissionType = "3g";
+	private String feederSize, fiberLength, feederLength, jumperLengthS1, jumperLengthS2, jumperLengthS3,
+			jumperLengthS4, jumperAtBtsLength, jumperBeforeMhaLength, jumperAfterMhaLength, jumpersPerSector, groundsNo,
+			instalationTypeStr = "Outdoor", btsCabinet = "Flatpack PRSB 16kW 48V", architectureTypeStr = "Distribute",
+			assembleType = "Cabinet", assembleRFType = "Cabinet", powSupplyType = "Eltek", transmissionType = "3g";
 
 	public JRadioButton getUmts() {
 		return umts;
@@ -68,264 +65,128 @@ public class FrontWindow extends JFrame {
 		return this.feederSize;
 	}
 
-	public void setFeederSize(String feederSize) {
-		this.feederSize = feederSize;
-	}
-
 	public String getFeederSizeEast() {
-		return this.feederSizeEast;
-	}
-
-	public void setFeederSizeEast(String feederSizeEast) {
-		this.feederSizeEast = feederSizeEast;
+		return getFeederSize();
 	}
 
 	public String getFiberLength() {
 		return this.fiberLength;
 	}
 
-	public void setFiberLength(String fiberLength) {
-		this.fiberLength = fiberLength;
-	}
-
 	public String getFiberLengthEast() {
-		return this.fiberLengthEast;
-	}
-
-	public void setFiberLengthEast(String fiberLengthEast) {
-		this.fiberLengthEast = fiberLengthEast;
+		return getFiberLength();
 	}
 
 	public String getFeederLength() {
 		return this.feederLength;
 	}
 
-	public void setFeederLength(String feederLength) {
-		this.feederLength = feederLength;
-	}
-
 	public String getFeederLengthEast() {
-		return this.feederLengthEast;
-	}
-
-	public void setFeederLengthEast(String feederLengthEast) {
-		this.feederLengthEast = feederLengthEast;
+		return getFeederLength();
 	}
 
 	public String getJumperLengthS1() {
 		return this.jumperLengthS1;
 	}
 
-	public void setJumperLengthS1(String jumperLengthS1) {
-		this.jumperLengthS1 = jumperLengthS1;
-	}
-
 	public String getJumperLengthS1East() {
-		return this.jumperLengthS1East;
-	}
-
-	public void setJumperLengthS1East(String jumperLengthS1East) {
-		this.jumperLengthS1East = jumperLengthS1East;
+		return getJumperLengthS1();
 	}
 
 	public String getJumperLengthS2() {
 		return this.jumperLengthS2;
 	}
 
-	public void setJumperLengthS2(String jumperLengthS2) {
-		this.jumperLengthS2 = jumperLengthS2;
-	}
-
 	public String getJumperLengthS2East() {
-		return this.jumperLengthS2East;
-	}
-
-	public void setJumperLengthS2East(String jumperLengthS2East) {
-		this.jumperLengthS2East = jumperLengthS2East;
+		return getJumperLengthS2();
 	}
 
 	public String getJumperLengthS3() {
 		return this.jumperLengthS3;
 	}
 
-	public void setJumperLengthS3(String jumperLengthS3) {
-		this.jumperLengthS3 = jumperLengthS3;
-	}
-
 	public String getJumperLengthS3East() {
-		return this.jumperLengthS3East;
-	}
-
-	public void setJumperLengthS3East(String jumperLengthS3East) {
-		this.jumperLengthS3East = jumperLengthS3East;
+		return getJumperLengthS3();
 	}
 
 	public String getJumperLengthS4() {
 		return this.jumperLengthS4;
 	}
 
-	public void setJumperLengthS4(String jumperLengthS4) {
-		this.jumperLengthS4 = jumperLengthS4;
-	}
-
 	public String getJumperLengthS4East() {
-		return this.jumperLengthS4East;
-	}
-
-	public void setJumperLengthS4East(String jumperLengthS4East) {
-		this.jumperLengthS4East = jumperLengthS4East;
+		return getJumperLengthS4();
 	}
 
 	public String getJumperAtBtsLength() {
 		return this.jumperAtBtsLength;
 	}
 
-	public void setJumperAtBtsLength(String jumperAtBtsLength) {
-		this.jumperAtBtsLength = jumperAtBtsLength;
-	}
-
 	public String getJumperAtBtsLengthEast() {
-		return this.jumperAtBtsLengthEast;
-	}
-
-	public void setJumperAtBtsLengthEast(String jumperAtBtsLengthEast) {
-		this.jumperAtBtsLengthEast = jumperAtBtsLengthEast;
+		return getJumperAtBtsLength();
 	}
 
 	public String getJumperBeforeMhaLength() {
 		return this.jumperBeforeMhaLength;
 	}
 
-	public void setJumperBeforeMhaLength(String jumperBeforeMhaLength) {
-		this.jumperBeforeMhaLength = jumperBeforeMhaLength;
-	}
-
 	public String getJumperBeforeMhaLengthEast() {
-		return this.jumperBeforeMhaLengthEast;
-	}
-
-	public void setJumperBeforeMhaLengthEast(String jumperBeforeMhaLengthEast) {
-		this.jumperBeforeMhaLengthEast = jumperBeforeMhaLengthEast;
+		return getJumperBeforeMhaLength();
 	}
 
 	public String getJumperAfterMhaLength() {
 		return this.jumperAfterMhaLength;
 	}
 
-	public void setJumperAfterMhaLength(String jumperAfterMhaLength) {
-		this.jumperAfterMhaLength = jumperAfterMhaLength;
-	}
-
 	public String getJumperAfterMhaLengthEast() {
-		return this.jumperAfterMhaLengthEast;
-	}
-
-	public void setJumperAfterMhaLengthEast(String jumperAfterMhaLengthEast) {
-		this.jumperAfterMhaLengthEast = jumperAfterMhaLengthEast;
+		return getJumperAfterMhaLength();
 	}
 
 	public String getJumpersPerSector() {
 		return this.jumpersPerSector;
 	}
 
-	public void setJumpersPerSector(String jumpersPerSector) {
-		this.jumpersPerSector = jumpersPerSector;
-	}
-
 	public String getJumpersPerSectorEast() {
-		return this.jumpersPerSectorEast;
-	}
-
-	public void setJumpersPerSectorEast(String jumpersPerSectorEast) {
-		this.jumpersPerSectorEast = jumpersPerSectorEast;
+		return getJumpersPerSector();
 	}
 
 	public String getGroundsNo() {
 		return this.groundsNo;
 	}
 
-	public void setGroundsNo(String groundsNo) {
-		this.groundsNo = groundsNo;
-	}
-
 	public String getGroundsNoEast() {
-		return this.groundsNoEast;
-	}
-
-	public void setGroundsNoEast(String groundsNoEast) {
-		this.groundsNoEast = groundsNoEast;
+		return getGroundsNo();
 	}
 
 	public String getInstalationTypeStr() {
 		return this.instalationTypeStr;
 	}
 
-	public void setInstalationTypeStr(String instalationTypeStr) {
-		this.instalationTypeStr = instalationTypeStr;
-	}
-
 	public String getInstalationTypeStrEast() {
-		return this.instalationTypeStrEast;
-	}
-
-	public void setInstalationTypeStrEast(String instalationTypeStrEast) {
-		this.instalationTypeStrEast = instalationTypeStrEast;
-	}
-
-	public void setArchitectureTypeStr(String architectureTypeStr) {
-		this.architectureTypeStr = architectureTypeStr;
+		return getInstalationTypeStr();
 	}
 
 	public String getArchitectureTypeStr() {
 		return this.architectureTypeStr;
 	}
 
-	public void setArchitectureTypeStrEast(String architectureTypeStrEast) {
-		this.architectureTypeStrEast = architectureTypeStrEast;
-	}
-
 	public String getArchitectureTypeStrEast() {
-		return this.architectureTypeStrEast;
+		return getArchitectureTypeStr();
 	}
 
 	public String getBtsCabinet() {
 		return this.btsCabinet;
 	}
 
-	public void setBtsCabinet(String btsCabinet) {
-		this.btsCabinet = btsCabinet;
-	}
-
 	public String getBtsCabinetEast() {
-		return this.btsCabinetEast;
-	}
-
-	public void setBtsCabinetEast(String btsCabinetEast) {
-		this.btsCabinetEast = btsCabinetEast;
+		return getBtsCabinet();
 	}
 
 	public String getAssembleType() {
 		return this.assembleType;
 	}
 
-	public void setAssembleType(String assembleType) {
-		this.assembleType = assembleType;
-	}
-
 	public String getAssembleTypeEast() {
-		return this.assembleTypeEast;
-	}
-
-	public void setAssembleTypeEast(String assembleTypeEast) {
-		this.assembleTypeEast = assembleTypeEast;
-	}
-
-	public void setAssembleRFType(String assembleRFType) {
-		this.assembleRFType = assembleRFType;
-	}
-
-	public void setAssembleRFTypeEast(String assembleRFTypeEast) {
-		this.assembleRFTypeEast = assembleRFTypeEast;
+		return getAssembleType();
 	}
 
 	public String getAssembleRFType() {
@@ -333,31 +194,19 @@ public class FrontWindow extends JFrame {
 	}
 
 	public String getAssembleRFTypeEast() {
-		return this.assembleRFTypeEast;
+		return getAssembleRFType();
 	}
 
 	public String getPowSupplyType() {
 		return this.powSupplyType;
 	}
 
-	public void setPowSupplyType(String powSupplyType) {
-		this.powSupplyType = powSupplyType;
-	}
-
 	public String getPowSupplyTypeEast() {
-		return this.powSupplyTypeEast;
-	}
-
-	public void setPowSupplyTypeEast(String powSupplyTypeEast) {
-		this.powSupplyTypeEast = powSupplyTypeEast;
+		return getPowSupplyType();
 	}
 
 	public String getTransmissionType() {
 		return this.transmissionType;
-	}
-
-	public void setTransmissionType(String transmissionType) {
-		this.transmissionType = transmissionType;
 	}
 
 	public InputFiles getIFiles() {
@@ -367,31 +216,26 @@ public class FrontWindow extends JFrame {
 	// Create front (main) window of program.
 	public void createWindow() {
 		this.iFiles = new InputFiles();
-
-		this.mainPanel = new JPanel(); // This is first panel after JFrame.
-										// Contains only bottomPanel.
-		this.bottomPanel = new JPanel(); // JFrame - mainPanel - bottomPanel.
-											// Contains everything on front
-											// window.
-		this.northPanel = new JPanel(); // Front window is divided in north,
-										// center and south panel. They are in
-										// bottomPanel.
+		// This is first panel after JFrame. Contains only bottomPanel.
+		this.mainPanel = new JPanel();
+		// JFrame - mainPanel - bottomPanel. Contains everything on front window.
+		this.bottomPanel = new JPanel();
+		// Front window is divided in north, center and south panel. They are in bottomPanel.
+		this.northPanel = new JPanel();
 		this.centerPanel = new JPanel(new GridLayout(1, 2));
 		this.southPanel = new JPanel();
 
-		this.westPanel = new JPanel(new GridBagLayout()); // Center panel
-															// contains
-															// westPanel and
-															// eastPanel.
+		// Center panel contains westPanel and eastPanel.
+		this.westPanel = new JPanel(new GridBagLayout());
 		this.eastPanel = new JPanel(new GridBagLayout());
 
 		GridBagConstraints gbc = new GridBagConstraints();
 		GridBagConstraints gbcEast = new GridBagConstraints();
 
-		this.westNorthPanel = new JPanel(); // westPanel contains
-											// westNorthPanel.
-		this.eastNorthPanel = new JPanel(); // eastPanel contains eastNorthPanel
-											// & eastCenterPanel.
+		// westPanel contains westNorthPanel.
+		this.westNorthPanel = new JPanel();
+		// eastPanel contains eastNorthPanel & eastCenterPanel.
+		this.eastNorthPanel = new JPanel();
 
 		this.eastCenterPanel = new JPanel();
 
@@ -602,9 +446,7 @@ public class FrontWindow extends JFrame {
 		this.bottomPanel.add(BorderLayout.CENTER, this.centerPanel);
 		this.bottomPanel.add(BorderLayout.SOUTH, this.southPanel);
 
-		/*
-		 * Create scrolls and attach it to frame. Frame has preferred size.
-		 */
+		// Create scrolls and attach it to frame. Frame has preferred size.
 		JScrollPane frameScrolls = new JScrollPane(bottomPanel);
 		frameScrolls.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		frameScrolls.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -621,18 +463,19 @@ public class FrontWindow extends JFrame {
 		this.westPanel.setBorder(westBorder);
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		gbc.ipady = 91; // Because there is no transmission part in UMTS, here
-						// we add pixels to keep in line arrangement.
+		// Because there is no transmission part in UMTS, here we add pixels to keep in line arrangement.
+		gbc.ipady = 91;
 		gbc.anchor = GridBagConstraints.NORTHWEST;
-		gbc.insets = new Insets(5, 5, 5, 5); // Space around every element in
-												// panel.
+		// Space around every element in panel.
+		gbc.insets = new Insets(5, 5, 5, 5);
 		this.westPanel.add(this.westNorthPanel, gbc);
 
 		// East panel
 		Border eastBorder = BorderFactory.createTitledBorder("LTE");
 		this.eastPanel.setBorder(eastBorder);
-		gbcEast.gridx = 0; // With this we define column and
-		gbcEast.gridy = 0; // row in which we want element.
+		// With this we define column and row in which we want element.
+		gbcEast.gridx = 0;
+		gbcEast.gridy = 0;
 		gbcEast.anchor = GridBagConstraints.WEST;
 		gbcEast.insets = new Insets(5, 5, 5, 5);
 		this.eastPanel.add(this.eastNorthPanel, gbcEast);
@@ -800,21 +643,11 @@ public class FrontWindow extends JFrame {
 		Border transmissionBorder = BorderFactory.createTitledBorder("Transmission goes:");
 		transmissionPanel.setBorder(transmissionBorder);
 		Dimension transmissionDim = new Dimension(130, 71);
-		transmissionPanel.setPreferredSize(transmissionDim); // Because
-																// "Transmission
-																// goes:" is
-																// longer then
-																// bullet
-																// labels, then
-																// it would be
-																// cut off, so
-																// we create
-																// Dimension and
-																// set it as
-																// preferred.
-		transmissionPanel.revalidate(); // We need to validate preferred size,
-										// so
-										// this is mandatory.
+		// Because "Transmission goes:" is longer then bullet labels, then it would be cut off, so we create
+		// Dimension and set it as preferred.
+		transmissionPanel.setPreferredSize(transmissionDim);
+		// We need to validate preferred size, so this is mandatory.
+		transmissionPanel.revalidate();
 		this.eastCenterPanel.add(transmissionPanel);
 		ListenForTransmissionGoes lForTransmissionGoes = new ListenForTransmissionGoes();
 		this.transmission2G.addItemListener(lForTransmissionGoes);
@@ -935,8 +768,8 @@ public class FrontWindow extends JFrame {
 		gbcEast.gridy = 4;
 		this.eastPanel.add(btsAndCabinetComboPanelEast, gbcEast);
 
-		this.pack(); // After adding all elements to JFrame we need to pack it
-						// so that all layers take their action.
+		// After adding all elements to JFrame we need to pack it so that all layers take their action.
+		this.pack();
 		this.windowMandatoryMethods();
 	}
 
@@ -947,13 +780,12 @@ public class FrontWindow extends JFrame {
 		this.setTitle("Report Generator");
 	}
 
-	/*
-	 * When we (un)check UMTS box, UMTS part is (disabled)enabled. Also when is check it search for site code.
-	 */
+	// When we (un)check UMTS box, UMTS part is (disabled)enabled. Also when is check it search for site code.
+
 	public class ListenForUmts implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			InputFiles iFilesUmts = FrontWindow.this.iFiles;
+			InputFiles iFilesUmts = iFiles;
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				if (iFilesUmts.getSiteCode3gStr().equals("xxxyy")) {
 					iFilesUmts.findSiteCodeFromCommissioningReport('U');
@@ -961,105 +793,97 @@ public class FrontWindow extends JFrame {
 					iFilesUmts.sortOutInputFilesToAppropriateVariables();
 				}
 				if (iFilesUmts.getSiteCode3gStr() != null) {
-					FrontWindow.this.westPanel.setEnabled(true);
-					FrontWindow.this.westNorthPanel.setEnabled(true);
-					FrontWindow.this.indoorBTS.setEnabled(true);
-					FrontWindow.this.outdoorBTS.setEnabled(true);
-					FrontWindow.this.commonBTS.setEnabled(true);
-					FrontWindow.this.distributeBTS.setEnabled(true);
-					FrontWindow.this.stackAssembled.setEnabled(true);
-					FrontWindow.this.wallAssembled.setEnabled(true);
-					FrontWindow.this.poleAssembled.setEnabled(true);
-					FrontWindow.this.cabinetAssembled.setEnabled(true);
-					FrontWindow.this.stackAssembledRF.setEnabled(true);
-					FrontWindow.this.wallAssembledRF.setEnabled(true);
-					FrontWindow.this.poleAssembledRF.setEnabled(true);
-					FrontWindow.this.cabinetAssembledRF.setEnabled(true);
-					if (FrontWindow.this.distributeBTS.isSelected()) { // Depending
-																		// on
-																		// architecture
-																		// type
-																		// some
-																		// part
-																		// of
-																		// window
-																		// stay
-																		// gray.
-						FrontWindow.this.fiberLengthLabel.setEnabled(true);
-						FrontWindow.this.fiberLengthTextField.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS1TextField.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS2TextField.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS3TextField.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS4TextField.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS1Label.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS2Label.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS3Label.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS4Label.setEnabled(true);
+					westPanel.setEnabled(true);
+					westNorthPanel.setEnabled(true);
+					indoorBTS.setEnabled(true);
+					outdoorBTS.setEnabled(true);
+					commonBTS.setEnabled(true);
+					distributeBTS.setEnabled(true);
+					stackAssembled.setEnabled(true);
+					wallAssembled.setEnabled(true);
+					poleAssembled.setEnabled(true);
+					cabinetAssembled.setEnabled(true);
+					stackAssembledRF.setEnabled(true);
+					wallAssembledRF.setEnabled(true);
+					poleAssembledRF.setEnabled(true);
+					cabinetAssembledRF.setEnabled(true);
+					// Depending on architecture type some part of window stay gray.
+					if (distributeBTS.isSelected()) {
+						fiberLengthLabel.setEnabled(true);
+						fiberLengthTextField.setEnabled(true);
+						distributeJumperLengthS1TextField.setEnabled(true);
+						distributeJumperLengthS2TextField.setEnabled(true);
+						distributeJumperLengthS3TextField.setEnabled(true);
+						distributeJumperLengthS4TextField.setEnabled(true);
+						distributeJumperLengthS1Label.setEnabled(true);
+						distributeJumperLengthS2Label.setEnabled(true);
+						distributeJumperLengthS3Label.setEnabled(true);
+						distributeJumperLengthS4Label.setEnabled(true);
 					}
-					if (FrontWindow.this.commonBTS.isSelected()) {
-						FrontWindow.this.feederTypeCombo.setEnabled(true);
-						FrontWindow.this.feederLengthTextField.setEnabled(true);
-						FrontWindow.this.groundsNoTextField.setEnabled(true);
-						FrontWindow.this.commonJumperAtBtsLengthTextField.setEnabled(true);
-						FrontWindow.this.commonJumperBeforeMhaLengthTextField.setEnabled(true);
-						FrontWindow.this.commonJumperAfterMhaLengthTextField.setEnabled(true);
-						FrontWindow.this.commonJumperPerSectorTextField.setEnabled(true);
-						FrontWindow.this.feederLengthLabel.setEnabled(true);
-						FrontWindow.this.groundsNoLabel.setEnabled(true);
-						FrontWindow.this.commonJumperAtBtsLengthLabel.setEnabled(true);
-						FrontWindow.this.commonJumperBeforeMhaLengthLabel.setEnabled(true);
-						FrontWindow.this.commonJumperAfterMhaLengthLabel.setEnabled(true);
-						FrontWindow.this.commonJumperPerSectorLabel.setEnabled(true);
-						FrontWindow.this.feederTypeLabel.setEnabled(true);
+					if (commonBTS.isSelected()) {
+						feederTypeCombo.setEnabled(true);
+						feederLengthTextField.setEnabled(true);
+						groundsNoTextField.setEnabled(true);
+						commonJumperAtBtsLengthTextField.setEnabled(true);
+						commonJumperBeforeMhaLengthTextField.setEnabled(true);
+						commonJumperAfterMhaLengthTextField.setEnabled(true);
+						commonJumperPerSectorTextField.setEnabled(true);
+						feederLengthLabel.setEnabled(true);
+						groundsNoLabel.setEnabled(true);
+						commonJumperAtBtsLengthLabel.setEnabled(true);
+						commonJumperBeforeMhaLengthLabel.setEnabled(true);
+						commonJumperAfterMhaLengthLabel.setEnabled(true);
+						commonJumperPerSectorLabel.setEnabled(true);
+						feederTypeLabel.setEnabled(true);
 					}
-					FrontWindow.this.btsCabinetLabel.setEnabled(true);
-					FrontWindow.this.btsCabinetCombo.setEnabled(true);
-					FrontWindow.this.powSupplyCombo.setEnabled(true);
-					FrontWindow.this.powSupplyLabel.setEnabled(true);
+					btsCabinetLabel.setEnabled(true);
+					btsCabinetCombo.setEnabled(true);
+					powSupplyCombo.setEnabled(true);
+					powSupplyLabel.setEnabled(true);
 				}
 			} else {
-				FrontWindow.this.westPanel.setEnabled(false);
-				FrontWindow.this.westNorthPanel.setEnabled(false);
-				FrontWindow.this.indoorBTS.setEnabled(false);
-				FrontWindow.this.outdoorBTS.setEnabled(false);
-				FrontWindow.this.commonBTS.setEnabled(false);
-				FrontWindow.this.distributeBTS.setEnabled(false);
-				FrontWindow.this.stackAssembled.setEnabled(false);
-				FrontWindow.this.wallAssembled.setEnabled(false);
-				FrontWindow.this.poleAssembled.setEnabled(false);
-				FrontWindow.this.cabinetAssembled.setEnabled(false);
-				FrontWindow.this.stackAssembledRF.setEnabled(false);
-				FrontWindow.this.wallAssembledRF.setEnabled(false);
-				FrontWindow.this.poleAssembledRF.setEnabled(false);
-				FrontWindow.this.cabinetAssembledRF.setEnabled(false);
-				FrontWindow.this.fiberLengthLabel.setEnabled(false);
-				FrontWindow.this.fiberLengthTextField.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS1TextField.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS2TextField.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS3TextField.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS4TextField.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS1Label.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS2Label.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS3Label.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS4Label.setEnabled(false);
-				FrontWindow.this.feederTypeCombo.setEnabled(false);
-				FrontWindow.this.feederLengthTextField.setEnabled(false);
-				FrontWindow.this.groundsNoTextField.setEnabled(false);
-				FrontWindow.this.commonJumperAtBtsLengthTextField.setEnabled(false);
-				FrontWindow.this.commonJumperBeforeMhaLengthTextField.setEnabled(false);
-				FrontWindow.this.commonJumperAfterMhaLengthTextField.setEnabled(false);
-				FrontWindow.this.commonJumperPerSectorTextField.setEnabled(false);
-				FrontWindow.this.feederLengthLabel.setEnabled(false);
-				FrontWindow.this.groundsNoLabel.setEnabled(false);
-				FrontWindow.this.commonJumperAtBtsLengthLabel.setEnabled(false);
-				FrontWindow.this.commonJumperBeforeMhaLengthLabel.setEnabled(false);
-				FrontWindow.this.commonJumperAfterMhaLengthLabel.setEnabled(false);
-				FrontWindow.this.commonJumperPerSectorLabel.setEnabled(false);
-				FrontWindow.this.feederTypeLabel.setEnabled(false);
-				FrontWindow.this.btsCabinetLabel.setEnabled(false);
-				FrontWindow.this.btsCabinetCombo.setEnabled(false);
-				FrontWindow.this.powSupplyCombo.setEnabled(false);
-				FrontWindow.this.powSupplyLabel.setEnabled(false);
+				westPanel.setEnabled(false);
+				westNorthPanel.setEnabled(false);
+				indoorBTS.setEnabled(false);
+				outdoorBTS.setEnabled(false);
+				commonBTS.setEnabled(false);
+				distributeBTS.setEnabled(false);
+				stackAssembled.setEnabled(false);
+				wallAssembled.setEnabled(false);
+				poleAssembled.setEnabled(false);
+				cabinetAssembled.setEnabled(false);
+				stackAssembledRF.setEnabled(false);
+				wallAssembledRF.setEnabled(false);
+				poleAssembledRF.setEnabled(false);
+				cabinetAssembledRF.setEnabled(false);
+				fiberLengthLabel.setEnabled(false);
+				fiberLengthTextField.setEnabled(false);
+				distributeJumperLengthS1TextField.setEnabled(false);
+				distributeJumperLengthS2TextField.setEnabled(false);
+				distributeJumperLengthS3TextField.setEnabled(false);
+				distributeJumperLengthS4TextField.setEnabled(false);
+				distributeJumperLengthS1Label.setEnabled(false);
+				distributeJumperLengthS2Label.setEnabled(false);
+				distributeJumperLengthS3Label.setEnabled(false);
+				distributeJumperLengthS4Label.setEnabled(false);
+				feederTypeCombo.setEnabled(false);
+				feederLengthTextField.setEnabled(false);
+				groundsNoTextField.setEnabled(false);
+				commonJumperAtBtsLengthTextField.setEnabled(false);
+				commonJumperBeforeMhaLengthTextField.setEnabled(false);
+				commonJumperAfterMhaLengthTextField.setEnabled(false);
+				commonJumperPerSectorTextField.setEnabled(false);
+				feederLengthLabel.setEnabled(false);
+				groundsNoLabel.setEnabled(false);
+				commonJumperAtBtsLengthLabel.setEnabled(false);
+				commonJumperBeforeMhaLengthLabel.setEnabled(false);
+				commonJumperAfterMhaLengthLabel.setEnabled(false);
+				commonJumperPerSectorLabel.setEnabled(false);
+				feederTypeLabel.setEnabled(false);
+				btsCabinetLabel.setEnabled(false);
+				btsCabinetCombo.setEnabled(false);
+				powSupplyCombo.setEnabled(false);
+				powSupplyLabel.setEnabled(false);
 			}
 		}
 	}
@@ -1068,7 +892,7 @@ public class FrontWindow extends JFrame {
 	public class ListenForLte implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			InputFiles iFilesLte = FrontWindow.this.iFiles;
+			InputFiles iFilesLte = iFiles;
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				if (iFilesLte.getSiteCode4gStr().equals("xxxyy")) {
 					iFilesLte.findSiteCodeFromCommissioningReport('L');
@@ -1076,132 +900,130 @@ public class FrontWindow extends JFrame {
 					iFilesLte.sortOutInputFilesToAppropriateVariables();
 				}
 				if (iFilesLte.getSiteCode4gStr() != null) {
-					FrontWindow.this.eastPanel.setEnabled(true);
-					FrontWindow.this.eastNorthPanel.setEnabled(true);
-					FrontWindow.this.eastCenterPanel.setEnabled(true);
-					FrontWindow.this.indoorBTSEast.setEnabled(true);
-					FrontWindow.this.outdoorBTSEast.setEnabled(true);
-					FrontWindow.this.commonBTSEast.setEnabled(true);
-					FrontWindow.this.distributeBTSEast.setEnabled(true);
-					FrontWindow.this.stackAssembledEast.setEnabled(true);
-					FrontWindow.this.wallAssembledEast.setEnabled(true);
-					FrontWindow.this.poleAssembledEast.setEnabled(true);
-					FrontWindow.this.cabinetAssembledEast.setEnabled(true);
-					FrontWindow.this.stackAssembledRFEast.setEnabled(true);
-					FrontWindow.this.wallAssembledRFEast.setEnabled(true);
-					FrontWindow.this.poleAssembledRFEast.setEnabled(true);
-					FrontWindow.this.cabinetAssembledRFEast.setEnabled(true);
-					FrontWindow.this.transmission2G.setEnabled(true);
-					FrontWindow.this.transmission3G.setEnabled(true);
-					if (FrontWindow.this.distributeBTSEast.isSelected()) {
-						FrontWindow.this.fiberLengthLabelEast.setEnabled(true);
-						FrontWindow.this.fiberLengthTextFieldEast.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS1TextFieldEast.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS2TextFieldEast.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS3TextFieldEast.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS4TextFieldEast.setEnabled(true);
-						FrontWindow.this.fiberLengthLabelEast.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS1LabelEast.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS2LabelEast.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS3LabelEast.setEnabled(true);
-						FrontWindow.this.distributeJumperLengthS4LabelEast.setEnabled(true);
+					eastPanel.setEnabled(true);
+					eastNorthPanel.setEnabled(true);
+					eastCenterPanel.setEnabled(true);
+					indoorBTSEast.setEnabled(true);
+					outdoorBTSEast.setEnabled(true);
+					commonBTSEast.setEnabled(true);
+					distributeBTSEast.setEnabled(true);
+					stackAssembledEast.setEnabled(true);
+					wallAssembledEast.setEnabled(true);
+					poleAssembledEast.setEnabled(true);
+					cabinetAssembledEast.setEnabled(true);
+					stackAssembledRFEast.setEnabled(true);
+					wallAssembledRFEast.setEnabled(true);
+					poleAssembledRFEast.setEnabled(true);
+					cabinetAssembledRFEast.setEnabled(true);
+					transmission2G.setEnabled(true);
+					transmission3G.setEnabled(true);
+					if (distributeBTSEast.isSelected()) {
+						fiberLengthLabelEast.setEnabled(true);
+						fiberLengthTextFieldEast.setEnabled(true);
+						distributeJumperLengthS1TextFieldEast.setEnabled(true);
+						distributeJumperLengthS2TextFieldEast.setEnabled(true);
+						distributeJumperLengthS3TextFieldEast.setEnabled(true);
+						distributeJumperLengthS4TextFieldEast.setEnabled(true);
+						fiberLengthLabelEast.setEnabled(true);
+						distributeJumperLengthS1LabelEast.setEnabled(true);
+						distributeJumperLengthS2LabelEast.setEnabled(true);
+						distributeJumperLengthS3LabelEast.setEnabled(true);
+						distributeJumperLengthS4LabelEast.setEnabled(true);
 					}
-					if (FrontWindow.this.commonBTSEast.isSelected()) {
-						FrontWindow.this.feederTypeComboEast.setEnabled(true);
-						FrontWindow.this.feederLengthTextFieldEast.setEnabled(true);
-						FrontWindow.this.groundsNoTextFieldEast.setEnabled(true);
-						FrontWindow.this.commonJumperAtBtsLengthTextFieldEast.setEnabled(true);
-						FrontWindow.this.commonJumperBeforeMhaLengthTextFieldEast.setEnabled(true);
-						FrontWindow.this.commonJumperAfterMhaLengthTextFieldEast.setEnabled(true);
-						FrontWindow.this.commonJumperPerSectorTextFieldEast.setEnabled(true);
-						FrontWindow.this.feederLengthLabelEast.setEnabled(true);
-						FrontWindow.this.groundsNoLabelEast.setEnabled(true);
-						FrontWindow.this.commonJumperAtBtsLengthLabelEast.setEnabled(true);
-						FrontWindow.this.commonJumperBeforeMhaLengthLabelEast.setEnabled(true);
-						FrontWindow.this.commonJumperAfterMhaLengthLabelEast.setEnabled(true);
-						FrontWindow.this.commonJumperPerSectorLabelEast.setEnabled(true);
-						FrontWindow.this.feederTypeLabelEast.setEnabled(true);
+					if (commonBTSEast.isSelected()) {
+						feederTypeComboEast.setEnabled(true);
+						feederLengthTextFieldEast.setEnabled(true);
+						groundsNoTextFieldEast.setEnabled(true);
+						commonJumperAtBtsLengthTextFieldEast.setEnabled(true);
+						commonJumperBeforeMhaLengthTextFieldEast.setEnabled(true);
+						commonJumperAfterMhaLengthTextFieldEast.setEnabled(true);
+						commonJumperPerSectorTextFieldEast.setEnabled(true);
+						feederLengthLabelEast.setEnabled(true);
+						groundsNoLabelEast.setEnabled(true);
+						commonJumperAtBtsLengthLabelEast.setEnabled(true);
+						commonJumperBeforeMhaLengthLabelEast.setEnabled(true);
+						commonJumperAfterMhaLengthLabelEast.setEnabled(true);
+						commonJumperPerSectorLabelEast.setEnabled(true);
+						feederTypeLabelEast.setEnabled(true);
 					}
-					FrontWindow.this.btsCabinetLabelEast.setEnabled(true);
-					FrontWindow.this.btsCabinetComboEast.setEnabled(true);
-					FrontWindow.this.powSupplyComboEast.setEnabled(true);
-					FrontWindow.this.powSupplyLabelEast.setEnabled(true);
+					btsCabinetLabelEast.setEnabled(true);
+					btsCabinetComboEast.setEnabled(true);
+					powSupplyComboEast.setEnabled(true);
+					powSupplyLabelEast.setEnabled(true);
 				}
 			} else {
-				FrontWindow.this.eastPanel.setEnabled(false);
-				FrontWindow.this.eastNorthPanel.setEnabled(false);
-				FrontWindow.this.eastCenterPanel.setEnabled(false);
-				FrontWindow.this.indoorBTSEast.setEnabled(false);
-				FrontWindow.this.outdoorBTSEast.setEnabled(false);
-				FrontWindow.this.commonBTSEast.setEnabled(false);
-				FrontWindow.this.distributeBTSEast.setEnabled(false);
-				FrontWindow.this.stackAssembledEast.setEnabled(false);
-				FrontWindow.this.wallAssembledEast.setEnabled(false);
-				FrontWindow.this.poleAssembledEast.setEnabled(false);
-				FrontWindow.this.cabinetAssembledEast.setEnabled(false);
-				FrontWindow.this.stackAssembledRFEast.setEnabled(false);
-				FrontWindow.this.wallAssembledRFEast.setEnabled(false);
-				FrontWindow.this.poleAssembledRFEast.setEnabled(false);
-				FrontWindow.this.cabinetAssembledRFEast.setEnabled(false);
-				FrontWindow.this.transmission2G.setEnabled(false);
-				FrontWindow.this.transmission3G.setEnabled(false);
-				FrontWindow.this.fiberLengthLabelEast.setEnabled(false);
-				FrontWindow.this.fiberLengthTextFieldEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS1TextFieldEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS2TextFieldEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS3TextFieldEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS4TextFieldEast.setEnabled(false);
-				FrontWindow.this.fiberLengthLabelEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS1LabelEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS2LabelEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS3LabelEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS4LabelEast.setEnabled(false);
-				FrontWindow.this.feederTypeComboEast.setEnabled(false);
-				FrontWindow.this.feederLengthTextFieldEast.setEnabled(false);
-				FrontWindow.this.groundsNoTextFieldEast.setEnabled(false);
-				FrontWindow.this.commonJumperAtBtsLengthTextFieldEast.setEnabled(false);
-				FrontWindow.this.commonJumperBeforeMhaLengthTextFieldEast.setEnabled(false);
-				FrontWindow.this.commonJumperAfterMhaLengthTextFieldEast.setEnabled(false);
-				FrontWindow.this.commonJumperPerSectorTextFieldEast.setEnabled(false);
-				FrontWindow.this.feederLengthLabelEast.setEnabled(false);
-				FrontWindow.this.groundsNoLabelEast.setEnabled(false);
-				FrontWindow.this.commonJumperAtBtsLengthLabelEast.setEnabled(false);
-				FrontWindow.this.commonJumperBeforeMhaLengthLabelEast.setEnabled(false);
-				FrontWindow.this.commonJumperAfterMhaLengthLabelEast.setEnabled(false);
-				FrontWindow.this.commonJumperPerSectorLabelEast.setEnabled(false);
-				FrontWindow.this.feederTypeLabelEast.setEnabled(false);
-				FrontWindow.this.btsCabinetLabelEast.setEnabled(false);
-				FrontWindow.this.btsCabinetComboEast.setEnabled(false);
-				FrontWindow.this.powSupplyComboEast.setEnabled(false);
-				FrontWindow.this.powSupplyLabelEast.setEnabled(false);
+				eastPanel.setEnabled(false);
+				eastNorthPanel.setEnabled(false);
+				eastCenterPanel.setEnabled(false);
+				indoorBTSEast.setEnabled(false);
+				outdoorBTSEast.setEnabled(false);
+				commonBTSEast.setEnabled(false);
+				distributeBTSEast.setEnabled(false);
+				stackAssembledEast.setEnabled(false);
+				wallAssembledEast.setEnabled(false);
+				poleAssembledEast.setEnabled(false);
+				cabinetAssembledEast.setEnabled(false);
+				stackAssembledRFEast.setEnabled(false);
+				wallAssembledRFEast.setEnabled(false);
+				poleAssembledRFEast.setEnabled(false);
+				cabinetAssembledRFEast.setEnabled(false);
+				transmission2G.setEnabled(false);
+				transmission3G.setEnabled(false);
+				fiberLengthLabelEast.setEnabled(false);
+				fiberLengthTextFieldEast.setEnabled(false);
+				distributeJumperLengthS1TextFieldEast.setEnabled(false);
+				distributeJumperLengthS2TextFieldEast.setEnabled(false);
+				distributeJumperLengthS3TextFieldEast.setEnabled(false);
+				distributeJumperLengthS4TextFieldEast.setEnabled(false);
+				fiberLengthLabelEast.setEnabled(false);
+				distributeJumperLengthS1LabelEast.setEnabled(false);
+				distributeJumperLengthS2LabelEast.setEnabled(false);
+				distributeJumperLengthS3LabelEast.setEnabled(false);
+				distributeJumperLengthS4LabelEast.setEnabled(false);
+				feederTypeComboEast.setEnabled(false);
+				feederLengthTextFieldEast.setEnabled(false);
+				groundsNoTextFieldEast.setEnabled(false);
+				commonJumperAtBtsLengthTextFieldEast.setEnabled(false);
+				commonJumperBeforeMhaLengthTextFieldEast.setEnabled(false);
+				commonJumperAfterMhaLengthTextFieldEast.setEnabled(false);
+				commonJumperPerSectorTextFieldEast.setEnabled(false);
+				feederLengthLabelEast.setEnabled(false);
+				groundsNoLabelEast.setEnabled(false);
+				commonJumperAtBtsLengthLabelEast.setEnabled(false);
+				commonJumperBeforeMhaLengthLabelEast.setEnabled(false);
+				commonJumperAfterMhaLengthLabelEast.setEnabled(false);
+				commonJumperPerSectorLabelEast.setEnabled(false);
+				feederTypeLabelEast.setEnabled(false);
+				btsCabinetLabelEast.setEnabled(false);
+				btsCabinetComboEast.setEnabled(false);
+				powSupplyComboEast.setEnabled(false);
+				powSupplyLabelEast.setEnabled(false);
 			}
 		}
 	}
 
-	/*
-	 * Here we start with gathering of informations necessary for report and then populate report.
-	 */
+	// Here we start with gathering of informations necessary for report and then populate report.
 	public class ListenForGenReportButton implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == FrontWindow.this.genReportButton) {
-				if (FrontWindow.this.umts.isSelected()) {
-					if (FrontWindow.this.distributeBTS.isSelected()) {
-						setFeederSize("FIBER");
-						setFiberLength(FrontWindow.this.fiberLengthTextField.getText());
-						setJumperLengthS1(FrontWindow.this.distributeJumperLengthS1TextField.getText());
-						setJumperLengthS2(FrontWindow.this.distributeJumperLengthS2TextField.getText());
-						setJumperLengthS3(FrontWindow.this.distributeJumperLengthS3TextField.getText());
-						setJumperLengthS4(FrontWindow.this.distributeJumperLengthS4TextField.getText());
+			if (e.getSource() == genReportButton) {
+				if (umts.isSelected()) {
+					if (distributeBTS.isSelected()) {
+						feederSize = "FIBER";
+						fiberLength = fiberLengthTextField.getText();
+						jumperLengthS1 = distributeJumperLengthS1TextField.getText();
+						jumperLengthS2 = distributeJumperLengthS2TextField.getText();
+						jumperLengthS3 = distributeJumperLengthS3TextField.getText();
+						jumperLengthS4 = distributeJumperLengthS4TextField.getText();
 					}
-					if (FrontWindow.this.commonBTS.isSelected()) {
-						setFeederSize((String) FrontWindow.this.feederTypeCombo.getSelectedItem());
-						setFeederLength(FrontWindow.this.feederLengthTextField.getText());
-						setJumperAtBtsLength(FrontWindow.this.commonJumperAtBtsLengthTextField.getText());
-						setJumperBeforeMhaLength(FrontWindow.this.commonJumperBeforeMhaLengthTextField.getText());
-						setJumperAfterMhaLength(FrontWindow.this.commonJumperAfterMhaLengthTextField.getText());
-						setJumpersPerSector(FrontWindow.this.commonJumperPerSectorTextField.getText());
-						setGroundsNo(FrontWindow.this.groundsNoTextField.getText());
+					if (commonBTS.isSelected()) {
+						feederSize = (String) feederTypeCombo.getSelectedItem();
+						feederLength = feederLengthTextField.getText();
+						jumperAtBtsLength = commonJumperAtBtsLengthTextField.getText();
+						jumperBeforeMhaLength = commonJumperBeforeMhaLengthTextField.getText();
+						jumperAfterMhaLength = commonJumperAfterMhaLengthTextField.getText();
+						jumpersPerSector = commonJumperPerSectorTextField.getText();
+						groundsNo = groundsNoTextField.getText();
 					}
 					SiteUmts siteUmts = new SiteUmts();
 					siteUmts.setSiteCode(getIFiles());
@@ -1211,39 +1033,39 @@ public class FrontWindow extends JFrame {
 					siteUmts.setNumOfSectors(siteUmts.getUmts21Changed());
 					siteUmts.setMhaType(getIFiles());
 					siteUmts.setRttaType(getIFiles());
-					if (FrontWindow.this.distributeBTS.isSelected()) {
-						siteUmts.setFeederSize(FrontWindow.this);
-						siteUmts.setFiberLength(FrontWindow.this);
-						siteUmts.setDistributeJumperLengthS1(FrontWindow.this);
-						siteUmts.setDistributeJumperLengthS2(FrontWindow.this);
-						siteUmts.setDistributeJumperLengthS3(FrontWindow.this);
-						siteUmts.setDistributeJumperLengthS4(FrontWindow.this);
+					if (distributeBTS.isSelected()) {
+						siteUmts.setFeederSize(getFeederSize());
+						siteUmts.setFiberLength(getFiberLength());
+						siteUmts.setDistributeJumperLengthS1(getJumperLengthS1());
+						siteUmts.setDistributeJumperLengthS2(getJumperLengthS2());
+						siteUmts.setDistributeJumperLengthS3(getJumperLengthS3());
+						siteUmts.setDistributeJumperLengthS4(getJumperLengthS4());
 					}
-					if (FrontWindow.this.commonBTS.isSelected()) {
-						siteUmts.setFeederSize(FrontWindow.this);
-						siteUmts.setFeederLength(FrontWindow.this);
-						siteUmts.setJumperAtBtsLen(FrontWindow.this);
-						siteUmts.setJumpersBeforeMhaLen(FrontWindow.this);
-						siteUmts.setJumpersAfterMhaLen(FrontWindow.this);
-						siteUmts.setJumperPerSectorNum(FrontWindow.this);
-						siteUmts.setGroungNum(FrontWindow.this);
+					if (commonBTS.isSelected()) {
+						siteUmts.setFeederSize(getFeederSize());
+						siteUmts.setFeederLength(getFeederLength());
+						siteUmts.setJumperAtBtsLen(getJumperAtBtsLength());
+						siteUmts.setJumpersBeforeMhaLen(getJumperBeforeMhaLength());
+						siteUmts.setJumpersAfterMhaLen(getJumperAfterMhaLength());
+						siteUmts.setJumperPerSectorNum(getJumpersPerSector());
+						siteUmts.setGroungNum(getGroundsNo());
 					}
-					if (FrontWindow.this.indoorBTS.isSelected() | FrontWindow.this.outdoorBTS.isSelected()) {
-						siteUmts.setInstalationType(FrontWindow.this);
+					if (indoorBTS.isSelected() | outdoorBTS.isSelected()) {
+						siteUmts.setInstalationType(getInstalationTypeStr());
 					}
-					if (FrontWindow.this.distributeBTS.isSelected() | FrontWindow.this.commonBTS.isSelected()) {
-						siteUmts.setArchitectureType(FrontWindow.this);
+					if (distributeBTS.isSelected() | commonBTS.isSelected()) {
+						siteUmts.setArchitectureType(getArchitectureTypeStr());
 					}
-					siteUmts.setBtsCabinetType(FrontWindow.this);
+					siteUmts.setBtsCabinetType(getBtsCabinet());
 					siteUmts.setSysModule1Type(getIFiles());
-					siteUmts.setSysModule1Loc(FrontWindow.this);
+					siteUmts.setSysModule1Loc(getAssembleType());
 					siteUmts.setTransModuleType(getIFiles());
 					siteUmts.setE1LinesNo(getIFiles());
 					siteUmts.setGbEthElectLinesNo(getIFiles());
 					siteUmts.setGbEthOptLinesNo(getIFiles());
 					siteUmts.setRfModulesType(getIFiles());
-					siteUmts.setRfModuleLoc(FrontWindow.this);
-					siteUmts.setPowSupplyType(FrontWindow.this);
+					siteUmts.setRfModuleLoc(getAssembleRFType());
+					siteUmts.setPowSupplyType(getPowSupplyType());
 					siteUmts.setPowerSypplyParameters();
 					siteUmts.setSwVersion(getIFiles());
 					siteUmts.setIpAdresses(getIFiles());
@@ -1256,26 +1078,25 @@ public class FrontWindow extends JFrame {
 					siteUmts.setSiteInfo(getIFiles());
 					OutputFiles report = new OutputFiles();
 					report.createTargetFile(siteUmts);
-					report.populateTargetFile(siteUmts, FrontWindow.this);
+					report.populateTargetFile(siteUmts, getUmts().isSelected(), getLte().isSelected());
 				}
-				if (FrontWindow.this.lte.isSelected()) {
-					if (FrontWindow.this.distributeBTSEast.isSelected()) {
-						setFeederSizeEast("FIBER");
-						setFiberLengthEast(FrontWindow.this.fiberLengthTextFieldEast.getText());
-						setJumperLengthS1East(FrontWindow.this.distributeJumperLengthS1TextFieldEast.getText());
-						setJumperLengthS2East(FrontWindow.this.distributeJumperLengthS2TextFieldEast.getText());
-						setJumperLengthS3East(FrontWindow.this.distributeJumperLengthS3TextFieldEast.getText());
-						setJumperLengthS4East(FrontWindow.this.distributeJumperLengthS4TextFieldEast.getText());
+				if (lte.isSelected()) {
+					if (distributeBTSEast.isSelected()) {
+						feederSize = "FIBER";
+						fiberLength = fiberLengthTextFieldEast.getText();
+						jumperLengthS1 = distributeJumperLengthS1TextFieldEast.getText();
+						jumperLengthS2 = distributeJumperLengthS2TextFieldEast.getText();
+						jumperLengthS3 = distributeJumperLengthS3TextFieldEast.getText();
+						jumperLengthS4 = distributeJumperLengthS4TextFieldEast.getText();
 					}
-					if (FrontWindow.this.commonBTSEast.isSelected()) {
-						setFeederSizeEast((String) FrontWindow.this.feederTypeComboEast.getSelectedItem());
-						setFeederLengthEast(FrontWindow.this.feederLengthTextFieldEast.getText());
-						setJumperAtBtsLengthEast(FrontWindow.this.commonJumperAtBtsLengthTextFieldEast.getText());
-						setJumperBeforeMhaLengthEast(
-								FrontWindow.this.commonJumperBeforeMhaLengthTextFieldEast.getText());
-						setJumperAfterMhaLengthEast(FrontWindow.this.commonJumperAfterMhaLengthTextFieldEast.getText());
-						setJumpersPerSectorEast(FrontWindow.this.commonJumperPerSectorTextFieldEast.getText());
-						setGroundsNoEast(FrontWindow.this.groundsNoTextFieldEast.getText());
+					if (commonBTSEast.isSelected()) {
+						feederSize = (String) feederTypeComboEast.getSelectedItem();
+						feederLength = feederLengthTextFieldEast.getText();
+						jumperAtBtsLength = commonJumperAtBtsLengthTextFieldEast.getText();
+						jumperBeforeMhaLength = commonJumperBeforeMhaLengthTextFieldEast.getText();
+						jumperAfterMhaLength = commonJumperAfterMhaLengthTextFieldEast.getText();
+						jumpersPerSector = commonJumperPerSectorTextFieldEast.getText();
+						groundsNo = groundsNoTextFieldEast.getText();
 					}
 					SiteLte siteLte = new SiteLte();
 					siteLte.setSiteCode(getIFiles());
@@ -1284,53 +1105,53 @@ public class FrontWindow extends JFrame {
 					siteLte.antenaChanged(getIFiles());
 					siteLte.setNumOfSectors(siteLte.getLte18Changed());
 					siteLte.setMhaType(getIFiles());
-					siteLte.setOverTransSiteCode(FrontWindow.this);
+					siteLte.setOverTransSiteCode(getTransmissionType());
 					if (siteLte.getOverTransSiteCode().charAt(2) == 'U') {
-						FrontWindow.this.iFiles.setCrOfTransmissionForLteOver3g(siteLte.getOverTransSiteCode());
+						iFiles.setCrOfTransmissionForLteOver3g(siteLte.getOverTransSiteCode());
 						siteLte.setOverTransModuleOver3g(getIFiles());
 						siteLte.setOverE1LinesNo(getIFiles());
 						siteLte.setOverGbEthElectLinesNo(getIFiles());
 						siteLte.setOverGbEthOptLinesNo(getIFiles());
 					} else {
-						FrontWindow.this.iFiles.setCrOfTransmissionForLteOver2g();
+						iFiles.setCrOfTransmissionForLteOver2g();
 						siteLte.setOverTransModuleOver2g(getIFiles());
 						siteLte.parseXmlFileForE1LinesNo(getIFiles());
 						siteLte.parseXmlFileForGbEthLinesNo(getIFiles());
 					}
 					siteLte.setRttaType(getIFiles());
-					if (FrontWindow.this.distributeBTSEast.isSelected()) {
-						siteLte.setFeederSize(FrontWindow.this);
-						siteLte.setFiberLength(FrontWindow.this);
-						siteLte.setDistributeJumperLengthS1(FrontWindow.this);
-						siteLte.setDistributeJumperLengthS2(FrontWindow.this);
-						siteLte.setDistributeJumperLengthS3(FrontWindow.this);
-						siteLte.setDistributeJumperLengthS4(FrontWindow.this);
+					if (distributeBTSEast.isSelected()) {
+						siteLte.setFeederSize(getFeederSizeEast());
+						siteLte.setFiberLength(getFiberLengthEast());
+						siteLte.setDistributeJumperLengthS1(getJumperLengthS1East());
+						siteLte.setDistributeJumperLengthS2(getJumperLengthS2East());
+						siteLte.setDistributeJumperLengthS3(getJumperLengthS3East());
+						siteLte.setDistributeJumperLengthS4(getJumperLengthS4East());
 					}
-					if (FrontWindow.this.commonBTSEast.isSelected()) {
-						siteLte.setFeederSize(FrontWindow.this);
-						siteLte.setFeederLength(FrontWindow.this);
-						siteLte.setJumperAtBtsLen(FrontWindow.this);
-						siteLte.setJumpersBeforeMhaLen(FrontWindow.this);
-						siteLte.setJumpersAfterMhaLen(FrontWindow.this);
-						siteLte.setJumperPerSectorNum(FrontWindow.this);
-						siteLte.setGroungNum(FrontWindow.this);
+					if (commonBTSEast.isSelected()) {
+						siteLte.setFeederSize(getFeederSizeEast());
+						siteLte.setFeederLength(getFeederLengthEast());
+						siteLte.setJumperAtBtsLen(getJumperAtBtsLengthEast());
+						siteLte.setJumpersBeforeMhaLen(getJumperBeforeMhaLengthEast());
+						siteLte.setJumpersAfterMhaLen(getJumperAfterMhaLengthEast());
+						siteLte.setJumperPerSectorNum(getJumpersPerSectorEast());
+						siteLte.setGroungNum(getGroundsNoEast());
 					}
-					if (FrontWindow.this.indoorBTSEast.isSelected() | FrontWindow.this.outdoorBTSEast.isSelected()) {
-						siteLte.setInstalationType(FrontWindow.this);
+					if (indoorBTSEast.isSelected() | outdoorBTSEast.isSelected()) {
+						siteLte.setInstalationType(getInstalationTypeStrEast());
 					}
-					if (FrontWindow.this.distributeBTSEast.isSelected() | FrontWindow.this.commonBTSEast.isSelected()) {
-						siteLte.setArchitectureType(FrontWindow.this);
+					if (distributeBTSEast.isSelected() | commonBTSEast.isSelected()) {
+						siteLte.setArchitectureType(getArchitectureTypeStrEast());
 					}
-					siteLte.setBtsCabinetType(FrontWindow.this);
+					siteLte.setBtsCabinetType(getBtsCabinetEast());
 					siteLte.setSysModule1Type(getIFiles());
-					siteLte.setSysModule1Loc(FrontWindow.this);
+					siteLte.setSysModule1Loc(getAssembleTypeEast());
 
 					siteLte.setE1LinesNo(getIFiles());
 					siteLte.setGbEthElectLinesNo(getIFiles());
 					siteLte.setGbEthOptLinesNo(getIFiles());
 					siteLte.setRfModulesType(getIFiles());
-					siteLte.setRfModuleLoc(FrontWindow.this);
-					siteLte.setPowSupplyType(FrontWindow.this);
+					siteLte.setRfModuleLoc(getAssembleRFTypeEast());
+					siteLte.setPowSupplyType(getPowSupplyTypeEast());
 					siteLte.setPowerSupplyParameters();
 					siteLte.setSwVersion(getIFiles());
 					siteLte.setSiteConfig();
@@ -1339,18 +1160,17 @@ public class FrontWindow extends JFrame {
 					siteLte.setSiteInfo(getIFiles());
 					OutputFiles report = new OutputFiles();
 					report.createTargetFile(siteLte);
-					report.populateTargetFile(siteLte, FrontWindow.this);
+					report.populateTargetFile(siteLte, getUmts().isSelected(), getLte().isSelected());
 				}
 			}
 		}
 	}
 
-	// When Reset button is pressed it start program from point of creating
-	// FrontWindow.
+	// When Reset button is pressed it start program from point of creating FrontWindow.
 	public class ListenForResetButton implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == FrontWindow.this.resetButton) {
+			if (e.getSource() == resetButton) {
 				FrontWindow fw = new FrontWindow();
 				fw.createWindow();
 			}
@@ -1361,27 +1181,27 @@ public class FrontWindow extends JFrame {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				FrontWindow.this.fiberLengthLabel.setEnabled(true);
-				FrontWindow.this.fiberLengthTextField.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS1TextField.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS2TextField.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS3TextField.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS4TextField.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS1Label.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS2Label.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS3Label.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS4Label.setEnabled(true);
+				fiberLengthLabel.setEnabled(true);
+				fiberLengthTextField.setEnabled(true);
+				distributeJumperLengthS1TextField.setEnabled(true);
+				distributeJumperLengthS2TextField.setEnabled(true);
+				distributeJumperLengthS3TextField.setEnabled(true);
+				distributeJumperLengthS4TextField.setEnabled(true);
+				distributeJumperLengthS1Label.setEnabled(true);
+				distributeJumperLengthS2Label.setEnabled(true);
+				distributeJumperLengthS3Label.setEnabled(true);
+				distributeJumperLengthS4Label.setEnabled(true);
 			} else {
-				FrontWindow.this.fiberLengthLabel.setEnabled(false);
-				FrontWindow.this.fiberLengthTextField.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS1TextField.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS2TextField.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS3TextField.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS4TextField.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS1Label.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS2Label.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS3Label.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS4Label.setEnabled(false);
+				fiberLengthLabel.setEnabled(false);
+				fiberLengthTextField.setEnabled(false);
+				distributeJumperLengthS1TextField.setEnabled(false);
+				distributeJumperLengthS2TextField.setEnabled(false);
+				distributeJumperLengthS3TextField.setEnabled(false);
+				distributeJumperLengthS4TextField.setEnabled(false);
+				distributeJumperLengthS1Label.setEnabled(false);
+				distributeJumperLengthS2Label.setEnabled(false);
+				distributeJumperLengthS3Label.setEnabled(false);
+				distributeJumperLengthS4Label.setEnabled(false);
 			}
 		}
 	}
@@ -1390,35 +1210,35 @@ public class FrontWindow extends JFrame {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				FrontWindow.this.feederTypeCombo.setEnabled(true);
-				FrontWindow.this.feederLengthTextField.setEnabled(true);
-				FrontWindow.this.groundsNoTextField.setEnabled(true);
-				FrontWindow.this.commonJumperAtBtsLengthTextField.setEnabled(true);
-				FrontWindow.this.commonJumperBeforeMhaLengthTextField.setEnabled(true);
-				FrontWindow.this.commonJumperAfterMhaLengthTextField.setEnabled(true);
-				FrontWindow.this.commonJumperPerSectorTextField.setEnabled(true);
-				FrontWindow.this.feederLengthLabel.setEnabled(true);
-				FrontWindow.this.groundsNoLabel.setEnabled(true);
-				FrontWindow.this.commonJumperAtBtsLengthLabel.setEnabled(true);
-				FrontWindow.this.commonJumperBeforeMhaLengthLabel.setEnabled(true);
-				FrontWindow.this.commonJumperAfterMhaLengthLabel.setEnabled(true);
-				FrontWindow.this.commonJumperPerSectorLabel.setEnabled(true);
-				FrontWindow.this.feederTypeLabel.setEnabled(true);
+				feederTypeCombo.setEnabled(true);
+				feederLengthTextField.setEnabled(true);
+				groundsNoTextField.setEnabled(true);
+				commonJumperAtBtsLengthTextField.setEnabled(true);
+				commonJumperBeforeMhaLengthTextField.setEnabled(true);
+				commonJumperAfterMhaLengthTextField.setEnabled(true);
+				commonJumperPerSectorTextField.setEnabled(true);
+				feederLengthLabel.setEnabled(true);
+				groundsNoLabel.setEnabled(true);
+				commonJumperAtBtsLengthLabel.setEnabled(true);
+				commonJumperBeforeMhaLengthLabel.setEnabled(true);
+				commonJumperAfterMhaLengthLabel.setEnabled(true);
+				commonJumperPerSectorLabel.setEnabled(true);
+				feederTypeLabel.setEnabled(true);
 			} else {
-				FrontWindow.this.feederTypeCombo.setEnabled(false);
-				FrontWindow.this.feederLengthTextField.setEnabled(false);
-				FrontWindow.this.groundsNoTextField.setEnabled(false);
-				FrontWindow.this.commonJumperAtBtsLengthTextField.setEnabled(false);
-				FrontWindow.this.commonJumperBeforeMhaLengthTextField.setEnabled(false);
-				FrontWindow.this.commonJumperAfterMhaLengthTextField.setEnabled(false);
-				FrontWindow.this.commonJumperPerSectorTextField.setEnabled(false);
-				FrontWindow.this.feederLengthLabel.setEnabled(false);
-				FrontWindow.this.groundsNoLabel.setEnabled(false);
-				FrontWindow.this.commonJumperAtBtsLengthLabel.setEnabled(false);
-				FrontWindow.this.commonJumperBeforeMhaLengthLabel.setEnabled(false);
-				FrontWindow.this.commonJumperAfterMhaLengthLabel.setEnabled(false);
-				FrontWindow.this.commonJumperPerSectorLabel.setEnabled(false);
-				FrontWindow.this.feederTypeLabel.setEnabled(false);
+				feederTypeCombo.setEnabled(false);
+				feederLengthTextField.setEnabled(false);
+				groundsNoTextField.setEnabled(false);
+				commonJumperAtBtsLengthTextField.setEnabled(false);
+				commonJumperBeforeMhaLengthTextField.setEnabled(false);
+				commonJumperAfterMhaLengthTextField.setEnabled(false);
+				commonJumperPerSectorTextField.setEnabled(false);
+				feederLengthLabel.setEnabled(false);
+				groundsNoLabel.setEnabled(false);
+				commonJumperAtBtsLengthLabel.setEnabled(false);
+				commonJumperBeforeMhaLengthLabel.setEnabled(false);
+				commonJumperAfterMhaLengthLabel.setEnabled(false);
+				commonJumperPerSectorLabel.setEnabled(false);
+				feederTypeLabel.setEnabled(false);
 			}
 		}
 	}
@@ -1427,29 +1247,29 @@ public class FrontWindow extends JFrame {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				FrontWindow.this.fiberLengthLabelEast.setEnabled(true);
-				FrontWindow.this.fiberLengthTextFieldEast.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS1TextFieldEast.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS2TextFieldEast.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS3TextFieldEast.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS4TextFieldEast.setEnabled(true);
-				FrontWindow.this.fiberLengthLabelEast.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS1LabelEast.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS2LabelEast.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS3LabelEast.setEnabled(true);
-				FrontWindow.this.distributeJumperLengthS4LabelEast.setEnabled(true);
+				fiberLengthLabelEast.setEnabled(true);
+				fiberLengthTextFieldEast.setEnabled(true);
+				distributeJumperLengthS1TextFieldEast.setEnabled(true);
+				distributeJumperLengthS2TextFieldEast.setEnabled(true);
+				distributeJumperLengthS3TextFieldEast.setEnabled(true);
+				distributeJumperLengthS4TextFieldEast.setEnabled(true);
+				fiberLengthLabelEast.setEnabled(true);
+				distributeJumperLengthS1LabelEast.setEnabled(true);
+				distributeJumperLengthS2LabelEast.setEnabled(true);
+				distributeJumperLengthS3LabelEast.setEnabled(true);
+				distributeJumperLengthS4LabelEast.setEnabled(true);
 			} else {
-				FrontWindow.this.fiberLengthLabelEast.setEnabled(false);
-				FrontWindow.this.fiberLengthTextFieldEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS1TextFieldEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS2TextFieldEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS3TextFieldEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS4TextFieldEast.setEnabled(false);
-				FrontWindow.this.fiberLengthLabelEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS1LabelEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS2LabelEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS3LabelEast.setEnabled(false);
-				FrontWindow.this.distributeJumperLengthS4LabelEast.setEnabled(false);
+				fiberLengthLabelEast.setEnabled(false);
+				fiberLengthTextFieldEast.setEnabled(false);
+				distributeJumperLengthS1TextFieldEast.setEnabled(false);
+				distributeJumperLengthS2TextFieldEast.setEnabled(false);
+				distributeJumperLengthS3TextFieldEast.setEnabled(false);
+				distributeJumperLengthS4TextFieldEast.setEnabled(false);
+				fiberLengthLabelEast.setEnabled(false);
+				distributeJumperLengthS1LabelEast.setEnabled(false);
+				distributeJumperLengthS2LabelEast.setEnabled(false);
+				distributeJumperLengthS3LabelEast.setEnabled(false);
+				distributeJumperLengthS4LabelEast.setEnabled(false);
 			}
 		}
 	}
@@ -1458,35 +1278,35 @@ public class FrontWindow extends JFrame {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				FrontWindow.this.feederTypeComboEast.setEnabled(true);
-				FrontWindow.this.feederLengthTextFieldEast.setEnabled(true);
-				FrontWindow.this.groundsNoTextFieldEast.setEnabled(true);
-				FrontWindow.this.commonJumperAtBtsLengthTextFieldEast.setEnabled(true);
-				FrontWindow.this.commonJumperBeforeMhaLengthTextFieldEast.setEnabled(true);
-				FrontWindow.this.commonJumperAfterMhaLengthTextFieldEast.setEnabled(true);
-				FrontWindow.this.commonJumperPerSectorTextFieldEast.setEnabled(true);
-				FrontWindow.this.feederLengthLabelEast.setEnabled(true);
-				FrontWindow.this.groundsNoLabelEast.setEnabled(true);
-				FrontWindow.this.commonJumperAtBtsLengthLabelEast.setEnabled(true);
-				FrontWindow.this.commonJumperBeforeMhaLengthLabelEast.setEnabled(true);
-				FrontWindow.this.commonJumperAfterMhaLengthLabelEast.setEnabled(true);
-				FrontWindow.this.commonJumperPerSectorLabelEast.setEnabled(true);
-				FrontWindow.this.feederTypeLabelEast.setEnabled(true);
+				feederTypeComboEast.setEnabled(true);
+				feederLengthTextFieldEast.setEnabled(true);
+				groundsNoTextFieldEast.setEnabled(true);
+				commonJumperAtBtsLengthTextFieldEast.setEnabled(true);
+				commonJumperBeforeMhaLengthTextFieldEast.setEnabled(true);
+				commonJumperAfterMhaLengthTextFieldEast.setEnabled(true);
+				commonJumperPerSectorTextFieldEast.setEnabled(true);
+				feederLengthLabelEast.setEnabled(true);
+				groundsNoLabelEast.setEnabled(true);
+				commonJumperAtBtsLengthLabelEast.setEnabled(true);
+				commonJumperBeforeMhaLengthLabelEast.setEnabled(true);
+				commonJumperAfterMhaLengthLabelEast.setEnabled(true);
+				commonJumperPerSectorLabelEast.setEnabled(true);
+				feederTypeLabelEast.setEnabled(true);
 			} else {
-				FrontWindow.this.feederTypeComboEast.setEnabled(false);
-				FrontWindow.this.feederLengthTextFieldEast.setEnabled(false);
-				FrontWindow.this.groundsNoTextFieldEast.setEnabled(false);
-				FrontWindow.this.commonJumperAtBtsLengthTextFieldEast.setEnabled(false);
-				FrontWindow.this.commonJumperBeforeMhaLengthTextFieldEast.setEnabled(false);
-				FrontWindow.this.commonJumperAfterMhaLengthTextFieldEast.setEnabled(false);
-				FrontWindow.this.commonJumperPerSectorTextFieldEast.setEnabled(false);
-				FrontWindow.this.feederLengthLabelEast.setEnabled(false);
-				FrontWindow.this.groundsNoLabelEast.setEnabled(false);
-				FrontWindow.this.commonJumperAtBtsLengthLabelEast.setEnabled(false);
-				FrontWindow.this.commonJumperBeforeMhaLengthLabelEast.setEnabled(false);
-				FrontWindow.this.commonJumperAfterMhaLengthLabelEast.setEnabled(false);
-				FrontWindow.this.commonJumperPerSectorLabelEast.setEnabled(false);
-				FrontWindow.this.feederTypeLabelEast.setEnabled(false);
+				feederTypeComboEast.setEnabled(false);
+				feederLengthTextFieldEast.setEnabled(false);
+				groundsNoTextFieldEast.setEnabled(false);
+				commonJumperAtBtsLengthTextFieldEast.setEnabled(false);
+				commonJumperBeforeMhaLengthTextFieldEast.setEnabled(false);
+				commonJumperAfterMhaLengthTextFieldEast.setEnabled(false);
+				commonJumperPerSectorTextFieldEast.setEnabled(false);
+				feederLengthLabelEast.setEnabled(false);
+				groundsNoLabelEast.setEnabled(false);
+				commonJumperAtBtsLengthLabelEast.setEnabled(false);
+				commonJumperBeforeMhaLengthLabelEast.setEnabled(false);
+				commonJumperAfterMhaLengthLabelEast.setEnabled(false);
+				commonJumperPerSectorLabelEast.setEnabled(false);
+				feederTypeLabelEast.setEnabled(false);
 			}
 		}
 	}
@@ -1494,10 +1314,10 @@ public class FrontWindow extends JFrame {
 	public class ListenForInstalationType implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			if (e.getSource() == FrontWindow.this.indoorBTS) {
-				setInstalationTypeStr("Indoor");
+			if (e.getSource() == indoorBTS) {
+				instalationTypeStr = "Indoor";
 			} else {
-				setInstalationTypeStr("Outdoor");
+				instalationTypeStr = "Outdoor";
 			}
 		}
 	}
@@ -1505,10 +1325,10 @@ public class FrontWindow extends JFrame {
 	public class ListenForInstalationTypeEast implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			if (e.getSource() == FrontWindow.this.indoorBTSEast) {
-				setInstalationTypeStrEast("Indoor");
+			if (e.getSource() == indoorBTSEast) {
+				instalationTypeStr = "Indoor";
 			} else {
-				setInstalationTypeStrEast("Outdoor");
+				instalationTypeStr = "Outdoor";
 			}
 		}
 	}
@@ -1516,10 +1336,10 @@ public class FrontWindow extends JFrame {
 	public class ListenForArchType implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			if (e.getSource() == FrontWindow.this.commonBTS) {
-				setArchitectureTypeStr("Common");
+			if (e.getSource() == commonBTS) {
+				architectureTypeStr = "Common";
 			} else {
-				setArchitectureTypeStr("Distribute");
+				architectureTypeStr = "Distribute";
 			}
 		}
 	}
@@ -1527,10 +1347,10 @@ public class FrontWindow extends JFrame {
 	public class ListenForArchTypeEast implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			if (e.getSource() == FrontWindow.this.commonBTSEast) {
-				setArchitectureTypeStrEast("Common");
+			if (e.getSource() == commonBTSEast) {
+				architectureTypeStr = "Common";
 			} else {
-				setArchitectureTypeStrEast("Distribute");
+				architectureTypeStr = "Distribute";
 			}
 		}
 	}
@@ -1539,7 +1359,7 @@ public class FrontWindow extends JFrame {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				setBtsCabinet((String) FrontWindow.this.btsCabinetCombo.getSelectedItem());
+				btsCabinet = (String) btsCabinetCombo.getSelectedItem();
 			}
 		}
 	}
@@ -1548,7 +1368,7 @@ public class FrontWindow extends JFrame {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				setBtsCabinetEast((String) FrontWindow.this.btsCabinetComboEast.getSelectedItem());
+				btsCabinet = (String) btsCabinetComboEast.getSelectedItem();
 			}
 		}
 	}
@@ -1556,14 +1376,14 @@ public class FrontWindow extends JFrame {
 	public class ListenForAssemblyType implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			if (e.getSource() == FrontWindow.this.wallAssembled) {
-				setAssembleType("Wall");
-			} else if (e.getSource() == FrontWindow.this.poleAssembled) {
-				setAssembleType("Pole");
-			} else if (e.getSource() == FrontWindow.this.stackAssembled) {
-				setAssembleType("Stack");
-			} else if (e.getSource() == FrontWindow.this.cabinetAssembled) {
-				setAssembleType("Cabinet");
+			if (e.getSource() == wallAssembled) {
+				assembleType = "Wall";
+			} else if (e.getSource() == poleAssembled) {
+				assembleType = "Pole";
+			} else if (e.getSource() == stackAssembled) {
+				assembleType = "Stack";
+			} else if (e.getSource() == cabinetAssembled) {
+				assembleType = "Cabinet";
 			}
 		}
 	}
@@ -1571,14 +1391,14 @@ public class FrontWindow extends JFrame {
 	public class ListenForAssemblyTypeEast implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			if (e.getSource() == FrontWindow.this.wallAssembledEast) {
-				setAssembleTypeEast("Wall");
-			} else if (e.getSource() == FrontWindow.this.poleAssembledEast) {
-				setAssembleTypeEast("Pole");
-			} else if (e.getSource() == FrontWindow.this.stackAssembledEast) {
-				setAssembleTypeEast("Stack");
-			} else if (e.getSource() == FrontWindow.this.cabinetAssembledEast) {
-				setAssembleTypeEast("Cabinet");
+			if (e.getSource() == wallAssembledEast) {
+				assembleType = "Wall";
+			} else if (e.getSource() == poleAssembledEast) {
+				assembleType = "Pole";
+			} else if (e.getSource() == stackAssembledEast) {
+				assembleType = "Stack";
+			} else if (e.getSource() == cabinetAssembledEast) {
+				assembleType = "Cabinet";
 			}
 		}
 	}
@@ -1586,14 +1406,14 @@ public class FrontWindow extends JFrame {
 	public class ListenForAssemblyRFType implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			if (e.getSource() == FrontWindow.this.wallAssembledRF) {
-				setAssembleRFType("Wall");
-			} else if (e.getSource() == FrontWindow.this.poleAssembledRF) {
-				setAssembleRFType("Pole");
-			} else if (e.getSource() == FrontWindow.this.stackAssembledRF) {
-				setAssembleRFType("Stack");
-			} else if (e.getSource() == FrontWindow.this.cabinetAssembledRF) {
-				setAssembleRFType("Cabinet");
+			if (e.getSource() == wallAssembledRF) {
+				assembleRFType = "Wall";
+			} else if (e.getSource() == poleAssembledRF) {
+				assembleRFType = "Pole";
+			} else if (e.getSource() == stackAssembledRF) {
+				assembleRFType = "Stack";
+			} else if (e.getSource() == cabinetAssembledRF) {
+				assembleRFType = "Cabinet";
 			}
 		}
 	}
@@ -1601,14 +1421,14 @@ public class FrontWindow extends JFrame {
 	public class ListenForAssemblyRFTypeEast implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			if (e.getSource() == FrontWindow.this.wallAssembledRFEast) {
-				setAssembleRFTypeEast("Wall");
-			} else if (e.getSource() == FrontWindow.this.poleAssembledRFEast) {
-				setAssembleRFTypeEast("Pole");
-			} else if (e.getSource() == FrontWindow.this.stackAssembledRFEast) {
-				setAssembleRFTypeEast("Stack");
-			} else if (e.getSource() == FrontWindow.this.cabinetAssembledRFEast) {
-				setAssembleRFTypeEast("Cabinet");
+			if (e.getSource() == wallAssembledRFEast) {
+				assembleRFType = "Wall";
+			} else if (e.getSource() == poleAssembledRFEast) {
+				assembleRFType = "Pole";
+			} else if (e.getSource() == stackAssembledRFEast) {
+				assembleRFType = "Stack";
+			} else if (e.getSource() == cabinetAssembledRFEast) {
+				assembleRFType = "Cabinet";
 			}
 		}
 	}
@@ -1617,7 +1437,7 @@ public class FrontWindow extends JFrame {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				setPowSupplyType((String) FrontWindow.this.powSupplyCombo.getSelectedItem());
+				powSupplyType = (String) powSupplyCombo.getSelectedItem();
 			}
 		}
 	}
@@ -1626,7 +1446,7 @@ public class FrontWindow extends JFrame {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				setPowSupplyTypeEast((String) FrontWindow.this.powSupplyComboEast.getSelectedItem());
+				powSupplyType = (String) powSupplyComboEast.getSelectedItem();
 			}
 		}
 	}
@@ -1634,10 +1454,10 @@ public class FrontWindow extends JFrame {
 	public class ListenForTransmissionGoes implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			if (e.getSource() == FrontWindow.this.transmission2G) {
-				setTransmissionType("2g");
+			if (e.getSource() == transmission2G) {
+				transmissionType = "2g";
 			} else {
-				setTransmissionType("3g");
+				transmissionType = "3g";
 			}
 		}
 	}

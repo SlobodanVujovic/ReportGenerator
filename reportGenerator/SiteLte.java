@@ -189,8 +189,7 @@ public class SiteLte implements Site {
 	}
 
 	// Find feeder type for all sectors, depending how many sectors there are.
-	public void setFeederSize(FrontWindow fw) {
-		String feederSize = fw.getFeederSizeEast();
+	public void setFeederSize(String feederSize) {
 		if (feederSize.equals("FIBER")) {
 			if (this.numOfSectors >= 1) {
 				this.feederSizeS1 = feederSize;
@@ -267,19 +266,18 @@ public class SiteLte implements Site {
 	}
 
 	// Find fiber length for all sectors, depending how many sectors there are.
-	public void setFiberLength(FrontWindow fw) {
-		String str = fw.getFiberLengthEast();
+	public void setFiberLength(String fiberLen) {
 		if (this.numOfSectors >= 1) {
-			this.fiberLengthS1 = str;
+			this.fiberLengthS1 = fiberLen;
 		}
 		if (this.numOfSectors >= 2) {
-			this.fiberLengthS2 = str;
+			this.fiberLengthS2 = fiberLen;
 		}
 		if (this.numOfSectors >= 3) {
-			this.fiberLengthS3 = str;
+			this.fiberLengthS3 = fiberLen;
 		}
 		if (this.numOfSectors >= 4) {
-			this.fiberLengthS4 = str;
+			this.fiberLengthS4 = fiberLen;
 		}
 	}
 
@@ -303,8 +301,8 @@ public class SiteLte implements Site {
 		return this.fiberLengthS4;
 	}
 
-	public void setDistributeJumperLengthS1(FrontWindow fw) {
-		this.distributeJumperLengthS1 = fw.getJumperLengthS1East();
+	public void setDistributeJumperLengthS1(String distributeJumperLengthS1) {
+		this.distributeJumperLengthS1 = distributeJumperLengthS1;
 	}
 
 	@Override
@@ -312,8 +310,8 @@ public class SiteLte implements Site {
 		return this.distributeJumperLengthS1;
 	}
 
-	public void setDistributeJumperLengthS2(FrontWindow fw) {
-		this.distributeJumperLengthS2 = fw.getJumperLengthS2East();
+	public void setDistributeJumperLengthS2(String distributeJumperLengthS2) {
+		this.distributeJumperLengthS2 = distributeJumperLengthS2;
 	}
 
 	@Override
@@ -321,8 +319,8 @@ public class SiteLte implements Site {
 		return this.distributeJumperLengthS2;
 	}
 
-	public void setDistributeJumperLengthS3(FrontWindow fw) {
-		this.distributeJumperLengthS3 = fw.getJumperLengthS3East();
+	public void setDistributeJumperLengthS3(String distributeJumperLengthS3) {
+		this.distributeJumperLengthS3 = distributeJumperLengthS3;
 	}
 
 	@Override
@@ -330,8 +328,8 @@ public class SiteLte implements Site {
 		return this.distributeJumperLengthS3;
 	}
 
-	public void setDistributeJumperLengthS4(FrontWindow fw) {
-		this.distributeJumperLengthS4 = fw.getJumperLengthS4East();
+	public void setDistributeJumperLengthS4(String distributeJumperLengthS4) {
+		this.distributeJumperLengthS4 = distributeJumperLengthS4;
 	}
 
 	@Override
@@ -340,19 +338,18 @@ public class SiteLte implements Site {
 	}
 
 	// Find feeder length for all sectors, depending how many sectors there are.
-	public void setFeederLength(FrontWindow fw) {
-		String str = fw.getFeederLengthEast();
+	public void setFeederLength(String feederLen) {
 		if (this.numOfSectors >= 1) {
-			this.feederLengthS1 = str;
+			this.feederLengthS1 = feederLen;
 		}
 		if (this.numOfSectors >= 2) {
-			this.feederLengthS2 = str;
+			this.feederLengthS2 = feederLen;
 		}
 		if (this.numOfSectors >= 3) {
-			this.feederLengthS3 = str;
+			this.feederLengthS3 = feederLen;
 		}
 		if (this.numOfSectors >= 4) {
-			this.feederLengthS4 = str;
+			this.feederLengthS4 = feederLen;
 		}
 	}
 
@@ -378,19 +375,18 @@ public class SiteLte implements Site {
 
 	// Find jumper at BTS length for all sectors, depending how many sectors
 	// there are.
-	public void setJumperAtBtsLen(FrontWindow fw) {
-		String str = fw.getJumperAtBtsLengthEast();
+	public void setJumperAtBtsLen(String jumperAtBtsLen) {
 		if (this.numOfSectors >= 1) {
-			this.jumperAtBtsLenS1 = str;
+			this.jumperAtBtsLenS1 = jumperAtBtsLen;
 		}
 		if (this.numOfSectors >= 2) {
-			this.jumperAtBtsLenS2 = str;
+			this.jumperAtBtsLenS2 = jumperAtBtsLen;
 		}
 		if (this.numOfSectors >= 3) {
-			this.jumperAtBtsLenS3 = str;
+			this.jumperAtBtsLenS3 = jumperAtBtsLen;
 		}
 		if (this.numOfSectors >= 4) {
-			this.jumperAtBtsLenS4 = str;
+			this.jumperAtBtsLenS4 = jumperAtBtsLen;
 		}
 	}
 
@@ -416,19 +412,18 @@ public class SiteLte implements Site {
 
 	// Find jumper before BTS length for all sectors, depending how many sectors
 	// there are.
-	public void setJumpersBeforeMhaLen(FrontWindow fw) {
-		String str = fw.getJumperBeforeMhaLengthEast();
+	public void setJumpersBeforeMhaLen(String jumperBeforeMhaLen) {
 		if (this.numOfSectors >= 1) {
-			this.jumperBeforeMhaLenS1 = str;
+			this.jumperBeforeMhaLenS1 = jumperBeforeMhaLen;
 		}
 		if (this.numOfSectors >= 2) {
-			this.jumperBeforeMhaLenS2 = str;
+			this.jumperBeforeMhaLenS2 = jumperBeforeMhaLen;
 		}
 		if (this.numOfSectors >= 3) {
-			this.jumperBeforeMhaLenS3 = str;
+			this.jumperBeforeMhaLenS3 = jumperBeforeMhaLen;
 		}
 		if (this.numOfSectors >= 4) {
-			this.jumperBeforeMhaLenS4 = str;
+			this.jumperBeforeMhaLenS4 = jumperBeforeMhaLen;
 		}
 	}
 
@@ -454,19 +449,18 @@ public class SiteLte implements Site {
 
 	// Find jumper after BTS length for all sectors, depending how many sectors
 	// there are.
-	public void setJumpersAfterMhaLen(FrontWindow fw) {
-		String str = fw.getJumperAfterMhaLengthEast();
+	public void setJumpersAfterMhaLen(String jumperAfterMhaLen) {
 		if (this.numOfSectors >= 1) {
-			this.jumperAfterMhaLenS1 = str;
+			this.jumperAfterMhaLenS1 = jumperAfterMhaLen;
 		}
 		if (this.numOfSectors >= 2) {
-			this.jumperAfterMhaLenS2 = str;
+			this.jumperAfterMhaLenS2 = jumperAfterMhaLen;
 		}
 		if (this.numOfSectors >= 3) {
-			this.jumperAfterMhaLenS3 = str;
+			this.jumperAfterMhaLenS3 = jumperAfterMhaLen;
 		}
 		if (this.numOfSectors >= 4) {
-			this.jumperAfterMhaLenS4 = str;
+			this.jumperAfterMhaLenS4 = jumperAfterMhaLen;
 		}
 	}
 
@@ -491,19 +485,18 @@ public class SiteLte implements Site {
 	}
 
 	// Find number of jumper per sector, depending how many sectors there are.
-	public void setJumperPerSectorNum(FrontWindow fw) {
-		String str = fw.getJumpersPerSectorEast();
+	public void setJumperPerSectorNum(String jumpersPerSector) {
 		if (this.numOfSectors >= 1) {
-			this.jumperPerSectorS1 = str;
+			this.jumperPerSectorS1 = jumpersPerSector;
 		}
 		if (this.numOfSectors >= 2) {
-			this.jumperPerSectorS2 = str;
+			this.jumperPerSectorS2 = jumpersPerSector;
 		}
 		if (this.numOfSectors >= 3) {
-			this.jumperPerSectorS3 = str;
+			this.jumperPerSectorS3 = jumpersPerSector;
 		}
 		if (this.numOfSectors >= 4) {
-			this.jumperPerSectorS4 = str;
+			this.jumperPerSectorS4 = jumpersPerSector;
 		}
 	}
 
@@ -528,19 +521,18 @@ public class SiteLte implements Site {
 	}
 
 	// Find number of grounds per sector, depending how many sectors there are.
-	public void setGroungNum(FrontWindow fw) {
-		String str = fw.getGroundsNoEast();
+	public void setGroungNum(String groundsNo) {
 		if (this.numOfSectors >= 1) {
-			this.earthKitNoS1 = str;
+			this.earthKitNoS1 = groundsNo;
 		}
 		if (this.numOfSectors >= 2) {
-			this.earthKitNoS2 = str;
+			this.earthKitNoS2 = groundsNo;
 		}
 		if (this.numOfSectors >= 3) {
-			this.earthKitNoS3 = str;
+			this.earthKitNoS3 = groundsNo;
 		}
 		if (this.numOfSectors >= 4) {
-			this.earthKitNoS4 = str;
+			this.earthKitNoS4 = groundsNo;
 		}
 	}
 
@@ -569,8 +561,8 @@ public class SiteLte implements Site {
 		return this.instalationType;
 	}
 
-	public void setInstalationType(FrontWindow fw) {
-		this.instalationType = fw.getInstalationTypeStrEast();
+	public void setInstalationType(String instalationType) {
+		this.instalationType = instalationType;
 	}
 
 	@Override
@@ -578,12 +570,12 @@ public class SiteLte implements Site {
 		return this.btsCabinetType;
 	}
 
-	public void setBtsCabinetType(FrontWindow fw) {
-		this.btsCabinetType = fw.getBtsCabinetEast();
+	public void setBtsCabinetType(String btsCabinetType) {
+		this.btsCabinetType = btsCabinetType;
 	}
 
-	public void setArchitectureType(FrontWindow fw) {
-		this.architectureType = fw.getArchitectureTypeStrEast();
+	public void setArchitectureType(String architectureType) {
+		this.architectureType = architectureType;
 	}
 
 	@Override
@@ -605,8 +597,8 @@ public class SiteLte implements Site {
 		return this.sysModule1Loc;
 	}
 
-	public void setSysModule1Loc(FrontWindow fw) {
-		this.sysModule1Loc = fw.getAssembleTypeEast();
+	public void setSysModule1Loc(String sysModule1Loc) {
+		this.sysModule1Loc = sysModule1Loc;
 	}
 
 	// When there is no "Over" in method name that mean that method finds lines
@@ -671,11 +663,8 @@ public class SiteLte implements Site {
 		return this.rfModule3Type;
 	}
 
-	public void setRfModuleLoc(FrontWindow fw) {
-		String rfModuleLoc = fw.getAssembleRFTypeEast();
-		this.rfModule1Loc = rfModuleLoc;
-		this.rfModule2Loc = rfModuleLoc;
-		this.rfModule3Loc = rfModuleLoc;
+	public void setRfModuleLoc(String rfModuleLoc) {
+		rfModule1Loc = rfModule2Loc = rfModule3Loc = rfModuleLoc;
 	}
 
 	@Override
@@ -693,8 +682,8 @@ public class SiteLte implements Site {
 		return this.rfModule3Loc;
 	}
 
-	public void setPowSupplyType(FrontWindow fw) {
-		this.powSupplyType = fw.getPowSupplyTypeEast();
+	public void setPowSupplyType(String powSupplyType) {
+		this.powSupplyType = powSupplyType;
 	}
 
 	@Override
@@ -873,8 +862,7 @@ public class SiteLte implements Site {
 	// Set type of station that is used for transmission. All methods that have
 	// "Over" in its name are used on station that provide transmission for LTE
 	// station.
-	public void setOverTransSiteCode(FrontWindow fw) {
-		String transmissionType = fw.getTransmissionType();
+	public void setOverTransSiteCode(String transmissionType) {
 		if (transmissionType.equals("2g")) {
 			this.overTransSiteCode = getSiteCode().substring(0, 2) + getSiteCode().substring(3);
 		} else {

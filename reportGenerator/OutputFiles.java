@@ -54,7 +54,7 @@ public class OutputFiles {
 	}
 
 	// Here we start to populate target file.
-	public void populateTargetFile(Site site, FrontWindow fw) {
+	public void populateTargetFile(Site site, boolean umtsIsSelect, boolean lteIsSelect) {
 		try {
 			InputStream fInputStream = new FileInputStream(getTargetFile().toString());
 			XSSFWorkbook workbook = new XSSFWorkbook(fInputStream); // 1. create
@@ -420,14 +420,14 @@ public class OutputFiles {
 				cell.setCellType(Cell.CELL_TYPE_STRING);
 				cell.setCellValue(site.getLte18Changed().electricalTiltS4);
 			}
-			if (fw.getUmts().isSelected()) { // Now, when we populate
-												// report with data from
-												// UP, depending which
-												// report we do, we need
-												// to populate others
-												// information for that
-												// technology that we do
-												// not have in UP file.
+			if (umtsIsSelect) { // Now, when we populate
+								// report with data from
+								// UP, depending which
+								// report we do, we need
+								// to populate others
+								// information for that
+								// technology that we do
+								// not have in UP file.
 				row = sheet1.getRow(32);
 				if (site.getUmts21Changed().antenaTypeS1 != null
 						&& site.getUmts21Changed().antenaTypeS1.length() != 0) {
@@ -722,8 +722,8 @@ public class OutputFiles {
 					}
 				}
 			}
-			if (fw.getLte().isSelected()) { // Same note as for line
-											// 553.
+			if (lteIsSelect) { // Same note as for line
+								// 553.
 				row = sheet1.getRow(42);
 				if (site.getLte18Changed().antenaTypeS1 != null && site.getLte18Changed().antenaTypeS1.length() != 0) {
 					cell = row.getCell(3);
@@ -1032,8 +1032,8 @@ public class OutputFiles {
 				cell.setCellType(Cell.CELL_TYPE_STRING);
 				cell.setCellValue(1);
 			}
-			if (fw.getUmts().isSelected()) { // More technology specific
-												// information.
+			if (umtsIsSelect) { // More technology specific
+								// information.
 				row = sheet1.getRow(17);
 				cell = row.getCell(6);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
@@ -1093,8 +1093,8 @@ public class OutputFiles {
 					cell.setCellValue(site.getRfModule3Loc());
 				}
 			}
-			if (fw.getLte().isSelected()) { // More technology specific
-											// information.
+			if (lteIsSelect) { // More technology specific
+								// information.
 				row = sheet1.getRow(17);
 				cell = row.getCell(7);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
@@ -1252,7 +1252,7 @@ public class OutputFiles {
 			cell = row.getCell(5);
 			cell.setCellType(Cell.CELL_TYPE_STRING);
 			cell.setCellValue(site.getCrFile());
-			if (fw.getUmts().isSelected()) {
+			if (umtsIsSelect) {
 				row = sheet1.getRow(19);
 				cell = row.getCell(9);
 				cell.setCellType(Cell.CELL_TYPE_STRING);
@@ -1614,8 +1614,8 @@ public class OutputFiles {
 					cell.setCellValue(site.getExtAl10Sev());
 				}
 			}
-			if (fw.getLte().isSelected()) { // Populate information
-											// specific for LTE.
+			if (lteIsSelect) { // Populate information
+								// specific for LTE.
 				row = sheet1.getRow(19);
 				cell = row.getCell(12);
 				cell.setCellType(Cell.CELL_TYPE_STRING);

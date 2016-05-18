@@ -67,7 +67,7 @@ public class Engineer extends JFrame {
 					Notifications emptyEngName = new Notifications();
 					emptyEngName.emptyEngNameError();
 				} else {
-					setEngineerNameIfFileMissing(engNameInput);
+					setEngineerNameIfItIsMissing(engNameInput);
 					FrontWindow fw = new FrontWindow();
 					fw.createWindow();
 					dispose();
@@ -76,7 +76,7 @@ public class Engineer extends JFrame {
 		}
 	}
 
-	public void setEngineerNameIfFileMissing(String str) {
+	public void setEngineerNameIfItIsMissing(String str) {
 		try {
 			this.engineerName = this.engineerName == null ? str : this.engineerName;
 			File engFile = new File("C:\\RG input\\Engineer.txt");
