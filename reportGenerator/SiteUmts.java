@@ -1222,31 +1222,26 @@ public class SiteUmts implements Site {
 	// provide method body for them.
 	@Override
 	public String getOverTransModule() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int getOverE1LinesNo() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getOverGbEthElectLinesNo() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getOverGbEthOptLinesNo() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public String getOverTransSiteCode() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -1159,343 +1159,290 @@ public class SiteLte implements Site {
 	// provided with body.
 	@Override
 	public String getTransModuleType() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getTrsIp() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getNodebIp() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getRncIp() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getRcuaIp() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String[] getCellIdS1() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String[] getCellIdS2() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String[] getCellIdS3() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String[] getCellIdS4() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String[][] getCellIdGroup() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int[][] getUarfcnGroup() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int[] getUarfcnS1() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int[] getUarfcnS2() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int[] getUarfcnS3() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int[] getUarfcnS4() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl1() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl2() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl3() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl4() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl5() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl6() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl7() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl8() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl9() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl10() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl1Name() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl2Name() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl3Name() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl4Name() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl5Name() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl6Name() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl7Name() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl8Name() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl9Name() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl10Name() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl1Pol() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl2Pol() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl3Pol() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl4Pol() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl5Pol() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl6Pol() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl7Pol() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl8Pol() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl9Pol() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl10Pol() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public String getExtAl1Sev() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl2Sev() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public String getExtAl3Sev() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl4Sev() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public String getExtAl5Sev() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl6Sev() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public String getExtAl7Sev() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl8Sev() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl9Sev() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getExtAl10Sev() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void setSiteConfig() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public String getSiteConfig() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 }
